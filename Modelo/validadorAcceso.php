@@ -28,8 +28,8 @@ class ControladorAccesoVistasPorUsuario {
 	}
 	
 	function listaVistas($nombreArchivo, $usuario) {
-		
-		$conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
+
+		$conn = new PDO("mysql:host=$this->servername;dbname=saetis", $this->username, $this->password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare('SELECT nombreUrl FROM ( SELECT IdUrl FROM (SELECT ROL_R FROM usuario_rol WHERE NOMBRE_U= :NOMBRE_U) AS uno, rol_url WHERE rol_url.IdRol = uno.ROL_R ) AS dos, url WHERE Id = dos.IdUrl AND nombreUrl = :nombreUrl');
@@ -53,7 +53,7 @@ class ControladorAccesoVistasPorUsuario {
 
 	function vistaPrincipal($usuario, $vista) {
 
-		$conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
+        $conn = new PDO("mysql:host=$this->servername;dbname=saetis", $this->username, $this->password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare('SELECT nombreUrl FROM ( SELECT IdUrl FROM (SELECT ROL_R FROM usuario_rol WHERE NOMBRE_U= :NOMBRE_U) AS uno, rol_url WHERE rol_url.IdRol = uno.ROL_R ) AS dos, url WHERE Id = dos.IdUrl AND nombreUrl = :url');
