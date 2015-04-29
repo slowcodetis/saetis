@@ -14,15 +14,10 @@ function __construct(){
 }
 
 function conectar(){   
-/*$servidor = '192.168.2.5';
-$userName = 'mbittle';
-$password = '5rtZAGYq';
-$bdName = 'tis_mbittle';*/
 $servidor = 'localhost';
 $userName = 'root';
 $password = 'Crhyst23';
 $bdName = 'saetis';
-//$bdName = 'freevalue';
 global $link;
     $link =  mysql_connect($servidor, $userName, $password) or die('no se pudo conectar al servidor' . mysql_error());
     mysql_select_db($bdName,$link) or die('no se pudo encontrar la base de datos');
@@ -40,7 +35,7 @@ function cerrarConexion() {
     mysql_close($link);
 }
 
-		public function consultarTabla($query) {
+	public function consultarTabla($query) {
             $tabla = array();
             $resConsulta = $this->consulta($query);
             $i = 0;
