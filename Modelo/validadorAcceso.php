@@ -20,16 +20,15 @@ class TableRows extends RecursiveIteratorIterator {
 
 class ControladorAccesoVistasPorUsuario {
 
+    private $servername = "localhost";
+    private $username = "root";
+    private $password = "root";
 
 	function __construct() {
 	}
 	
 	function listaVistas($nombreArchivo, $usuario) {
 		
-		$servername = "localhost";
-    	$username = "root";
-    	$password = "root";
-
 		$conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -53,10 +52,6 @@ class ControladorAccesoVistasPorUsuario {
 	}
 
 	function vistaPrincipal($usuario, $vista) {
-
-		$servername = "localhost";
-    	$username = "root";
-    	$password = "root";
 
 		$conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
