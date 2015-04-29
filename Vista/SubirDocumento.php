@@ -285,17 +285,8 @@
             </div>            
             
         </div>
-        <!-- /#page-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
-
-    <!-- Core Scripts - Include with every page -->
-    
-    <!--script src="../Librerias/js/bootstrap.min.js"></script-->
     <script src="../Librerias/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-
-    <!-- SB Admin Scripts - Include with every page -->
     <script src="../Librerias/js/sb-admin.js"></script>
 
 </body>

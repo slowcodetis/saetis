@@ -12,12 +12,9 @@
 	
     $ap = $conexion->consultarTabla("SELECT id_r, nombre_u, estado_e, nombre_r FROM registro , inscripcion WHERE tipo_t = 'actividad planificacion' AND estado_e = 'en proceso' and NOMBRE_UGE=nombre_u and NOMBRE_UA='$usuario';");
     
-    $reportes = $conexion->consultarArreglo("SELECT DISTINCT id_r
-									  		 FROM reporte");
-    $asistencia = $conexion->consultarArreglo("SELECT DISTINCT id_r
-									  		   FROM asistencia");
-    $evaluacion = $conexion->consultarArreglo("SELECT DISTINCT id_r
-									  		   FROM evaluacion");
+    $reportes = $conexion->consultarArreglo("SELECT DISTINCT id_r  FROM reporte");
+    $asistencia = $conexion->consultarArreglo("SELECT DISTINCT id_r  FROM asistencia");
+    $evaluacion = $conexion->consultarArreglo("SELECT DISTINCT id_r  FROM evaluacion");
     
 	$filas = '';
 
@@ -57,11 +54,6 @@
                               $btnEvaluacion1= '<a href="evaluacion.php?GE='.$idRegistro.'" class="btn btn-default btn-xs">Evaluacion</a>';
                   
                 }
-            
-    
-   
-   
-   
 
                 $filas .= '<tr data-registro="'.$idRegistro.'">
                 <td>'.$ap[$i][3].'</td>
@@ -72,21 +64,9 @@
                 '.$btnReportes.'
                 '.$btnEvaluacion1.'
 
-
-
-
-
                 </td>
                 </tr>';
-        
-        
-                          
-     
-       
     } 
-                             
-                          
-   
    
     echo '<table class="table table-hover">
 			  <thead>

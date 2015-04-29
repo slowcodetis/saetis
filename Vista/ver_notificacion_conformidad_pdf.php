@@ -1,11 +1,4 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 include '../Librerias/fpdf.php';
 $nombreEmpresa=$_POST['lista'];
 $fecha=$_POST['fecha'];
@@ -24,12 +17,8 @@ class PDF extends FPDF
 // Cabecera de página
 function Header()
 {
-    // Logo
-    // Arial bold 15
     $this->SetFont('Times','',20);
-    // Movernos a la derecha
     $this->Cell(80);
-    // Título
     $this->Cell(30,10,  utf8_decode('Notificación de Conformidad'),0,0,'C');
     $this->Ln();
     $this->SetFont('Times','',14);
@@ -40,18 +29,13 @@ function Header()
     $arrayMeses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
     $fecha_actual= date('d')." de ".$arrayMeses[date('m')-1]." de ".date('Y');
     $this->Cell(190,10,  utf8_decode("$fecha_actual"),0,0,'C');
-    // Salto de línea
     $this->Ln(20);
 }
 
-// Pie de página
 function Footer()
 {
-    // Posición: a 1,5 cm del final
     $this->SetY(-15);
-    // Arial italic 8
     $this->SetFont('Times','',8);
-    // Número de página
     $this->Cell(0,10,  utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'C');
     
 }

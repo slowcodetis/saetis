@@ -1,6 +1,6 @@
 <?php
-  	require_once '../Modelo/Model/Planificacion.php';
-  	require_once '../Modelo/Model/Entregable.php';
+    require_once '../Modelo/Model/Planificacion.php';
+    require_once '../Modelo/Model/Entregable.php';
     require_once '../Modelo/Model/Registro.php';
     require_once '../Modelo/Model/Precio.php';
     require_once '../Modelo/Model/FechaRealizacion.php';

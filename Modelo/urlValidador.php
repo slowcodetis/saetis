@@ -1,5 +1,6 @@
 <?php
 
+include '../Modelo/conexion_pd.php';
 class TableRows extends RecursiveIteratorIterator { 
     function __construct($it) { 
         parent::__construct($it, self::LEAVES_ONLY); 
@@ -17,21 +18,11 @@ class TableRows extends RecursiveIteratorIterator {
         echo "</tr>" . "\n";
     } 
 } 
-
-
-//class Validador() {
-
-    //private 
     $servername = "localhost";
-    //private 
     $username = "root";
-    //private 
     $password = "root";
 
     try {
-        
-        //echo 'jajajajaja';
-
         $conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -47,30 +38,20 @@ class TableRows extends RecursiveIteratorIterator {
         $i = 0;
 
         foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
-           
             $vistas[$i] = $v;
             $i = $i + 1;
-            //echo $v;
         }
         
         echo $nombreUsuario;
         echo $cadena;
 
         if(count($vistas) == 0) {
-            //echo 'no deberias ver esto';
             echo "<script>alert('porque!!!!')</script>";
-            //header('Location: http://localhost:8888/sistema1/Saetis/index.php');
-            //return false;
-            //echo 'no deberias ver esto';
         }
         else {
-            //return true;
             echo "<script>alert('puedes ingresar!!!!')</script>";
-            //echo 'tienes permiso';
         }
     } catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
-    //return false;
-//}
 ?>

@@ -1,0 +1,7 @@
+registrarSocio.php ----> requiere datos para conexion
+ProcesarRegistroGrupoE.php ------> requieere datos de conexion
+urlValidador.php ----> requiere datos para conexion
+upload.php -----> requiere datos de conexion
+
+* conexion_pd.php -----> clase principal de DB
+* conexion.php -------> clase principal de DB

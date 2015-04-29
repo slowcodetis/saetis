@@ -20,7 +20,7 @@ $password = '5rtZAGYq';
 $bdName = 'tis_mbittle';*/
 $servidor = 'localhost';
 $userName = 'root';
-$password = 'root';
+$password = 'Crhyst23';
 $bdName = 'saetis';
 //$bdName = 'freevalue';
 global $link;
