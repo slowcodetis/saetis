@@ -1,0 +1,144 @@
+<?php
+
+class TableRows extends RecursiveIteratorIterator { 
+    function __construct($it) { 
+        parent::__construct($it, self::LEAVES_ONLY); 
+    }
+
+    function current() {
+        return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
+    }
+
+    function beginChildren() { 
+        echo "<tr>"; 
+    } 
+
+    function endChildren() { 
+        echo "</tr>" . "\n";
+    } 
+} 
+
+class ControladorAccesoVistasPorUsuario {
+
+	function __construct() {
+	}
+
+	function esUsuarioValido() {
+		return $nombreUsuario != null || $nombreUsuario != '';
+	}
+	
+	function listaVistas($nombreArchivo, $usuario) {
+		$conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $stmt = $conn->prepare('SELECT nombreUrl FROM ( SELECT IdUrl FROM (SELECT ROL_R FROM usuario_rol WHERE NOMBRE_U= :NOMBRE_U) AS uno, rol_url WHERE rol_url.IdRol = uno.ROL_R ) AS dos, url WHERE Id = dos.IdUrl AND nombreUrl = :nombreUrl');
+        
+        $nombreUsuario = $usuario;
+        $cadena = $nombreArchivo;
+        $stmt->bindParam(':NOMBRE_U', $nombreUsuario, PDO::PARAM_STR);
+        $stmt->bindParam(':nombreUrl', $cadena, PDO::PARAM_STR);
+        $stmt->execute();
+		
+        $vistas = array();
+        $i = 0;
+        
+        foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
+           
+            $vistas[$i] = $v;
+            $i = $i + 1;
+        }
+        return $vistas;
+	}
+
+	function vistaPrincipal($usuario) {
+
+		$conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $stmt = $conn->prepare('SELECT nombreUrl FROM ( SELECT IdUrl FROM (SELECT ROL_R FROM usuario_rol WHERE NOMBRE_U= :NOMBRE_U) AS uno, rol_url WHERE rol_url.IdRol = uno.ROL_R ) AS dos, url WHERE Id = dos.IdUrl AND descripcion = :descripcion');
+        
+        $nombreUsuario = $usuario;
+        $descripcion = 'principal';
+        $stmt->bindParam(':NOMBRE_U', $nombreUsuario, PDO::PARAM_STR);
+        $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+        $stmt->execute();
+		
+        $vistas = array();
+        $i = 0;
+        
+        foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
+           
+            $vistas[$i] = $v;
+            $i = $i + 1;
+
+            echo "<script>alert($vistas[$i])</script>";
+        }
+        return $vistas[0];
+	}
+
+	function puedeAcceder($nombreArchivo, $usuario) {
+		
+		$servername = "localhost";
+	    $username = "root";
+	    $password = "root";
+
+	    try {
+	        /*
+	        $conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
+	        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	        $stmt = $conn->prepare('SELECT nombreUrl FROM ( SELECT IdUrl FROM (SELECT ROL_R FROM usuario_rol WHERE NOMBRE_U= :NOMBRE_U) AS uno, rol_url WHERE rol_url.IdRol = uno.ROL_R ) AS dos, url WHERE Id = dos.IdUrl AND nombreUrl = :nombreUrl');
+	        
+	        $nombreUsuario = $usuario;
+	        $cadena = $nombreArchivo;
+	        $stmt->bindParam(':NOMBRE_U', $nombreUsuario, PDO::PARAM_STR);
+	        $stmt->bindParam(':nombreUrl', $cadena, PDO::PARAM_STR);
+	        $stmt->execute();
+			
+	        $vistas = array();
+	        $i = 0;
+	        
+	        foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
+	           
+	            $vistas[$i] = $v;
+	            $i = $i + 1;
+	        }
+			*/
+
+	        $vistas = array();
+	        $vistas = $this->listaVistas($nombreArchivo, $usuario);
+
+	        if(count($vistas) == 0) {
+	        	
+	        	$principal = $this->vistaPrincipal($usuario);
+
+	        	echo "<script>alert($principal)</script>";
+
+	        	/*if($principal !== null) {
+
+
+
+	        		//echo $principal;
+
+	        		//echo "<script>window.location = 'http://localhost:8888/sistema1/Saetis/Vista/$principal' </script>";
+
+	        	}
+	        	else {*/
+		        	echo "<script>alert('TRAMPOSO!!!')</script>";
+		            echo "<script>window.location = 'http://localhost:8888/sistema1/Saetis/Vista/unlog.php' </script>";
+		            //header('Location: http://localhost:8888/sistema1/Saetis/index.php');
+		            //exit();
+	        	//}
+	        }
+	        else {
+	        	//echo "<script>alert('puedes continuar!!!!')</script>";
+	        }
+	    } catch(PDOException $e) {
+	        echo "Connection failed: " . $e->getMessage();
+	    }
+	}
+}
+
+echo 'hola';
+
+?>
