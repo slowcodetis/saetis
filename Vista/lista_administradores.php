@@ -228,8 +228,10 @@
                             <a href="#"><i class="fa fa-building-o fa-fw"></i>Enviar mensaje <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="enviar_mail.php">Nuevo Mensaje</a>
-                                            
+                                            <a href="enviar_mail.php">Enviar Mensaje Habilitacion</a>
+                                        </li>
+                                        <li>
+                                            <a href="enviarCorreoAdministrador.php">Enviar Mensaje</a>
                                         </li>
 
   
