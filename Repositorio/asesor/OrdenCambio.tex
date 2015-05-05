@@ -1,19 +1,20 @@
 \documentclass[10pt,letterpaper,twoside]{article}
 
-\newcommand{\empresa}[0]{\textbf{Agile SRL}}
-\newcommand{\diayhora}[0]{\textbf{2015-02-28, a horas 14:35}}
-\newcommand{\lugar}[0]{\textbf{memi}}
+\newcommand{\empresa}[0]{\textbf{[[empresa-nombre-largo]]}}
+\newcommand{\dia}[0]{\textbf{[[fecha-actual]]}}
+\newcommand{\hora}[0]{\textbf{[[hora-actual]]}}
+\newcommand{\lugar}[0]{\textbf{[[lugar]]}}
 
-\newcommand{\pp}[0]{5}
-\newcommand{\sep}[0]{5}
-\newcommand{\tp}[0]{5}
-\newcommand{\cp}[0]{5}
-\newcommand{\qp}[0]{5}
-\newcommand{\ssp}[0]{5}
-\newcommand{\sssp}[0]{5}
+\newcommand{\pp}[0]{\textbf{[[primer-puntaje]]}}
+\newcommand{\sep}[0]{\textbf{[[segundo-puntaje]]}}
+\newcommand{\tp}[0]{\textbf{[[tercer-puntaje]]}}
+\newcommand{\cp}[0]{\textbf{[[cuarto-puntaje]]}}
+\newcommand{\qp}[0]{\textbf{[[quinto-puntaje]]}}
+\newcommand{\ssp}[0]{\textbf{[[sexto-puntaje]]}}
+\newcommand{\sssp}[0]{\textbf{[[septimo-puntaje]]}}
 
-\newcommand{\observacionesDetalle}[1]{\item #1}
-\newcommand{\observaciones}[0]{\observacionesDetalle{asd}}  
+%\newcommand{\observacionesDetalle}[1]{\item #1}
+\newcommand{\observaciones}[0]{\observacionesDetalle{[[obs-detalle-item]]}}  
 
 \usepackage{t1enc}
 \usepackage[latin1]{inputenc}
@@ -59,7 +60,7 @@ en marcha  y
 seguimiento de su propuesta de desarrollo en el tiempo que dure el contrato con TIS.
 
 
-As'imismo, recordar que para el d'ia de la firma del contrato que se realizar'a el d'ia \diayhora\ en \lugar; se requiere de una copia f'isica
+As'imismo, recordar que para el d'ia de la firma del contrato que se realizar'a el d'ia \dia, a horas \hora en \lugar; se requiere de una copia f'isica
  de la 
 \texttt{Boleta de Garant'ia}, emitida a favor de \texttt{TIS} por parte de \empresa.
 \end{document}
