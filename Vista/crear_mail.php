@@ -21,26 +21,16 @@ $addFecha= $_POST['fec'];
 	$peticion1 = $conectar->consulta("SELECT `CORREO_ELECTRONICO_U` FROM `usuario` WHERE `NOMBRE_U`='$addDestino'"); 
         while ($correo = mysql_fetch_array($peticion1))
         {        
-        $correo1=$correo["CORREO_ELECTRONICO_U"];}
-	  
-        
-        
-	
-
-
+            $correo1=$correo["CORREO_ELECTRONICO_U"];}
 //cerrar conexion--------------------------
-
 	 //volver a la pagina---------------
          
-          $correo;
-          $addFecha;
-          $addContenido;
-          $addAsunto;
-          $addDestino;
-          $correo1;
-         
- 
-   
+            $correo;
+            $addFecha;
+            $addContenido;
+            $addAsunto;
+            $addDestino;
+            $correo1;
     require '../Vista/PHPMailerAutoload.php';
     require '../Vista/class.phpmailer.php';
     
