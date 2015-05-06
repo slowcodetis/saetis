@@ -12,7 +12,7 @@ session_start();
         $db = 'saetis';
         $host = 'localhost';
         $user = 'root';
-        $pass = 'root';
+        $pass = 'Crhyst23';
         $conn = new PDO("mysql:dbname=".$db.";host=".$host,$user, $pass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         

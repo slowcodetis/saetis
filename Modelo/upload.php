@@ -5,7 +5,7 @@
 session_start();
 
 //$conexion = mysql_connect("192.168.2.5","mbittle","5rtZAGYq");
-$conexion = mysql_connect("localhost","root","");
+$conexion = mysql_connect("localhost","root","Crhyst23");
     //Control
     if(!$conexion){die('La conexion ha fallado por:'.mysql_error());}
    // mysql_select_db("tis_mbittle",$conexion);

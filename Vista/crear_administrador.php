@@ -1,9 +1,11 @@
 
 <?php
 
-    session_start();
-    include '../Modelo/conexion.php';
-    $conectar = new conexion();
+session_start();
+include '../Modelo/conexion.php';
+include '../Controlador/filtroXSS.php'
+
+$conectar = new conexion();
 
 //Crear variables--------------------------
 
@@ -12,7 +14,7 @@ $contador = 0;
 
 $addUsuario = $_POST['usuario'];
 $addContra = $_POST['contrasena'];
-$addNombre = $_POST['nombre'];
+$addNombre = filterXSS($_POST['nombre'];
 $addApellido = $_POST['apellido'];
 $addTelefono = $_POST['telefono'];
 $addEmail= $_POST['email'];
