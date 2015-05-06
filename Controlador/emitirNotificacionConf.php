@@ -141,7 +141,7 @@ if (isset($_POST['lista']))
 
                                 file_put_contents($tex,$texto);
 
-                                exec("pdflatex -interaction=nonstopmode $tex",$final);
+                                    exec("/usr/texbin/pdflatex -interaction=nonstopmode $tex",$final);
 
                                 file_put_contents($tex, $textoAux);
                                 unlink($log);
@@ -186,7 +186,7 @@ if (isset($_POST['lista']))
                                       $nombDoc = $row->NOMBRE_R;
                                    }
 
-                                   if (strcasecmp($nombreDoc, $nombDoc)!=0) 
+                                   //if (strcasecmp($nombreDoc, $nombDoc)!=0) 
                                    {
                                         $comentar = $conexion->query("INSERT INTO registro (NOMBRE_U,TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R) VALUES ('$nombreUA','publicaciones','Habilitado','$nombreDoc','$fecha','$hora')")or
                                         die("Error");
