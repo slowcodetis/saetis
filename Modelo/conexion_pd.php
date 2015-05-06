@@ -8,7 +8,7 @@
    private $host = 'localhost';
    private $nombre_de_base = 'saetis';
    private $usuario = 'root';
-   private $contrasena = 'root'; 
+   private $contrasena = 'Crhyst23'; 
    
    public function __construct() {
       //Sobreescribo el método constructor de la clase PDO.
