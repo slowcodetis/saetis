@@ -2,4 +2,8 @@
 /logs/*
 /Modelo/conexion.php
 /Modelo/conexion_pd.php
-
+/Modelo/urlValidador.php
+/Modelo/validadorAcceso.php
+/modelo/upload.php
+/Vista/ProcesarRegistroGrupoE.php
+/Vista/registrarSocio.php
