@@ -184,11 +184,12 @@
                                                     <p style="text-align:left;"  ></p><br>
                                                 </td>
                                                 <td>
-                                                    <select required name='dest' class="form-control"  ><option value=""  size="30%">-     Seleccione Destinatario     -</option>
+                                                    <!--select required name="dest" class="form-control"  > <option value=""  size="30%">-     Seleccione Destinatario     -</option-->
                                             		<?php 
                                                 		$sql=$conectar->consulta("SELECT u.NOMBRE_U from usuario as u");//, asesor as a where a.NOMBRE_U=u.NOMBRE_U and `ESTADO_E`='Deshabilitado'"); 
                                                 		while($row=mysql_fetch_array($sql)) {
-                                                		  echo "<option  value='".$row["NOMBRE_U"]."'>" .$row["NOMBRE_U"]."</option>"; 	
+                                                		  //echo "<option  value='".$row["NOMBRE_U"]."'>" .$row["NOMBRE_U"]."</option>"; 	
+                                                            echo "<input  type = \"checkbox\" name=\"lista_destinos[]\" value='".$row["NOMBRE_U"]."'>" .$row["NOMBRE_U"]."<br>";    
                                                         }
                                                     ?>
                                         		</td>

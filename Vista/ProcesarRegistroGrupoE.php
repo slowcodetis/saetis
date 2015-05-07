@@ -47,7 +47,7 @@
                   
                     $servername = "localhost";
                     $username = "root";
-                    $password = "Crhyst23";
+                    $password = "root";
 
                     $conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
 

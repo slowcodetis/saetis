@@ -7,7 +7,7 @@ header('Location: http://localhost/ProyectoSprint3/Vista/publicar_asesor.php');
 			$titulo      = $_POST["campoTitulo"];
 			$descripcion   = $_POST["campoDescripcion"];
 			$ruta        = $_POST["recurso"];
-			$fecha       = date('Y-m-d');
+			$fecha       = 	date('Y-m-d');
 			$hora        =  date("G:H:i");
 		}
 	}

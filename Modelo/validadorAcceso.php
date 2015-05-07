@@ -22,7 +22,7 @@ class ControladorAccesoVistasPorUsuario {
 
     private $servername = "localhost";
     private $username = "root";
-    private $password = "Crhyst23";
+    private $password = "root";
 
 	function __construct() {
 	}
