@@ -2,7 +2,7 @@
 include '../Modelo/conexion.php';
 $conectar = new conexion();
 session_start();
-
+include '../Controlador/ValidadorIntervaloFecha.php';
 //Crear variables--------------------------
 
 $usuario = $_SESSION['usuario'];
@@ -12,6 +12,8 @@ $addini = $_POST['ini'];
 $addfin = $_POST['fin'];
 $addRol = $_POST['rol'];
 
+$validador = new ValidadorFecha();
+if ($validador->validarIntervalosFecha($addini, $addfin)){
     $seleccion = $conectar->consulta("SELECT NOM_G FROM gestion WHERE NOM_G = '$addRol'");
     $verificarG = mysql_fetch_row($seleccion);
 
@@ -33,4 +35,9 @@ $addRol = $_POST['rol'];
     {
         echo"<script type=\"text/javascript\">alert('Ya existe una gestion con ese nombre'); window.location='add_gestion.php';</script>";
     }
+}
+else
+ {
+        echo"<script type=\"text/javascript\">alert('El formato de las fechas o el intervalo no es valido'); window.location='add_gestion.php';</script>";
+}
 ?>
