@@ -278,7 +278,7 @@
 		</div>
 		</div>
 		<?php
-		$peticion = $conectar->consulta("SELECT * FROM `gestion`");
+    $peticion = $conectar->consulta("SELECT * FROM gestion");
 			while($fila = mysql_fetch_array($peticion))
 			{
 			?>

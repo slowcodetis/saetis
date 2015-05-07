@@ -3,14 +3,15 @@ include '../Modelo/conexion.php';
 $conectar = new conexion();
 session_start();
 include '../Controlador/ValidadorIntervaloFecha.php';
+include '../Controlador/filtroXSS.php';
 //Crear variables--------------------------
 
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-
+$rolscape = mysql_real_escape_string($_POST['rol']);
 $addini = $_POST['ini'];
 $addfin = $_POST['fin'];
-$addRol = $_POST['rol'];
+$addRol = filterXSS($rolscape);
 
 $validador = new ValidadorFecha();
 if ($validador->validarIntervalosFecha($addini, $addfin)){
