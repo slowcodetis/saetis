@@ -52,6 +52,8 @@ if(isset($_POST['registrar']))
             $nombre =  mysql_fetch_row($consulta);
             $nombreU = $nombre[0];
 
+            echo "$nombreU <br> $grupoE <br>";
+
             $insertar="INSERT INTO inscripcion(NOMBRE_UA, NOMBRE_UGE, ESTADO_INSCRIPCION) VALUES ('".$nombreU."','".$grupoE."', 'Deshabilitado')";
 
             $conexion->consulta($insertar);
