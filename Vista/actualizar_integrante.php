@@ -2,19 +2,19 @@
     include '../Modelo/conexion.php';
     $conectar = new conexion();
     session_start();
-
+    include '../Controlador/filtroXSS.php';
 //Crear variables--------------------------
 
 
 $usuario=$_SESSION['usuario'];
 
 
-$updLogin = $_POST['login'];
-$updPassword = $_POST['password'];
-$updNombre = $_POST['nombre'];
-$updApellido = $_POST['apellido'];
-$updTelefono = $_POST['telefono'];
-$updEmail= $_POST['email'];
+$updLogin = mysql_real_escape_string($_POST['login']);
+$updPassword = mysql_real_escape_string($_POST['password']);
+$updNombre = mysql_real_escape_string($_POST['nombre']);
+$updApellido = mysql_real_escape_string($_POST['apellido']);
+$updTelefono = mysql_real_escape_string($_POST['telefono']);
+$updEmail= mysql_real_escape_string($_POST['email']);
 //conexion-------------
 
 //Peticion
