@@ -3,7 +3,7 @@
 
 session_start();
 include '../Modelo/conexion.php';
-include '../Controlador/filtroXSS.php'
+include '../Controlador/filtroXSS.php';
 
 $conectar = new conexion();
 
@@ -12,12 +12,12 @@ $conectar = new conexion();
 
 $contador = 0;
 
-$addUsuario = $_POST['usuario'];
-$addContra = $_POST['contrasena'];
-$addNombre = filterXSS($_POST['nombre'];
-$addApellido = $_POST['apellido'];
-$addTelefono = $_POST['telefono'];
-$addEmail= $_POST['email'];
+$addUsuario = filterXSS($_POST['usuario']);
+$addContra = filterXSS($_POST['contrasena']);
+$addNombre = filterXSS($_POST['nombre']);
+$addApellido = filterXSS($_POST['apellido']);
+$addTelefono = filterXSS($_POST['telefono']);
+$addEmail= filterXSS($_POST['email']);
 
 
 
