@@ -99,7 +99,7 @@
                     $texto = str_replace($buscar['convocatoria'], $remplazo['convocatoria'], $texto);
                         
                     file_put_contents($tex,$texto);
-                    exec("pdflatex -interaction=nonstopmode $tex",$final);
+                      exec("/usr/texbin/pdflatex -interaction=nonstopmode $tex",$final);
                     file_put_contents($tex, $textoAux);
                     unlink($log);
                     unlink($aux);
@@ -141,12 +141,10 @@
                     $desD = $conexion->consulta("INSERT INTO descripcion (ID_R,DESCRIPCION_D) VALUES('$idRegis','Contrato')");
                     $destinat = $conexion->consulta("INSERT INTO receptor (ID_R,RECEPTOR_R) VALUES('$idRegis','$nLargoGE')");
                      
-                     $selGE=$conexion->consulta("SELECT `NOMBRE_U` FROM `grupo_empresa` WHERE `NOMBRE_LARGO_GE` = '$nLargoGE'");
-                     $nomGE=mysql_fetch_array($selGE);
+                    $selGE=$conexion->consulta("SELECT `NOMBRE_U` FROM `grupo_empresa` WHERE `NOMBRE_LARGO_GE` = '$nLargoGE'");
+                    $nomGE=mysql_fetch_array($selGE);
 
-                     $estaFir=  $conexion->consulta("UPDATE `inscripcion_proyecto`
-                     SET `ESTADO_CONTRATO`= 'Firmado'                   
-                    WHERE `NOMBRE_U` = '$nomGE[0]'");  
+                     $estaFir=  $conexion->consulta("UPDATE `inscripcion_proyecto` SET `ESTADO_CONTRATO`= 'Firmado' WHERE `NOMBRE_U` = '$nomGE[0]'");  
                     //rename("Contrato.pdf", $pdf);
 
                    /* if(!file_exists("../".$nombreUA."/Contratos/index.html"))
