@@ -1571,6 +1571,9 @@ ALTER TABLE `pago`
 ALTER TABLE `periodo`
   ADD PRIMARY KEY (`ID_R`);
 
+
+
+
 --
 -- Indexes for table `permisos`
 --
