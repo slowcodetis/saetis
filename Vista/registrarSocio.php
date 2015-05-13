@@ -12,11 +12,23 @@ session_start();
         $db = 'saetis';
         $host = 'localhost';
         $user = 'root';
-        $pass = 'root';
+        $pass = '';
         $conn = new PDO("mysql:dbname=".$db.";host=".$host,$user, $pass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
         // iniciar transacción
+        $sqlControl = "SELECT count(*) FROM socio WHERE NOMBRE_U= '$nombreU'";
+       
+       
+        //$valido = $validador -> fetchAll();
+        foreach ($conn -> query($sqlControl) as $valor) {
+            $cantidad = $valor[0];
+           
+        }
+        
+        //echo"<script type=\"text/javascript\">alert('bark '); window.location='AnadirSocio.php';</script>";
+        if($cantidad < 5) {
+        //SELECT count(*) FROM `socio` WHERE `NOMBRE_U` = 'FreeValue' 
         $conn->beginTransaction();
         try {
 
@@ -37,5 +49,8 @@ session_start();
            // si ocurre un error hacemos rollback para anular todos los insert
             $conn->rollback();
             echo $e->getMessage();
+        }
+        } else {
+            echo"<script type=\"text/javascript\">alert('El registro no fue realizado debido a que la empresa tiene el maximo numero de socios registrados'); window.location='AnadirSocio.php';</script>";
         }  
     ?>
