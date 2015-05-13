@@ -1,3 +1,4 @@
+ <!DOCTYPE html>
  <?php  
     session_start();
     $uActivo = $_SESSION['usuario'];
@@ -16,7 +17,6 @@
     $conectar = new conexion();
  ?> 
 
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -61,9 +61,9 @@
     <div id="wrapper">
        
         
-		<!--<h2>design by <a href="#" title="flash templates">flash-templates-today.com</a></h2>-->
+        <!--<h2>design by <a href="#" title="flash templates">flash-templates-today.com</a></h2>-->
         
-	
+    
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -216,106 +216,106 @@
             <div class="row">
                 <div class="col-lg-12">
                   
- 		<div class="mainbar">
-		<div class="article">
+        <div class="mainbar">
+        <div class="article">
                 <div class="row">
                 <div class="col-lg-12"></div>
                 <h2><span>Nueva Gestion</span></h2>
 
-		<form action='crear_gestion.php' method='POST'>
-									
+        <form action='crear_gestion.php' method='POST'>
+                                    
                 <table>
                 <tr>
                 <td>
-		<div class="contenedor-columna">
-		<p style="text-align:right;">Fecha Inicio :</p>
-		</div>
-		<div class="contenedor-columna">
+        <div class="contenedor-columna">
+        <p style="text-align:right;">Fecha Inicio :</p>
+        </div>
+        <div class="contenedor-columna">
                     <input type='date' class="form-control" required name='ini' placeholder="AAAA-MM-DD" pattern="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$">
-		</div>
+        </div>
                 </td> 
                 </tr>  <tr>
                  <td>
-		<div class="contenedor-columna">
-		<p style="text-align:right;">Fecha Fin :</p>
-		</div>
-		<div class="contenedor-columna">
+        <div class="contenedor-columna">
+        <p style="text-align:right;">Fecha Fin :</p>
+        </div>
+        <div class="contenedor-columna">
                     <input type='date' class="form-control" required name='fin' placeholder="AAAA-MM-DD" pattern="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$">
                 </div>
                 </td> 
                 </tr>
                                                                               
                                                                                   
-		<tr>
-                <td>	
-										
-		<div class="contenedor-columna">                                                                            
- 		<p style="text-align:right;">Gestion :</p>
-		</div>
-		<div class="contenedor-columna">
-		<input type='text' size=16%  class="form-control" required name='rol' >
-		</div> 
+        <tr>
+                <td>    
+                                        
+        <div class="contenedor-columna">                                                                            
+        <p style="text-align:right;">Gestion :</p>
+        </div>
+        <div class="contenedor-columna">
+        <input type='text' size=16%  class="form-control" required name='rol' >
+        </div> 
                 </td> 
                                                                             
                 <td>  
-		<div class="contenedor-columna">
+        <div class="contenedor-columna">
                 <button type="submit"  class="btn btn-primary" align="middle" id="btn-registrarUser"> <span class="glyphicon glyphicon-ok"></span> Crear gestion</button>
-		</div>
+        </div>
                 </td> 
                 </tr>
                                                                                 
                                                                             
                                                                             
          </table>   
-									
-		</form>
-		<h2><span>Listado Gestiones</span></h2>
-		<div class="contenedor-fila2">
-		<div class="contenedor-columna">
-		<?php
-		echo "Gestion";
-		?>
-		</div>
-		</div>
-		<?php
+                                    
+        </form>
+        <h2><span>Listado Gestiones</span></h2>
+        <div class="contenedor-fila2">
+        <div class="contenedor-columna">
+        <?php
+        echo "Gestion";
+        ?>
+        </div>
+        </div>
+        <?php
     $peticion = $conectar->consulta("SELECT * FROM gestion");
-			while($fila = mysql_fetch_array($peticion))
-			{
-			?>
-			<div class="contenedor-fila">
-			<div class="contenedor-columna">
-			<?php
-			echo $fila['ID_G'];
-			?>
-			</div>
-			<div class="contenedor-columna">
-			<?php
-			echo $fila['NOM_G'];
-			?>
-			</div>			
-			<div class="contenedor-columna">
-			<?php
-			echo $fila['FECHA_INICIO_G'];
-			?>
-			</div>
-			<div class="contenedor-columna">
-			<?php
-			echo $fila['FECHA_FIN_G'];
-			?>
-			</div>                                                                    
-			<div class="contenedor-columna">
-			<?php
-			echo "<a href ='eliminar_gestion.php?id_us=".$fila['ID_G']."' class='verificar'><font color='blue'>Eliminar</font></a>";
-			?>
-			</div>
-									
-			</div>
-			<?php
-			}
-			?>	
-			</div>
-			</div>                                            
-			</div>                   
+            while($fila = mysql_fetch_array($peticion))
+            {
+            ?>
+            <div class="contenedor-fila">
+            <div class="contenedor-columna">
+            <?php
+            echo $fila['ID_G'];
+            ?>
+            </div>
+            <div class="contenedor-columna">
+            <?php
+            echo $fila['NOM_G'];
+            ?>
+            </div>          
+            <div class="contenedor-columna">
+            <?php
+            echo $fila['FECHA_INICIO_G'];
+            ?>
+            </div>
+            <div class="contenedor-columna">
+            <?php
+            echo $fila['FECHA_FIN_G'];
+            ?>
+            </div>                                                                    
+            <div class="contenedor-columna">
+            <?php
+            echo "<a href ='eliminar_gestion.php?id_us=".$fila['ID_G']."' class='verificar'><font color='blue'>Eliminar</font></a>";
+            ?>
+            </div>
+                                    
+            </div>
+            <?php
+            }
+            ?>  
+            </div>
+            </div>                                            
+            </div>                   
                     
                     
                 </div>

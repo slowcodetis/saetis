@@ -1,10 +1,6 @@
-
-
-
 <!DOCTYPE html>
 <?php
-
-
+  
   include '../Modelo/conexion.php';
   session_start();
   $uActivo = $_SESSION['usuario'];
@@ -14,10 +10,7 @@
   $urlActual = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
   $objValidador->puedeAcceder($urlActual, $uActivo);
 
-
   $conexion = new conexion();
- 
-
 ?>
 <html>
 
@@ -66,9 +59,6 @@
     <script type="text/javascript" src="../Librerias/lib/validator/porcentajeAc.js"></script>
     <!-- JS -->
     <script type="text/javascript" src="../Librerias/lib/funcion.js"></script>
-    
-
-
 
     <!-- Page-Level Plugin CSS - Dashboard -->
     <link href="../Librerias/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
@@ -136,21 +126,16 @@
                                      
                                         while ($rowDocs = mysql_fetch_row($docsReq))
                                         {
-                                            
-                                            echo '<li>
-                                                  <a href="SubirDocumento.php?doc='.$rowDocs[0].'">'.$rowDocs[0].'</a>
-                                                   </li>';  
-                                            
+                                          echo '<li>
+                                                <a href="SubirDocumento.php?doc='.$rowDocs[0].'">'.$rowDocs[0].'</a>
+                                                 </li>';     
                                         }
-                                        
                                     ?>
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="publicacion_grupo.php">Recepci&oacute;n Documentos </a>
-                                    
                                 </li>
-                               
                             </ul>
                             
                             <!-- /.nav-second-level -->
@@ -194,214 +179,185 @@
             <!-- /.navbar-static-side -->
         </nav>  
         <div id="page-wrapper">
-
-            
-                     <h2 class="page-header">Documentos recibidos</h2>
+                    <h2 class="page-header">Documentos recibidos</h2>
                     <div class="panel panel-default" >                             
-                            <table class="table form-group" >
+                      <table class="table form-group" >
+                           
+                        <tr bgcolor="#888888">
+                              <th> Nº</th>
+                              <th >Nombre<th>
+                              <th >Descripcion</th>  
+                              <th></th>      
+                        </tr>  
+                          <?php
+                             //gestion**
+                              $selDoc=$conexion->consulta("SELECT DISTINCT `NOMBRE_R`,`RUTA_D`,`DESCRIPCION_D`,`fecha_p` ,`hora_p`,`RECEPTOR_R`,r.`NOMBRE_U` 
+                                                          FROM `registro` AS r,`documento` AS d,`descripcion` AS e,`periodo` AS p,`receptor` AS w, `inscripcion_proyecto` AS i, `proyecto` AS a, `gestion` AS g 
+                                                          WHERE r.`ID_R` = d.`ID_R` AND r.`ID_R` = e.`ID_R` AND r.`ID_R` = p.`ID_R` AND r.`ID_R` = w.`ID_R` AND r.`TIPO_T` LIKE 'publicaciones' and i.`CODIGO_P` = a.`CODIGO_P` and a.`ID_G` = g.`ID_G` and (DATE (p.`fecha_p`) >= DATE(FECHA_INICIO_G) and DATE(p.`fecha_p`) <= DATE(FECHA_FIN_G))");
+                              if(mysql_num_rows($selDoc) != 0)
+                              {    
+                                $i=1;
+                                while($docPubli = mysql_fetch_array($selDoc))
+                                {
+                                  $auxDoc=$docPubli['2'];
+                                  $docDest=$docPubli[5];
+ 
+                                  $selNom=$conexion->consulta("SELECT `NOMBRE_LARGO_GE` FROM `grupo_empresa` WHERE `NOMBRE_U`='$uActivo'");
+                                  $nomLargo = mysql_fetch_array($selNom);
                                  
-                              <tr bgcolor="#888888">
-                                    <th> Nº</th>
-                                    <th >Nombre<th>
-                                    <th >Descripcion</th>  
-                                    <th></th>      
-                              </tr>  
-                                <?php
-                                   //gestion**
-                                     $selDoc=$conexion->consulta("SELECT DISTINCT `NOMBRE_R`,`RUTA_D`,`DESCRIPCION_D`,`fecha_p` ,`hora_p`,`RECEPTOR_R`,r.`NOMBRE_U` FROM `registro` AS r,`documento` AS d,`descripcion` AS e,`periodo` AS p,`receptor` AS w, `inscripcion_proyecto` AS i, `proyecto` AS a, `gestion` AS g WHERE r.`ID_R` = d.`ID_R` AND r.`ID_R` = e.`ID_R` AND r.`ID_R` = p.`ID_R` AND r.`ID_R` = w.`ID_R` AND r.`TIPO_T` LIKE 'publicaciones' and i.`CODIGO_P` = a.`CODIGO_P` and a.`ID_G` = g.`ID_G` and (DATE (p.`fecha_p`) >= DATE(FECHA_INICIO_G) and DATE(p.`fecha_p`) <= DATE(FECHA_FIN_G))");
-                                     
-                                   
-                                    if(mysql_num_rows($selDoc) != 0)
-                                    {    
-                                      $i=1;
-                                          while($docPubli = mysql_fetch_array($selDoc))
-                                          {
-                                            $auxDoc=$docPubli['2'];
-                                            $docDest=$docPubli[5];
-           
-                                            $selNom=$conexion->consulta("SELECT `NOMBRE_LARGO_GE` FROM `grupo_empresa` WHERE `NOMBRE_U`='$uActivo'");
-                                            $nomLargo = mysql_fetch_array($selNom);
-                                           
-                                            if($docDest==$nomLargo[0] || $docDest=="PUBLICO")
-                                            {
-                                                $docUbi= $docPubli[1];
-                                                
-                                                $fepDoc=$docPubli[3];
-                                                $hopDoc=$docPubli[4];
-                                                $fechaA       = date('Y-m-d');
-                                                $horaA        =  date("G:H:i");
-                                           
-                                                if($fechaA >= $fepDoc )
-                                                {     
-                                                    if($horaA >= $hopDoc || $horaA <= $hopDoc){
-                                                        
-
-                                                        if(!empty($docUbi))
-                                                        {
-                                              
-                                                        ?>
-
-                                                            <tr> 
-                                                          <td><?php echo $i?></td> 
-                                                          <td><a class="link-dos" target="_blank" href="<?php echo $docPubli[1] ?>"><?php echo $docPubli[0]?></a><td>
-
-                                                          <td><?php echo $docPubli[2]?></td> 
-                                                          <td> </td>
-                                                         
-                                                         </tr>
-
-
-                                                        <?php
-                                                    }
-
-                                              }
-                                              $i++;  
-                                             }
-                                           else{}
-                                                
-                                          }
-
-                                        if($docDest=="Todas las Grupo Empresas")
-                                        {
-                                            $estaIns=$conexion->consulta("SELECT `NOMBRE_UA` FROM `inscripcion` WHERE `NOMBRE_UGE`='$uActivo'");
-                                            $nomAseso=mysql_fetch_array($estaIns);
-                                            if($nomAseso[0]==$docPubli[6])
-                                            {
-                                                $docUbi= $docPubli[1];
-                                                
-                                                $fepDoc=$docPubli[3];
-                                                $hopDoc=$docPubli[4];
-                                                $fechaA       = date('Y-m-d');
-                                                $horaA        =  date("G:H:i");
-
-                                                if($fechaA >= $fepDoc )
-                                                {     
-                                                    if($horaA >= $hopDoc || $horaA <= $hopDoc)
-                                                    {
-                                                         if(!empty($docUbi))
-                                                        {
-                                            
-                                                        ?>
-                                                         <tr> 
-                                                          <td><?php echo $i?></td> 
-                                                          <td><a class="link-dos" target="_blank" href="<?php echo $docPubli[1] ?>"><?php echo $docPubli[0]?></a><td>
-
-                                                          <td><?php echo $docPubli[2]?></td> 
-                                                          <td> </td>
-                                                         
-                                                         </tr>
-
-
-                                                        <?php
-                                                     }
-                                                      $i++;  
-                                                 }
-                                               }
-
-                                          }
+                                  if($docDest==$nomLargo[0] || $docDest=="PUBLICO")
+                                  {
+                                    $docUbi= $docPubli[1];
                                     
-                                       }
-                                       else{}
-
-
-                                         if($docDest=="Todos los Proyectos")
-                                        {
-                                            $estaInsP=$conexion->consulta("SELECT `CODIGO_P` FROM `inscripcion_proyecto` WHERE `NOMBRE_U`='$uActivo'");
-                                            $enProyec=mysql_num_rows($estaInsP);
-                                            if($enProyec>0)
-                                            {
-                                                $docUbi= $docPubli[1];
-                                                
-                                                $fepDoc=$docPubli[3];
-                                                $hopDoc=$docPubli[4];
-                                                $fechaA       = date('Y-m-d');
-                                                $horaA        =  date("G:H:i");
-
-                                                if($fechaA >= $fepDoc )
-                                                {     
-                                                    if($horaA >= $hopDoc || $horaA <= $hopDoc)
-                                                    {
-                                                        if(!empty($docUbi))
-                                                        {
+                                    $fepDoc=$docPubli[3];
+                                    $hopDoc=$docPubli[4];
+                                    $fechaA       = date('Y-m-d');
+                                    $horaA        =  date("G:H:i");
+                               
+                                    if($fechaA >= $fepDoc )
+                                    {     
+                                        if($horaA >= $hopDoc || $horaA <= $hopDoc){
                                             
-                                                        ?>
-                                                            <tr> 
-                                                            <td><?php echo $i?></td> 
-                                                            <td><a class="link-dos" target="_blank" href="<?php echo $docPubli[1] ?>"><?php echo $docPubli[0]?></a><td>
 
-                                                          <td><?php echo $docPubli[2]?></td> 
-                                                          <td> </td>
-                                                         
-                                                     </tr>
-
-
-
-                                                        <?php
-                                                     }
-                                                      $i++;  
-                                                   }  
-                                               }
-
-                                          }
-                                    
-                                       }
-                                       else{}
-
-                                        $desProy=$conexion->consulta("SELECT DISTINCT `NOMBRE_U`FROM `proyecto` AS p,`inscripcion_proyecto` AS i WHERE p.`CODIGO_P` = i.`CODIGO_P` AND  p.`Nombre_P` LIKE '$docDest' ");
-                                        $tamProy=mysql_num_rows($desProy);
-                                         $nombreP=mysql_fetch_array($desProy);
-                                        if($tamProy>0)
-                                        {
-
-                                            if($nombreP[0]==$uActivo)
+                                            if(!empty($docUbi))
                                             {
-                                                    $docUbi= $docPubli[1];
-                                                
-                                                $fepDoc=$docPubli[3];
-                                                $hopDoc=$docPubli[4];
-                                                $fechaA       = date('Y-m-d');
-                                                $horaA        =  date("G:H:i");
+                                              ?>
 
-                                                  if($fechaA >= $fepDoc )
-                                                {     
-                                                    if($horaA >= $hopDoc || $horaA <= $hopDoc)
-                                                    {
-                                                        if(!empty($docUbi))
-                                                        {
+                                                <tr> 
+                                                  <td><?php echo $i?></td> 
+                                                  <td><a class="link-dos" target="_blank" href="<?php echo $docPubli[1] ?>"><?php echo $docPubli[0]?></a><td>
 
-                                                    ?>
-                                                     <tr> 
-                                                          <td><?php echo $i?></td> 
-                                                          <td><a class="link-dos" target="_blank" href="<?php echo $docPubli[1] ?>"><?php echo $docPubli[0]?></a><td>
-
-                                                          <td><?php echo $docPubli[2]?></td> 
-                                                          <td> </td>
-                                                         
-                                                     </tr>
-
-
-                                                    <?php
-                                                     }
-                                                   $i++;  
-                                                }   
-
-
-
+                                                  <td><?php echo $docPubli[2]?></td> 
+                                                  <td> </td>
+                                                </tr>
+                                              <?php
                                             }
                                         }
+                                        $i++;  
+                                    }
+                                    else{}
+                                  }
+
+                                  if($docDest=="Todas las Grupo Empresas")
+                                  {
+                                      $estaIns=$conexion->consulta("SELECT `NOMBRE_UA` FROM `inscripcion` WHERE `NOMBRE_UGE`='$uActivo'");
+                                      $nomAseso=mysql_fetch_array($estaIns);
+                                      if($nomAseso[0]==$docPubli[6])
+                                      {
+                                          $docUbi= $docPubli[1];
+                                          
+                                          $fepDoc=$docPubli[3];
+                                          $hopDoc=$docPubli[4];
+                                          $fechaA       = date('Y-m-d');
+                                          $horaA        =  date("G:H:i");
+
+                                          if($fechaA >= $fepDoc )
+                                          {     
+                                              if($horaA >= $hopDoc || $horaA <= $hopDoc)
+                                              {
+                                                   if(!empty($docUbi))
+                                                  {
+                                      
+                                                  ?>
+                                                   <tr> 
+                                                    <td><?php echo $i?></td> 
+                                                    <td><a class="link-dos" target="_blank" href="<?php echo $docPubli[1] ?>"><?php echo $docPubli[0]?></a><td>
+
+                                                    <td><?php echo $docPubli[2]?></td> 
+                                                    <td> </td>
+                                                   
+                                                   </tr>
 
 
+                                                  <?php
+                                               }
+                                                $i++;  
+                                           }
+                                         }
 
+                                    }
+                              
+                                 }
+                                 else{}
+
+                                  if($docDest=="Todos los Proyectos")
+                                  {
+                                    $estaInsP=$conexion->consulta("SELECT `CODIGO_P` FROM `inscripcion_proyecto` WHERE `NOMBRE_U`='$uActivo'");
+                                    $enProyec=mysql_num_rows($estaInsP);
+                                    if($enProyec>0)
+                                    {
+                                      $docUbi= $docPubli[1];
+                                      
+                                      $fepDoc=$docPubli[3];
+                                      $hopDoc=$docPubli[4];
+                                      $fechaA       = date('Y-m-d');
+                                      $horaA        =  date("G:H:i");
+
+                                      if($fechaA >= $fepDoc )
+                                      {     
+                                        if($horaA >= $hopDoc || $horaA <= $hopDoc)
+                                        {
+                                          if(!empty($docUbi))
+                                          {
+                                            ?>
+                                              <tr> 
+                                              <td><?php echo $i?></td> 
+                                              <td><a class="link-dos" target="_blank" href="<?php echo $docPubli[1] ?>"><?php echo $docPubli[0]?></a><td>
+                                              <td><?php echo $docPubli[2]?></td> 
+                                              <td> </td>
+                                            </tr>
+                                            <?php
+                                          }
+                                          $i++;  
+                                        }  
                                       }
-									  else{}
-                                       ?>
-                                      
-                                      
-                                       <?php
-                                            //echo "</form>";
-                                    //$tabla.="</table>";
-                                     //echo $tabla;
-                                       }
+                                    }
+                                  }
+                                  else{}
+
+                                  $desProy=$conexion->consulta("SELECT DISTINCT `NOMBRE_U`FROM `proyecto` AS p,`inscripcion_proyecto` AS i WHERE p.`CODIGO_P` = i.`CODIGO_P` AND  p.`Nombre_P` LIKE '$docDest' ");
+                                  $tamProy=mysql_num_rows($desProy);
+                                  $nombreP=mysql_fetch_array($desProy);
+                                  if($tamProy>0)
+                                  {
+                                    if($nombreP[0]==$uActivo)
+                                    {
+                                            $docUbi= $docPubli[1];
+                                        
+                                        $fepDoc=$docPubli[3];
+                                        $hopDoc=$docPubli[4];
+                                        $fechaA       = date('Y-m-d');
+                                        $horaA        =  date("G:H:i");
+
+                                      if($fechaA >= $fepDoc )
+                                      {     
+                                        if($horaA >= $hopDoc || $horaA <= $hopDoc)
+                                        {
+                                          if(!empty($docUbi))
+                                          {
+                                          ?>
+                                            <tr> 
+                                              <td><?php echo $i?></td> 
+                                              <td><a class="link-dos" target="_blank" href="<?php echo $docPubli[1] ?>"><?php echo $docPubli[0]?></a><td>
+                                              <td><?php echo $docPubli[2]?></td> 
+                                              <td> </td>                                                       
+                                            </tr>
+                                          <?php
+                                          }
+                                          $i++;  
+                                        }   
+                                      }
+                                    }
+                                  }
+						                      else{}
+                                 ?>
+                                
+                                
+                                 <?php
+                                      //echo "</form>";
+                              //$tabla.="</table>";
+                               //echo $tabla;
+                                 }
 									   ?>
 									    </table>
 										<?php
@@ -410,41 +366,13 @@
                                     {
                                         echo  "<b>NO SE ENCONTRO DOCUMENTOS</b><br><br>";
                                     }
-                                     
-                                   
-                                    
-                                
                                 
                                 $conexion->cerrarConexion();
                                 
-                                
-
                                 ?>
-              
-                    </div>           
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+                    </div>               
         </div>
         <!-- /#page-wrapper -->
-
     </div>
     <!-- /#wrapper -->
 
