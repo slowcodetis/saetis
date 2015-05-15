@@ -63,14 +63,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     
-                    <div class="bs-callout bs-callout-danger">
+                   <!-- <div class="bs-callout bs-callout-danger">
                    
                      <p>
                          <strong>Nota: </strong> Servicio de Correro valido  <strong>hotmail, gmail, yahoo.</strong>
                       </p>
-                    </div> 
+                    </div> -->
                  
-                    <h2 class="page-header">Registrar Usuario:</h2>
+                    <h2 class="page-header">Registrar Asesor:</h2>
                     
 
                     <div class="col-lg-6" >
@@ -135,10 +135,10 @@
                                                 <span class="input-group-addon">
                                                   <span class="glyphicon glyphicon-envelope"></span>
                                                 </span>
-                                                <input class="form-control" type="email" name="email" id="UserEmail" placeholder="Correo" pattern="^([a-zA-Z0-9_\.\-])+\@(([hotmail]{7}|[yahoo]{5}|[gmail]{5})+\.)+([a-zA-Z0-9]{2,4})+$" title="Ejm: admin@hotmail.com ,admin@yahoo.com, admin@gmail.com"required>
+                                                <input class="form-control" type="email" name="email" id="UserEmail" placeholder="Correo" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"  title="Ejm: Correo@Empresa.com"required>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                   <span class="glyphicon glyphicon-th-list"></span>
@@ -161,7 +161,7 @@
                                                 ?>
                                                  </select> 
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="form-group">
                                             <button type="submit" name="submit" class="btn btn-primary" id="btn-registrarUser"> <span class="glyphicon glyphicon-ok"></span> Registrarme</button>
                                         </div>
