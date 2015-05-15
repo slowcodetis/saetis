@@ -234,7 +234,7 @@
             //crear conexion---------------------------
 
             //Peticion
-            $peticion =$conectar ->consulta("SELECT u.NOMBRE_U, u.ESTADO_E, r.ROL_R FROM usuario u , usuario_rol r WHERE  u.NOMBRE_U = r.NOMBRE_U ");
+            $peticion =$conectar ->consulta("SELECT u.NOMBRE_U, u.ESTADO_E, r.ROL_R FROM usuario u , usuario_rol r WHERE  u.NOMBRE_U = r.NOMBRE_U AND r.ROL_R <> 'administrador'");
 
 
             while($fila = mysql_fetch_array($peticion))
