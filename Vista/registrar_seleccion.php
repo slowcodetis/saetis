@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include '../Modelo/conexion.php';
 $conexion = new conexion();
@@ -8,12 +9,11 @@ if(isset($_POST['registrar']))
 {
     $asesor=$_POST['asesor'];
     
-    if(isset($_POST['ge']))
+    if(isset($_SESSION['usuario'])) //$_POST['ge']))
     {
-        $grupoE = $_POST['ge'];        
+        $grupoE = $_SESSION['usuario'];
     }
-    
-   
+        //$nombreUs= 
     if($asesor == "Seleccione un Asesor")
     {
         echo"<script type=\"text/javascript\">alert('No seleccion\u00f3 ningun asesor'); window.history.back();</script>"; 
@@ -44,6 +44,9 @@ if(isset($_POST['registrar']))
                 $apellido = $apellido." ".$separar[2];
             }
 
+                //echo"<script type=\"text/javascript\">alert('separar: $separar[0]'); </script>";
+                //echo"<script type=\"text/javascript\">alert('apeliido: $apellido'); </script>";
+                echo"<script type=\"text/javascript\">alert('nombreUs: $grupoE'); </script>";
 
             $seleccion = "SELECT nombre_u "
                     . "FROM asesor "
@@ -52,9 +55,11 @@ if(isset($_POST['registrar']))
             $nombre =  mysql_fetch_row($consulta);
             $nombreU = $nombre[0];
 
-            echo "$nombreU <br> $grupoE <br>";
+            //echo "$nombreU <br> $grupoE <br> $nombreUs <br>";
 
             $insertar="INSERT INTO inscripcion(NOMBRE_UA, NOMBRE_UGE, ESTADO_INSCRIPCION) VALUES ('".$nombreU."','".$grupoE."', 'Deshabilitado')";
+
+            echo "INSERT INTO inscripcion(NOMBRE_UA, NOMBRE_UGE, ESTADO_INSCRIPCION) VALUES ('".$nombreU."','".$grupoE."', 'Deshabilitado') <br>";
 
             $conexion->consulta($insertar);
                     

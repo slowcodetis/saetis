@@ -4,7 +4,7 @@
     $RealName = $_POST['nombreReal'];
     $Pass = $_POST['password'];
     $Email = $_POST['email'];
-    $rol = $_POST['UsuarioRol'];
+    $rol = "asesor";
     $Apellido = $_POST['apellido'];
     $Telefono = $_POST['telefono'];
 
@@ -20,7 +20,7 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////
   
 
-    $mystring = $Email;
+   /** $mystring = $Email;
     $findme1   = 'hotmail';
     $findme2   = 'gmail';
     $findme3   = 'yahoo';
@@ -52,8 +52,10 @@
     $numeroCorreo=1;
     }
 
+    */
+    $numeroCorreo = 1;
     
-    
+   // echo "<script>alert('$rol');</script>";
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     if($numeroCorreo=="1")
     {
