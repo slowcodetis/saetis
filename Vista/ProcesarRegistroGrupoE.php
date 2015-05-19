@@ -62,23 +62,10 @@
 
                         $conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
 
-                      
-                        //$conn = new PDO("mysql:dbname=".$db.";host=".$host,$user, $pass);
-                        //$conn = new PDO("mysql:host=".$host.";dbname=".$db.'charset=latin1'.','.$user.','.$pass);
-                        //echo 'sas';
-                        //echo 'mysql:host=localhost;dbname=saetis;charset=latin1, root, root';
-                        //$conn = new PDO('mysql:host=localhost;dbname=saetis;charset=latin1', 'root', 'root');
-
                     } catch (Exception $e) {
 
                         echo $e -> getMessage();
                     }
-
-                    //echo 'mysql:dbname='.$db.'";host="'.$host.','.$user.','. $pass;
-
-                    //$conn = new PDO("mysql:dbname=".$db.";host=".$host,$user, $pass);
-
-                    //echo 'hola como estas';
                     
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     // iniciar transacción
