@@ -391,7 +391,7 @@
                       <div class="form-group">
                         <label class="col-xs-2 control-label">Fecha de la reuni&oacute;n:</label>
                         <div class="col-sm-1">
-                        <input class="form-control" style="width:500px;heigth:30px;" name="fecha" id="fecha"  >
+                        <input class="form-control" style="width:500px;heigth:30px;" placeholder = "AAAA-MM-DD" name="fecha" id="fecha"  >
                         </div>
       
                     </div><!--end/fecha-->
