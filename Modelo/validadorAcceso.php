@@ -94,20 +94,20 @@ class ControladorAccesoVistasPorUsuario {
         			$principal = $this->vistaPrincipal($usuario, $principalAdministrador);
         			if($principal == 0) {
         				echo "<script>alert('No tienes permisos para ver esa pagina')</script>";
-                        echo "<script>window.location = 'http://localhost:8888/sistema/Saetis/index.php' </script>";
+                        echo "<script>window.location = '../index.php' </script>";
         			}
         			else {
-        				$script = "window.location = 'http://localhost:8888/sistema/Saetis/Vista/".$principalAdministrador.'\'';
+        				$script = "window.location = '../Vista/".$principalAdministrador.'\'';
         				echo "<script> $script </script>";
         			}
         		}
         		else {
-        			$script = "window.location = 'http://localhost:8888/sistema/Saetis/Vista/".$principalAsesor.'\'';
+        			$script = "window.location = '../Vista/".$principalAsesor.'\'';
         			echo "<script> $script </script>";
         		}
         	}
         	else {
-        		$script = "window.location = 'http://localhost:8888/sistema/Saetis/Vista/".$principalGrupoEmpresa.'\'';
+        		$script = "window.location = '../Vista/".$principalGrupoEmpresa.'\'';
     			echo "<script> $script </script>";
         	}
         }
