@@ -55,6 +55,14 @@
     */
     $numeroCorreo = 1;
     
+    if(isset($Name) && isset($RealName) && isset($Pass) && isset($Email) && isset($Apellido) && isset($Telefono)) {
+      $numeroCorreo = 1;
+     
+    } else {
+      $numeroCorreo = 0;
+    }
+    
+    
    // echo "<script>alert('$rol');</script>";
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     if($numeroCorreo=="1")
@@ -134,7 +142,7 @@
     }
     else
     {
-        echo '<script>alert("Correo Ingresado no Valido");</script>';
+        echo '<script>alert("Los datos ingresados no son validos");</script>';
         echo '<script>window.location="../Vista/RegistrarUsuario.php";</script>';
     }
    

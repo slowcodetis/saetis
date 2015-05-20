@@ -70,7 +70,7 @@
                       </p>
                     </div> -->
                  
-                    <h2 class="page-header">Registrar Asesor:</h2>
+                    <h2 class="page-header">Registro de Asesor</h2>
                     
 
                     <div class="col-lg-6" >
