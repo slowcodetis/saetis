@@ -127,7 +127,7 @@
             $conect->consulta("INSERT INTO criteriocalificacion(NOMBRE_U,NOMBRE_CRITERIO_C,TIPO_CRITERIO) VALUES('$Name','PUNTAJE','4')");
                
             echo '<script>alert("Su solicitud se envio correctamente");</script>';
-            echo '<script>window.location="../Vista/RegistrarUsuario.php";</script>';
+            echo '<script>window.location="RegistrarUsuario.php";</script>';
           }
         
     }
@@ -135,15 +135,15 @@
 
 
         echo '<script>alert("El nombre de usuario ya esta registrado");</script>';
-        echo '<script>window.location="../Vista/RegistrarUsuario.php";</script>';
+        echo '<script>window.location="RegistrarUsuario.php";</script>';
         
 
     }
     }
     else
     {
-        echo '<script>alert("Los datos ingresados no son validos");</script>';
-        echo '<script>window.location="../Vista/RegistrarUsuario.php";</script>';
+        echo '<script>alert("Los campos no pueden estar vacios");</script>';
+        echo '<script>window.location="RegistrarUsuario.php";</script>';
     }
    
 ?>
