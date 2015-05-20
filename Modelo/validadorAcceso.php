@@ -1,5 +1,5 @@
 <?php
-
+require 'configDB.php';
 class TableRows extends RecursiveIteratorIterator { 
     function __construct($it) { 
         parent::__construct($it, self::LEAVES_ONLY); 
@@ -19,17 +19,17 @@ class TableRows extends RecursiveIteratorIterator {
 } 
 
 class ControladorAccesoVistasPorUsuario {
-
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = "lisa";
-
-	function __construct() {
-	}
+    public $data_mysql;
+    function __construct() {
+    }
 	
-	function listaVistas($nombreArchivo, $usuario) {
+    function listaVistas($nombreArchivo, $usuario) {
+    $this->data_mysql = new datosmysql();
+    $servername = $this->data_mysql->getHos();;
+    $username = $this->data_mysql->getUs();
+    $password = $this->data_mysql->getPas();
 
-		$conn = new PDO("mysql:host=$this->servername;dbname=saetis", $this->username, $this->password);
+		$conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare('SELECT nombreUrl FROM ( SELECT IdUrl FROM (SELECT ROL_R FROM usuario_rol WHERE NOMBRE_U= :NOMBRE_U) AS uno, rol_url WHERE rol_url.IdRol = uno.ROL_R ) AS dos, url WHERE Id = dos.IdUrl AND nombreUrl = :nombreUrl');
