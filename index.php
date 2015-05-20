@@ -201,14 +201,13 @@
         </div>
         </div>                                                  
 
-        <!--
+        
         <div class="form-group">
-        <a href="Vista/RegistrarUsuario.php"><font color='green' size="1.5%">no eres usuario todavia? REGISTRATE</font></a>
+        <!--<a href="Vista/RegistrarUsuario.php"><font color='green' size="1.5%">no eres usuario todavia? REGISTRATE</font></a>-->
         <div align="right"> <hr>
         <button type="submit" name="ingresar" class="btn btn-primary" id="btn-registrarUser"> <span class="glyphicon glyphicon-ok"></span> Ingresar</button>
         </div></div>
-        -->
-
+        
 
         <br>
 
