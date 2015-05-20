@@ -237,17 +237,8 @@
 		<p style="text-align:left;" ></p>
 		</td>
 		<td>
-		
-                                                                                                        
-                <div class="form-group">
-                <div class="input-group">
-                <span class="input-group-addon">
-                <span class="glyphicon glyphicon-envelope"></span>
-                </span>
-                <input class="form-control" type="date" name="fec" size=48% id="UserEmail" placeholder="AAAA-MM-DD" required pattern="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$">
-                </div>
-                </div>                                                                                                         
-                </td>
+                                                                                                      
+     </td>
 		<tr>
 		<td >
 													

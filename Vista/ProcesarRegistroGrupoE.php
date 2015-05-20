@@ -52,13 +52,13 @@
                     $db = 'saetis';
                     $host = 'localhost';
                     $user = 'root';
-                    $pass = 'root';
+                    $pass = 'lisa';
 
                     try {
                       
                         $servername = "localhost";
                         $username = "root";
-                        $password = "root";
+                        $password = "lisa";
 
                         $conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
 

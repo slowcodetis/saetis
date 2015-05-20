@@ -16,7 +16,7 @@ function __construct(){
 function conectar(){   
 $servidor = 'localhost';
 $userName = 'root';
-$password = 'root';
+$password = 'lisa';
 $bdName = 'saetis';
 global $link;
     $link =  mysql_connect($servidor, $userName, $password) or die('no se pudo conectar al servidor' . mysql_error());

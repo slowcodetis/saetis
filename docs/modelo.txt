@@ -1,5 +1,9 @@
+vista
+
 registrarSocio.php ----> requiere datos para conexion
 ProcesarRegistroGrupoE.php ------> requieere datos de conexion
+
+modelo
 urlValidador.php ----> requiere datos para conexion
 upload.php -----> requiere datos de conexion
 

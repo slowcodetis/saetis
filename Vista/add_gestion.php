@@ -1,4 +1,3 @@
- <!DOCTYPE html>
  <?php  
     session_start();
     $uActivo = $_SESSION['usuario'];
@@ -17,6 +16,7 @@
     $conectar = new conexion();
  ?> 
 
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -26,6 +26,8 @@
 
     <title>Sistema de Apoyo a la Empresa TIS</title>
     <script type="text/javascript" src="../Librerias/lib/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+    
     <!-- icheck -->
     <!-- Core CSS - Include with every page -->
     <link href="../Librerias/css/bootstrap.min.css" rel="stylesheet">
@@ -34,6 +36,9 @@
     <!-- Page-Level Plugin CSS - Dashboard -->
     <link href="../Librerias/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
     <link href="../Librerias/css/plugins/timeline/timeline.css" rel="stylesheet">
+     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.css" rel="stylesheet">
+     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui..css" rel="stylesheet">
    
 
     <!-- SB Admin CSS - Include with every page -->
@@ -42,7 +47,9 @@
     <link href="css/tabla-div.css" rel="stylesheet" type="text/css" />
     
     <script>
+
         jQuery(document).ready(function() {
+            console.log("hsdfjksdhfjks");
     
             $(".verificar").on("click", function(e) {
 
@@ -52,12 +59,38 @@
         });
 
     </script>
+    <script>
+        $(function() {
+            console.log('execute');
+        $( "#from" ).datepicker({
+          minDate: new Date(2015, 04, 21),
+
+        changeMonth: true,
+        dateFormat: "yy-mm-dd",        
+        numberOfMonths: 1,
+        onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option","minDate" , selectedDate );
+        }
+        });
+        $( "#to" ).datepicker({
+            minDate: new Date(2015, 04, 21),
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        numberOfMonths: 1,
+        onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+
+        }
+        });
+        });
+    </script>
+
+
 
 </head>
 
 <body>
 
-   
     <div id="wrapper">
        
         
@@ -231,7 +264,7 @@
         <p style="text-align:right;">Fecha Inicio :</p>
         </div>
         <div class="contenedor-columna">
-                    <input type='date' class="form-control" required name='ini' placeholder="AAAA-MM-DD" pattern="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$">
+                    <input id="from" type='date' class="form-control" required name='ini'  placeholder="AAAA-MM-DD" pattern="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$" readonly>
         </div>
                 </td> 
                 </tr>  <tr>
@@ -240,7 +273,7 @@
         <p style="text-align:right;">Fecha Fin :</p>
         </div>
         <div class="contenedor-columna">
-                    <input type='date' class="form-control" required name='fin' placeholder="AAAA-MM-DD" pattern="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$">
+                    <input id="to" type='date' class="form-control" required name='fin' placeholder="AAAA-MM-DD" pattern="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$" readonly>
                 </div>
                 </td> 
                 </tr>
@@ -278,7 +311,7 @@
         </div>
         </div>
         <?php
-    $peticion = $conectar->consulta("SELECT * FROM gestion");
+        $peticion = $conectar->consulta("SELECT * FROM `gestion`");
             while($fila = mysql_fetch_array($peticion))
             {
             ?>
@@ -329,7 +362,7 @@
     <!-- /#wrapper -->
 
     <!-- Core Scripts - Include with every page -->
-    <script src="../Librerias/js/jquery-1.10.2.js"></script>
+    
     <script src="../Librerias/js/bootstrap.min.js"></script>
     <script src="../Librerias/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
