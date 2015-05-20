@@ -184,13 +184,24 @@
                                                     <p style="text-align:left;"  ></p><br>
                                                 </td>
                                                 <td>
-                                                    <!--select required name="dest" class="form-control"  > <option value=""  size="30%">-     Seleccione Destinatario     -</option-->
+                                                    
                                             		<?php 
-                                                		$sql=$conectar->consulta("SELECT u.NOMBRE_U from usuario as u");//, asesor as a where a.NOMBRE_U=u.NOMBRE_U and `ESTADO_E`='Deshabilitado'"); 
+                                                        $textoHTML = '<div class="form-group has-feedback">
+                                                                            <div class="col-md-6">
+                                                                                <div class="btn-group open">
+                                                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="Seleccionar..." style="width: 300px;">Seleccione los destinatario(s) <b class="caret"></b></button>
+                                                                                <ul class="multiselect-container dropdown-menu">';
+                                                        $listaItems = "";
+                                                        $sql=$conectar->consulta("SELECT u.NOMBRE_U from usuario as u");
                                                 		while($row=mysql_fetch_array($sql)) {
-                                                		  //echo "<option  value='".$row["NOMBRE_U"]."'>" .$row["NOMBRE_U"]."</option>"; 	
-                                                            echo "<input  type = \"checkbox\" name=\"lista_destinos[]\" value='".$row["NOMBRE_U"]."'>" .$row["NOMBRE_U"]."<br>";    
+                                                            $listaItems = $listaItems. "<li> <a href=\"javascript:void(0);\"> <label class=\"checkbox\"><input type=\"checkbox\" name=\"multiselect[]\" value=\"".$row["NOMBRE_U"]."\">" .$row["NOMBRE_U"]."</label> </a> </li>";
                                                         }
+                                                        $textoHTML = $textoHTML . $listaItems . '</ul>
+                                                                        </div> <i class="form-control-feedback" data-bv-icon-for="entregables" style="display: none;"></i>                                      
+                                                                        <small class="help-block" data-bv-validator="callback" data-bv-for="entregables" data-bv-result="NOT_VALIDATED" style="display: none;">Los entregables es un dato requerido, seleccione al menos uno</small>
+                                                                    </div>
+                                                                </div>';
+                                                        echo $textoHTML;
                                                     ?>
                                         		</td>
                                             </tr>

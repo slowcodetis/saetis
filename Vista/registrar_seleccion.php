@@ -46,7 +46,7 @@ if(isset($_POST['registrar']))
 
                 //echo"<script type=\"text/javascript\">alert('separar: $separar[0]'); </script>";
                 //echo"<script type=\"text/javascript\">alert('apeliido: $apellido'); </script>";
-                echo"<script type=\"text/javascript\">alert('nombreUs: $grupoE'); </script>";
+                //echo"<script type=\"text/javascript\">alert('nombreUs: $grupoE'); </script>";
 
             $seleccion = "SELECT nombre_u "
                     . "FROM asesor "
@@ -59,7 +59,7 @@ if(isset($_POST['registrar']))
 
             $insertar="INSERT INTO inscripcion(NOMBRE_UA, NOMBRE_UGE, ESTADO_INSCRIPCION) VALUES ('".$nombreU."','".$grupoE."', 'Deshabilitado')";
 
-            echo "INSERT INTO inscripcion(NOMBRE_UA, NOMBRE_UGE, ESTADO_INSCRIPCION) VALUES ('".$nombreU."','".$grupoE."', 'Deshabilitado') <br>";
+            //echo "INSERT INTO inscripcion(NOMBRE_UA, NOMBRE_UGE, ESTADO_INSCRIPCION) VALUES ('".$nombreU."','".$grupoE."', 'Deshabilitado') <br>";
 
             $conexion->consulta($insertar);
                     

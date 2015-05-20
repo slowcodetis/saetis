@@ -7,14 +7,23 @@
     $addAsunto = $_POST['asunto'];
     $addContenido = $_POST['area_info'];
     $addFecha= $_POST['fec'];
-    $listaCorreos = $_POST['lista_destinos'];
+    //$listaCorreos = $_POST['lista_destinos'];
+    $listaCorreos = $_POST['multiselect'];
 
 //Insertamos la foto en una carpeta
     session_start();
     $UsuarioActivo = $_SESSION['usuario'];
 //conexion-------------		
 	//Peticion
-    if(!empty($_POST['lista_destinos'])) {
+
+    /*if(!empty($_POST['multiselect'])) {
+        $jajajajaj = $_POST['multiselect'];
+        foreach ($jajajajaj as $key => $value) {
+            echo"<script type=\"text/javascript\">alert('$value');</script>";
+        }
+    }*/
+
+    if(!empty($_POST['multiselect'])) {
         $correo1 = "";
         $listaDestinos;
         //$indice = 0;
