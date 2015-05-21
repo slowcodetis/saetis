@@ -1,5 +1,3 @@
-
-
  <?php  
     session_start();
     $uActivo = $_SESSION['usuario'];
@@ -48,9 +46,6 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/tabla-div.css" rel="stylesheet" type="text/css" />
     
-<<<<<<< HEAD
-    
-=======
     <script>
 
         jQuery(document).ready(function() {
@@ -91,7 +86,6 @@
     </script>
 
 
->>>>>>> f76a9a764f3e7111c83fcb95fb44aa5457f15bde
 
 </head>
 
@@ -266,21 +260,6 @@
                 <table>
                 <tr>
                 <td>
-<<<<<<< HEAD
-		<div class="contenedor-columna">
-		<p style="text-align:right;">Fecha Inicio :</p>
-		</div>
-		<div class="contenedor-columna">
-                    <input id="from" type='date' class="form-control" required name='ini'  placeholder="AAAA-MM-DD" pattern="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$" readonly>
-		</div>
-                </td> 
-                </tr>  <tr>
-                 <td>
-		<div class="contenedor-columna">
-		<p style="text-align:right;">Fecha Fin :</p>
-		</div>
-		<div class="contenedor-columna">
-=======
         <div class="contenedor-columna">
         <p style="text-align:right;">Fecha Inicio :</p>
         </div>
@@ -294,7 +273,6 @@
         <p style="text-align:right;">Fecha Fin :</p>
         </div>
         <div class="contenedor-columna">
->>>>>>> f76a9a764f3e7111c83fcb95fb44aa5457f15bde
                     <input id="to" type='date' class="form-control" required name='fin' placeholder="AAAA-MM-DD" pattern="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$" readonly>
                 </div>
                 </td> 

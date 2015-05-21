@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sistema de Apoyo a la Empresa TIsjshjhsjS</title>
+    <title>Sistema de Apoyo a la Empresa TIS</title>
 
     <!-- Core CSS - Include with every page -->
     <link href="Librerias/css/bootstrap.min.css" rel="stylesheet">

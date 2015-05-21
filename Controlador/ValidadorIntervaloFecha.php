@@ -33,11 +33,19 @@ class ValidadorFecha {
             if(!$intervaloValido) { 
                 $intervaloValido = ($anioFin == $anioInicio) && $mesFin > $mesInicio;
                 if(!$intervaloValido) { 
-                    $intervaloValido = ($anioFin == $anioInicio) && $mesFin == $mesInicio && $diaFin > $diaInicio;
+                    $intervaloValido = ($anioFin == $anioInicio) && $mesFin == $mesInicio && $diaFin >= $diaInicio;
                 }
             }
         }
         return $intervaloValido;
+    }
+
+    function validarTiempoFecha($fecha) {
+        $hoy = date("Y-m-d");
+
+        $res = $this->validarIntervalosFecha($hoy, $fecha);
+
+        return $res;
     }
 }
 

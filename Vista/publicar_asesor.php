@@ -56,8 +56,6 @@
     <script type="text/javascript" src="../Librerias/lib/funcion.js"></script>
     <script type="text/javascript" src="../Librerias/lib/funcionSeguimiento.js"></script>
 
-
-
     <script type="text/javascript">
         function mostrarReferencia()
         {
@@ -84,12 +82,6 @@
     <!-- SB Admin CSS - Include with every page -->
     <link href="../Librerias/css/sb-admin.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
-     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.css" rel="stylesheet">
-     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui..css" rel="stylesheet">
-   
-
-
 
 
     
@@ -381,7 +373,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" >Fecha de publicacion:</label>
                     <div class="col-xs-8">
-                            <input class="form-control" type="date" name="fecha" id="fecha" placeholder="AAAA-MM-DD" required/ readonly> 
+                            <input class="form-control" type="date" name="fecha1" placeholder="AAAA-MM-DD" pattern="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$" required/> 
                     </div>
                 </div>
                                 
@@ -389,7 +381,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label" >Hora de publicacion:</label>
                 <div class="col-sm-8" >
-                    <input class="form-control" name="hora1" type="time" required placeholder="HH:MM" pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required/ readonly>
+                    <input class="form-control" name="hora1" type="time" required placeholder="HH:MM" pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required/>
                 </div>  
             </div><!--end/fecha-->
                                 

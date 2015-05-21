@@ -19,19 +19,9 @@ class TableRows extends RecursiveIteratorIterator {
 } 
 
 class ControladorAccesoVistasPorUsuario {
-<<<<<<< HEAD
-
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = "lisa";
-
-	function __construct() {
-	}
-=======
     public $data_mysql;
     function __construct() {
     }
->>>>>>> f76a9a764f3e7111c83fcb95fb44aa5457f15bde
 	
     function listaVistas($nombreArchivo, $usuario) {
     $this->data_mysql = new datosmysql();

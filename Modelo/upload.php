@@ -8,12 +8,7 @@ $pas = $this->data_mysql->getPas();
 $hos = $this->data_mysql->getHos();
 $db = $this->data_mysql->getDB();
 
-<<<<<<< HEAD
-//$conexion = mysql_connect("192.168.2.5","mbittle","5rtZAGYq");
-$conexion = mysql_connect("localhost","root","lisa");
-=======
 $conexion = mysql_connect($hos,$us,$pas);
->>>>>>> f76a9a764f3e7111c83fcb95fb44aa5457f15bde
     //Control
     if(!$conexion){die('La conexion ha fallado por:'.mysql_error());}
    // mysql_select_db("tis_mbittle",$conexion);

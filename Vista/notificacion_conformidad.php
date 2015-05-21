@@ -386,11 +386,7 @@
                       <div class="form-group">
                         <label class="col-xs-2 control-label">Fecha de la reuni&oacute;n:</label>
                         <div class="col-sm-1">
-<<<<<<< HEAD
-                        <input class="form-control" style="width:500px;heigth:30px;" name="fecha" id="fecha"  placeholder="AAAA-MM-DD"  readonly >
-=======
                         <input class="form-control" style="width:500px;heigth:30px;" placeholder = "AAAA-MM-DD" name="fecha" id="fecha" readonly  >
->>>>>>> f76a9a764f3e7111c83fcb95fb44aa5457f15bde
                         </div>
       
                     </div><!--end/fecha-->
