@@ -1,22 +1,31 @@
 <?php
 session_start();
   
-    $nombreU = $_SESSION['usuario']  ;
+include_once 'configDB.php';
+include '../Controlador/filtroXSS.php';
+    $nombreU = $_SESSION['usuario'];
     $nombreS = $_POST['nombre'];
     $apellidoS = $_POST['apellido'];
     
-
     include '../Modelo/conexion.php';
-   
+    $data_mysql = new datosmysql();
     $conect = new conexion();
-        $db = 'saetis';
-        $host = 'localhost';
-        $user = 'root';
-        $pass = 'root';
-        $conn = new PDO("mysql:dbname=".$db.";host=".$host,$user, $pass);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db = $data_mysql->getDB();
+    $host = $data_mysql->getHos();
+    $user = $data_mysql->getUs();
+    $pass = $data_mysql->getPas();
+    $conn = new PDO("mysql:dbname=".$db.";host=".$host,$user, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // iniciar transacción
+    $sqlControl = "SELECT count(*) FROM socio WHERE NOMBRE_U= '$nombreU'";
+    //$valido = $validador -> fetchAll();
+    foreach ($conn -> query($sqlControl) as $valor) {
+        $cantidad = $valor[0];   
+    }
         
-        // iniciar transacción
+        //echo"<script type=\"text/javascript\">alert('bark '); window.location='AnadirSocio.php';</script>";
+        if($cantidad < 5) {
+        //SELECT count(*) FROM `socio` WHERE `NOMBRE_U` = 'FreeValue' 
         $conn->beginTransaction();
         try {
 
@@ -37,5 +46,8 @@ session_start();
            // si ocurre un error hacemos rollback para anular todos los insert
             $conn->rollback();
             echo $e->getMessage();
+        }
+        } else {
+            echo"<script type=\"text/javascript\">alert('El registro no fue realizado debido a que la empresa tiene el maximo numero de socios registrados'); window.location='AnadirSocio.php';</script>";
         }  
     ?>

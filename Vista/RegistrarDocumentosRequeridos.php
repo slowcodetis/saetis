@@ -333,7 +333,7 @@
                                     
                                     <div class="form-group">
                                         <label>
-                                            <input class ="form-control" placeholder="DD-MM-AAAA" type="date" name="fechaInicioE" id="fechaInicioE" pattern="^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})$" required/>
+                                            <input class ="form-control" placeholder="AAAA-MM-DD" type="date" name="fechaInicioE" id="fechaInicioE" pattern="^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})$" required/>
                                         </label>
                                     </div>
                                 </div>
@@ -356,7 +356,7 @@
                               <label class="default" for="fechaFinalE">Fecha Final de Entrega</label>
                               <div class="form-group">
                                 <label>
-                                    <input  class ="form-control" placeholder="DD-MM-AAAA"  type="date" name="fechaFinalE" pattern="^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})$"  required/>
+                                    <input  class ="form-control" placeholder="AAAA-MM-DD"  type="date" name="fechaFinalE" pattern="^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})$"  required/>
                                 </label>
                             </div>
                             

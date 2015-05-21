@@ -1,6 +1,7 @@
 <?php
 
 include '../Modelo/conexion_pd.php';
+require_once 'configDB.php';
 class TableRows extends RecursiveIteratorIterator { 
     function __construct($it) { 
         parent::__construct($it, self::LEAVES_ONLY); 
@@ -18,12 +19,20 @@ class TableRows extends RecursiveIteratorIterator {
         echo "</tr>" . "\n";
     } 
 } 
+<<<<<<< HEAD
     $servername = "localhost";
     $username = "root";
     $password = "lisa";
+=======
+$data_mysql = datosmysql();
+    $servername = $data_mysql->getHos();
+    $username = $data_mysql->getUs();
+    $password = $data_mysql->getPas();
+    $dbna = $data_mysql->getDB();
+>>>>>>> f76a9a764f3e7111c83fcb95fb44aa5457f15bde
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=$dbna", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare('SELECT nombreUrl FROM ( SELECT IdUrl FROM (SELECT ROL_R FROM usuario_rol WHERE NOMBRE_U= :NOMBRE_U) AS uno, rol_url WHERE rol_url.IdRol = uno.ROL_R ) AS dos, url WHERE Id = dos.IdUrl AND nombreUrl = :nombreUrl');

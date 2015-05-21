@@ -4,7 +4,7 @@
     $RealName = $_POST['nombreReal'];
     $Pass = $_POST['password'];
     $Email = $_POST['email'];
-    $rol = $_POST['UsuarioRol'];
+    $rol = "asesor";
     $Apellido = $_POST['apellido'];
     $Telefono = $_POST['telefono'];
 
@@ -20,7 +20,7 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////
   
 
-    $mystring = $Email;
+   /** $mystring = $Email;
     $findme1   = 'hotmail';
     $findme2   = 'gmail';
     $findme3   = 'yahoo';
@@ -52,8 +52,18 @@
     $numeroCorreo=1;
     }
 
+    */
+    $numeroCorreo = 1;
+    
+    if(isset($Name) && isset($RealName) && isset($Pass) && isset($Email) && isset($Apellido) && isset($Telefono)) {
+      $numeroCorreo = 1;
+     
+    } else {
+      $numeroCorreo = 0;
+    }
     
     
+   // echo "<script>alert('$rol');</script>";
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     if($numeroCorreo=="1")
     {
@@ -117,7 +127,7 @@
             $conect->consulta("INSERT INTO criteriocalificacion(NOMBRE_U,NOMBRE_CRITERIO_C,TIPO_CRITERIO) VALUES('$Name','PUNTAJE','4')");
                
             echo '<script>alert("Su solicitud se envio correctamente");</script>';
-            echo '<script>window.location="../Vista/RegistrarUsuario.php";</script>';
+            echo '<script>window.location="RegistrarUsuario.php";</script>';
           }
         
     }
@@ -125,15 +135,15 @@
 
 
         echo '<script>alert("El nombre de usuario ya esta registrado");</script>';
-        echo '<script>window.location="../Vista/RegistrarUsuario.php";</script>';
+        echo '<script>window.location="RegistrarUsuario.php";</script>';
         
 
     }
     }
     else
     {
-        echo '<script>alert("Correo Ingresado no Valido");</script>';
-        echo '<script>window.location="../Vista/RegistrarUsuario.php";</script>';
+        echo '<script>alert("Los campos no pueden estar vacios");</script>';
+        echo '<script>window.location="RegistrarUsuario.php";</script>';
     }
    
 ?>

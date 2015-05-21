@@ -1,10 +1,10 @@
 <?php  
-    include '../Modelo/conexion.php';
+include '../Modelo/conexion.php';
+include '../Modelo/validadorAcceso.php';
     session_start();
     $uActivo = $_SESSION['usuario'];
     $con=new conexion();
 
-    include '../Modelo/validadorAcceso.php';
     $objValidador = new ControladorAccesoVistasPorUsuario(' ');
     $urlActual = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
     $objValidador->puedeAcceder($urlActual, $uActivo);
@@ -391,7 +391,11 @@
                       <div class="form-group">
                         <label class="col-xs-2 control-label">Fecha de la reuni&oacute;n:</label>
                         <div class="col-sm-1">
+<<<<<<< HEAD
                         <input class="form-control" style="width:500px;heigth:30px;" name="fecha" id="fecha"  placeholder="AAAA-MM-DD" readonly >
+=======
+                        <input class="form-control" style="width:500px;heigth:30px;" placeholder = "AAAA-MM-DD" name="fecha" id="fecha" readonly  >
+>>>>>>> f76a9a764f3e7111c83fcb95fb44aa5457f15bde
                         </div>
       
                     </div><!--end/fecha-->
@@ -433,6 +437,7 @@
         </div><!-- /#page-wrapper -->
 
     </div>
+
 
     <script src="../Librerias/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="../Librerias/js/sb-admin.js"></script>

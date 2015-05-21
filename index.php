@@ -27,9 +27,9 @@
     
     
     
-        	<link href="Librerias/css/style11.css" rel="stylesheet" type="text/css" />
-		<link href="Librerias/css/tabla-div.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" type="text/css" href="Librerias/css/coin-slider.css" />
+            <link href="Librerias/css/style11.css" rel="stylesheet" type="text/css" />
+        <link href="Librerias/css/tabla-div.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="Librerias/css/coin-slider.css" />
                 <link href="archivos/estilos.css" rel="stylesheet" type="text/css">
                 <script language="JavaScript" src="archivos/script.js" type="text/javascript"></script>
 
@@ -41,9 +41,9 @@
     <div id="wrapper">
        
         
-		<!--<h2>design by <a href="#" title="flash templates">flash-templates-today.com</a></h2>-->
+        <!--<h2>design by <a href="#" title="flash templates">flash-templates-today.com</a></h2>-->
         
-	
+    
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                                <h2 ><IMG SRC="images/umss.png"><font color='white'> <strong>UNIVERSIDAD MAYOR DE SAN SIMON &nbsp;&nbsp;&nbsp;</strong></h2>
@@ -56,10 +56,10 @@
            <div class="col-lg-12" >
       
     
-		
-	    <div class="content">
-	    <div class="content_resize">
-	    <div class="mainbar">
+        
+        <div class="content">
+        <div class="content_resize">
+        <div class="mainbar">
             <nav class="star" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
             <a class="navbar-brand">Avisos Empresa TIS</a>
@@ -126,7 +126,7 @@
             </div>
             <div class="pie_aviso">Publicado el   <?php       echo $fila['FECHA_R']; ?>  &nbsp;&nbsp; Hora:<?php       echo $fila['HORA_R']; ?> </div>
             </div>         
-            <?php  $numero++;	
+            <?php  $numero++;   
 
         }
 
@@ -147,17 +147,24 @@
         <div class="article">
 
         <nav class="star" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-        <a class="navbar-brand">Registrate como Grupo Empresa</a>
+        <div class="navbar-header" aling="center">
+        <a class="navbar-brand">Registrate </a>
 
         </div></nav><h2 class="star"><span>&nbsp; </span></h2>                                                   
 
         <p class="infopost"></p>
 
+        <!--
+        <div class="form-group">
+        <div align="left">
+        <button type="submit" name="ingresar"  class="btn btn-primary"  onclick=" location.href='Vista/RegistrarUsuario.php' " id="btn-registrarUser"> <span class="glyphicon glyphicon-ok" ></span> ASESOR</button>
+        </div></div>
+        </div>-->
 
         <div class="form-group">
         <div align="center">
-        <button type="submit" name="ingresar"  class="btn btn-primary"  onclick=" location.href='Vista/RegistrarGrupoEmpresa.php' " id="btn-registrarUser"> <span class="glyphicon glyphicon-ok" ></span> REGISTRATE</button>
+        <button type="submit" name="ingresar"  class="btn btn-primary"  onclick=" location.href='Vista/RegistrarUsuario.php' " id="btn-registrarUser"> <span class="glyphicon glyphicon-ok" ></span> ASESOR</button>
+        <button type="submit" name="ingresar"  class="btn btn-primary"  onclick=" location.href='Vista/RegistrarGrupoEmpresa.php' " id="btn-registrarUser"> <span class="glyphicon glyphicon-ok" ></span> GRUPO EMPRESA</button>
         </div></div>
         </div>     
         </div>
@@ -194,13 +201,13 @@
         </div>
         </div>                                                  
 
+        
         <div class="form-group">
-        <a href="Vista/RegistrarUsuario.php"><font color='green' size="1.5%">no eres usuario todavia? REGISTRATE</font></a>
+        <!--<a href="Vista/RegistrarUsuario.php"><font color='green' size="1.5%">no eres usuario todavia? REGISTRATE</font></a>-->
         <div align="right"> <hr>
         <button type="submit" name="ingresar" class="btn btn-primary" id="btn-registrarUser"> <span class="glyphicon glyphicon-ok"></span> Ingresar</button>
         </div></div>
-
-
+        
 
         <br>
 
@@ -251,7 +258,7 @@
         </div>
         </div>
         </div>
-        </div>	
+        </div>  
         <div class="gadget">
         <nav class="star" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -270,7 +277,7 @@
         </div>
         </div>
 
-        </div>	
+        </div>  
 
         </div>
         </form>               
@@ -279,7 +286,7 @@
         <div class="clr"></div>
         <div class="fbg">
 
-        </div>	
+        </div>  
         <br><br>
         <div class="footer">
         <div class="footer_resize">

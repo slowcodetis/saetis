@@ -4,7 +4,7 @@ or die ("Erro na conexão ao banco de dados.");
 $db = mysql_select_db("tis_mbittle")
 or die ("Ocorreu um erro na seleção ao banco de dados.");
 */
-$conexao = mysql_connect('localhost', 'root', '')
+$conexao = mysql_connect('localhost', 'root', 'lisa')
 or die ("Erro na conexão ao banco de dados.");
 $db = mysql_select_db("saetis")
 or die ("Ocorreu um erro na seleção ao banco de dados.");

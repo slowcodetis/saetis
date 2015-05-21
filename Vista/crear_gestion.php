@@ -3,14 +3,18 @@ include '../Modelo/conexion.php';
 $conectar = new conexion();
 session_start();
 include '../Controlador/ValidadorIntervaloFecha.php';
+<<<<<<< HEAD
+=======
+include '../Controlador/filtroXSS.php';
+>>>>>>> f76a9a764f3e7111c83fcb95fb44aa5457f15bde
 //Crear variables--------------------------
 
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-
+$rolscape = mysql_real_escape_string($_POST['rol']);
 $addini = $_POST['ini'];
 $addfin = $_POST['fin'];
-$addRol = $_POST['rol'];
+$addRol = filterXSS($rolscape);
 
 $validador = new ValidadorFecha();
 if ($validador->validarIntervalosFecha($addini, $addfin)){
@@ -40,4 +44,8 @@ else
  {
         echo"<script type=\"text/javascript\">alert('El formato de las fechas o el intervalo no es valido'); window.location='add_gestion.php';</script>";
 }
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> f76a9a764f3e7111c83fcb95fb44aa5457f15bde

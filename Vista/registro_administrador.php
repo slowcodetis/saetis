@@ -6,7 +6,7 @@
     //Impide ingresar a vistas que no son validas para un tipo de usuario
     //redireccionando al index.php
 
-    include '../Modelo/validadorAcceso.php';
+ include '../Modelo/validadorAcceso.php';
     $objValidador = new ControladorAccesoVistasPorUsuario(' ');
     $urlActual = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
     $objValidador->puedeAcceder($urlActual, $uActivo);

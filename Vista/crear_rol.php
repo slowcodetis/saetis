@@ -2,13 +2,14 @@
 
 session_start();
 include '../Modelo/conexion.php';
+include '../Controlador/filtroXSS.php';
 $conectar = new conexion();
 //Crear variables--------------------------
 
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-
-$addRol = $_POST['rol'];
+$rols = mysql_real_scape_string($_POST['rol']);
+$addRol = filterXSS($rols);
 
 
 

@@ -476,7 +476,7 @@ switch (imagen) {
         incrementoPos = 1;
         arriba = true;        
         break;
-}
+  }
 }
 
 function normal(){

@@ -237,7 +237,12 @@
 		<p style="text-align:left;" ></p>
 		</td>
 		<td>
+<<<<<<< HEAD
                 </td>
+=======
+                                                                                                      
+     </td>
+>>>>>>> f76a9a764f3e7111c83fcb95fb44aa5457f15bde
 		<tr>
 		<td >
 													

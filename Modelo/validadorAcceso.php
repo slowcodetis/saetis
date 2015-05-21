@@ -1,5 +1,5 @@
 <?php
-
+require_once 'configDB.php';
 class TableRows extends RecursiveIteratorIterator { 
     function __construct($it) { 
         parent::__construct($it, self::LEAVES_ONLY); 
@@ -19,6 +19,7 @@ class TableRows extends RecursiveIteratorIterator {
 } 
 
 class ControladorAccesoVistasPorUsuario {
+<<<<<<< HEAD
 
     private $servername = "localhost";
     private $username = "root";
@@ -26,10 +27,19 @@ class ControladorAccesoVistasPorUsuario {
 
 	function __construct() {
 	}
+=======
+    public $data_mysql;
+    function __construct() {
+    }
+>>>>>>> f76a9a764f3e7111c83fcb95fb44aa5457f15bde
 	
-	function listaVistas($nombreArchivo, $usuario) {
+    function listaVistas($nombreArchivo, $usuario) {
+    $this->data_mysql = new datosmysql();
+    $servername = $this->data_mysql->getHos();
+    $username = $this->data_mysql->getUs();
+    $password = $this->data_mysql->getPas();
 
-		$conn = new PDO("mysql:host=$this->servername;dbname=saetis", $this->username, $this->password);
+	$conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare('SELECT nombreUrl FROM ( SELECT IdUrl FROM (SELECT ROL_R FROM usuario_rol WHERE NOMBRE_U= :NOMBRE_U) AS uno, rol_url WHERE rol_url.IdRol = uno.ROL_R ) AS dos, url WHERE Id = dos.IdUrl AND nombreUrl = :nombreUrl');
@@ -52,8 +62,12 @@ class ControladorAccesoVistasPorUsuario {
 	}
 
 	function vistaPrincipal($usuario, $vista) {
-
-        $conn = new PDO("mysql:host=$this->servername;dbname=saetis", $this->username, $this->password);
+        $this->data_mysq = new datosmysql();
+        $servernam = $this->data_mysq->getHos();
+        $usernam = $this->data_mysq->getUs();
+        $passwor = $this->data_mysq->getPas();
+        $hs = $this->data_mysq->getDB();
+        $conn = new PDO("mysql:host=$servernam;dbname=$hs", $usernam, $passwor);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare('SELECT nombreUrl FROM ( SELECT IdUrl FROM (SELECT ROL_R FROM usuario_rol WHERE NOMBRE_U= :NOMBRE_U) AS uno, rol_url WHERE rol_url.IdRol = uno.ROL_R ) AS dos, url WHERE Id = dos.IdUrl AND nombreUrl = :url');
@@ -94,20 +108,20 @@ class ControladorAccesoVistasPorUsuario {
         			$principal = $this->vistaPrincipal($usuario, $principalAdministrador);
         			if($principal == 0) {
         				echo "<script>alert('No tienes permisos para ver esa pagina')</script>";
-            			echo "<script>window.location = 'http://localhost:8888/sistema1/Saetis/index.php' </script>";
+                        echo "<script>window.location = '../index.php' </script>";
         			}
         			else {
-        				$script = "window.location = 'http://localhost:8888/sistema1/Saetis/Vista/".$principalAdministrador.'\'';
+        				$script = "window.location = '../Vista/".$principalAdministrador.'\'';
         				echo "<script> $script </script>";
         			}
         		}
         		else {
-        			$script = "window.location = 'http://localhost:8888/sistema1/Saetis/Vista/".$principalAsesor.'\'';
+        			$script = "window.location = '../Vista/".$principalAsesor.'\'';
         			echo "<script> $script </script>";
         		}
         	}
         	else {
-        		$script = "window.location = 'http://localhost:8888/sistema1/Saetis/Vista/".$principalGrupoEmpresa.'\'';
+        		$script = "window.location = '../Vista/".$principalGrupoEmpresa.'\'';
     			echo "<script> $script </script>";
         	}
         }

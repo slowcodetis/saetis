@@ -1,25 +1,33 @@
 <?php
-
+include_once "configDB.php";
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 class conexion{
     public $link;
+    public $data_mysql; 
 function __construct(){
     
     $this->conectar();
 }
 
 function conectar(){   
+<<<<<<< HEAD
 $servidor = 'localhost';
 $userName = 'root';
 $password = 'lisa';
 $bdName = 'saetis';
+=======
+$this->data_mysql = new datosmysql();
+$servidor = $this->data_mysql->getHos();
+$userName = $this->data_mysql->getUs();
+$password = $this->data_mysql->getPas();
+$bdName = $this->data_mysql->getDB();
+>>>>>>> f76a9a764f3e7111c83fcb95fb44aa5457f15bde
 global $link;
-    $link =  mysql_connect($servidor, $userName, $password) or die('no se pudo conectar al servidor' . mysql_error());
+$link =  mysql_connect($servidor, $userName, $password) or die('no se pudo conectar al servidor' . mysql_error());
     mysql_select_db($bdName,$link) or die('no se pudo encontrar la base de datos');
 }
 
