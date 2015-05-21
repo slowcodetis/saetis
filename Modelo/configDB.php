@@ -1,8 +1,7 @@
 <?php
 class datosmysql{
 public $usernameDB = 'root';
-//public $passwordDB = 'lisa';
-public $passwordDB = 'root';
+public $passwordDB = 'Crhyst23';
 public $hostDB = 'localhost';
 public $nameDB = 'saetis';
 function getUs(){

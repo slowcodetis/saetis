@@ -4,9 +4,11 @@ session_start();
 include_once 'configDB.php';
 include '../Controlador/filtroXSS.php';
     $nombreU = $_SESSION['usuario'];
-    $nombreS = $_POST['nombre'];
-    $apellidoS = $_POST['apellido'];
-    
+    $nombS = mysql_escape_string($_POST['nombre']);
+    $apellS = mysql_escape_string($_POST['apellido']);
+    $nombreS = filterXSS($nombS);
+    $apellidoS = filterXSS($apellS);
+   
     include '../Modelo/conexion.php';
     $data_mysql = new datosmysql();
     $conect = new conexion();
