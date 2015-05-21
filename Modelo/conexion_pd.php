@@ -13,7 +13,7 @@ require_once 'configDB.php';
 
       //Sobreescribo el método constructor de la clase PDO.
       try{
-         parent::__construct($this->tipo_de_base.':host='.$this->host.';dbname='.$this->nombre_de_base, $this->usuario, $this->contrasena);
+         parent::__construct($this->tipo_de_base.':host='.$host.';dbname='.$nombre_de_base, $usuario, $contrasena);
       }catch(PDOException $e){
          echo 'Ha surgido un error y no se puede conectar a la base de datos. Detalle: ' . $e->getMessage();
          exit;
