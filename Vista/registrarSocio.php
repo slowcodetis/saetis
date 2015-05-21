@@ -1,18 +1,19 @@
 <?php
 session_start();
   
-    include_once 'configDB.php';
+include_once 'configDB.php';
+include '../Controlador/filtroXSS.php';
     $nombreU = $_SESSION['usuario'];
     $nombreS = $_POST['nombre'];
     $apellidoS = $_POST['apellido'];
     
     include '../Modelo/conexion.php';
-    $data_mysql = new datamysql();
+    $data_mysql = new datosmysql();
     $conect = new conexion();
-    $db = $this->data_mysql->getDB();
-    $host = $this->data_mysql->getHos();
-    $user = $this->data_mysql->getUs();
-    $pass = $this->data_mysql->getPas();
+    $db = $data_mysql->getDB();
+    $host = $data_mysql->getHos();
+    $user = $data_mysql->getUs();
+    $pass = $data_mysql->getPas();
     $conn = new PDO("mysql:dbname=".$db.";host=".$host,$user, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // iniciar transacción
