@@ -23,7 +23,7 @@
     include '../Modelo/conexion.php';
     require '../Vista/PHPMailerAutoload.php';
     require '../Vista/class.phpmailer.php';
-    include 'configDB.php';
+    require_once 'configDB.php';
     $data_mysql = new datamysql();
     
     if($camposNoVacios) {

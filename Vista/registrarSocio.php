@@ -1,7 +1,7 @@
 <?php
 session_start();
   
-    include 'configDB.php';
+    include_once 'configDB.php';
     $nombreU = $_SESSION['usuario'];
     $nombreS = $_POST['nombre'];
     $apellidoS = $_POST['apellido'];

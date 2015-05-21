@@ -1,5 +1,6 @@
 <?php 
-require 'configDB.php';
+require_once 'configDB.php';
+
  class Conexion extends PDO { 
    public $tipo_de_base = 'mysql';
    public $data_mysql;      

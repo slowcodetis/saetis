@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('configDB.php');
+include_once ('configDB.php');
 // Datos de conexion
 $data_mysql = new datamysql();
 $us = $this->data_mysql->getUs();
