@@ -4,7 +4,7 @@ include '../Modelo/conexion.php';
 //include '../Modelo/ValidadorIntervaloFecha.php';
 
 $conect = new conexion();
-$validador = new ValidadorFecha();
+//$validador = new ValidadorFecha();
 date_default_timezone_set('America/Puerto_Rico');
 
 session_start();
