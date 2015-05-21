@@ -434,6 +434,7 @@ include '../Modelo/validadorAcceso.php';
 
     </div>
 
+
     <script src="../Librerias/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="../Librerias/js/sb-admin.js"></script>
 </body>

@@ -381,7 +381,6 @@
                         
                         </div>
                       </div><!--end/campoDescripcion-->
-
                  
                       
                       <div class="form-group">

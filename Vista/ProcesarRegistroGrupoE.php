@@ -24,7 +24,7 @@
     require '../Vista/PHPMailerAutoload.php';
     require '../Vista/class.phpmailer.php';
     require_once 'configDB.php';
-    $data_mysql = new datamysql();
+    $data_mysql = new datosmysql();
     
     if($camposNoVacios) {
 
@@ -45,17 +45,17 @@
                      
                 if(!is_array($verNL))
                 {
-                    $db = $this->data_mysql->getDB();
-                    $host = $this->data_mysql->getHos();
-                    $user = $this->data_mysql->getUs();
-                    $pass = $this->data_mysql->getPas;
+                    $db = $data_mysql->getDB();
+                    $host = $data_mysql->getHos();
+                    $user = $data_mysql->getUs();
+                    $pass = $data_mysql->getPas;
 
                     try {
                       
-                        $servername = $this->data_mysql->getHos();
-                        $username = $this->data_mysql->getUs();
-                        $password = $this->data_mysql->getPas();
-                        $databas = $this->data_mysql->getDB();
+                        $servername = $data_mysql->getHos();
+                        $username = $data_mysql->getUs();
+                        $password = $data_mysql->getPas();
+                        $databas = $data_mysql->getDB();
 
                         $conn = new PDO("mysql:host=$servername;dbname=$databas", $username, $password);
 
