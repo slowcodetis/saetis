@@ -25,11 +25,11 @@ class ControladorAccesoVistasPorUsuario {
 	
     function listaVistas($nombreArchivo, $usuario) {
     $this->data_mysql = new datosmysql();
-    $servername = $this->data_mysql->getHos();;
+    $servername = $this->data_mysql->getHos();
     $username = $this->data_mysql->getUs();
     $password = $this->data_mysql->getPas();
 
-		$conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
+	$conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare('SELECT nombreUrl FROM ( SELECT IdUrl FROM (SELECT ROL_R FROM usuario_rol WHERE NOMBRE_U= :NOMBRE_U) AS uno, rol_url WHERE rol_url.IdRol = uno.ROL_R ) AS dos, url WHERE Id = dos.IdUrl AND nombreUrl = :nombreUrl');
@@ -52,8 +52,12 @@ class ControladorAccesoVistasPorUsuario {
 	}
 
 	function vistaPrincipal($usuario, $vista) {
-
-        $conn = new PDO("mysql:host=$this->servername;dbname=saetis", $this->username, $this->password);
+        $this->data_mysq = new datosmysql();
+        $servernam = $this->data_mysq->getHos();
+        $usernam = $this->data_mysq->getUs();
+        $passwor = $this->data_mysq->getPas();
+        $hs = $this->data_mysq->getDB();
+        $conn = new PDO("mysql:host=$servernam;dbname=$hs", $usernam, $passwor);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare('SELECT nombreUrl FROM ( SELECT IdUrl FROM (SELECT ROL_R FROM usuario_rol WHERE NOMBRE_U= :NOMBRE_U) AS uno, rol_url WHERE rol_url.IdRol = uno.ROL_R ) AS dos, url WHERE Id = dos.IdUrl AND nombreUrl = :url');
