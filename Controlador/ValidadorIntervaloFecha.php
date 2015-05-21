@@ -45,6 +45,8 @@ class ValidadorFecha {
 
         $res = $this->validarIntervalosFecha($hoy, $fecha);
 
+            //echo"<script type=\"text/javascript\">alert('$fecha  hoy: $hoy');</script>";
+
         return $res;
     }
 }

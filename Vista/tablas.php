@@ -1,10 +1,17 @@
 <?php
 
   include '../Modelo/conexion.php';
+  include '../Controlador/ValidadorIntervaloFecha.php';
+  
   session_start();
+  $validador = new ValidadorFecha();
   $conect = new conexion();
-         $userAct = $_SESSION['usuario'];
-	if(isset($_POST["enviar"])){
+
+  $fechap   = $_POST["fecha1"];
+
+  if($validador->validarTiempoFecha($fechap)){
+    $userAct = $_SESSION['usuario'];
+    if(isset($_POST["enviar"])){
             $destino= $_POST["Conocido"];
 
             if($destino=="Publico")
@@ -210,14 +217,12 @@
                       die("Error al s");
 
                         header("location:../Vista/publicar_asesor.php");
-
                   }
                 }
-
             }
-
-
-     
-          }
-            
+    }
+  }
+  else {
+    echo"<script type=\"text/javascript\">alert('La fecha introducida es anterior a la fecha actual, cambie de fecha'); window.location='../Vista/publicar_asesor.php';</script>";
+  }          
 ?>
