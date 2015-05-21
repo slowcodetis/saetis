@@ -1,30 +1,26 @@
 <?php
 session_start();
   
+    include 'configDB.php';
     $nombreU = $_SESSION['usuario'];
     $nombreS = $_POST['nombre'];
     $apellidoS = $_POST['apellido'];
     
-
     include '../Modelo/conexion.php';
-   
+    $data_mysql = new datamysql();
     $conect = new conexion();
-        $db = 'saetis';
-        $host = 'localhost';
-        $user = 'root';
-        $pass = 'lisa';
-        $conn = new PDO("mysql:dbname=".$db.";host=".$host,$user, $pass);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-        // iniciar transacción
-        $sqlControl = "SELECT count(*) FROM socio WHERE NOMBRE_U= '$nombreU'";
-       
-       
-        //$valido = $validador -> fetchAll();
-        foreach ($conn -> query($sqlControl) as $valor) {
-            $cantidad = $valor[0];
-           
-        }
+    $db = $this->data_mysql->getDB();
+    $host = $this->data_mysql->getHos();
+    $user = $this->data_mysql->getUs();
+    $pass = $this->data_mysql->getPas();
+    $conn = new PDO("mysql:dbname=".$db.";host=".$host,$user, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // iniciar transacción
+    $sqlControl = "SELECT count(*) FROM socio WHERE NOMBRE_U= '$nombreU'";
+    //$valido = $validador -> fetchAll();
+    foreach ($conn -> query($sqlControl) as $valor) {
+        $cantidad = $valor[0];   
+    }
         
         //echo"<script type=\"text/javascript\">alert('bark '); window.location='AnadirSocio.php';</script>";
         if($cantidad < 5) {

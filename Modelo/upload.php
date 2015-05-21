@@ -1,15 +1,18 @@
 <?php
-//$ds          = DIRECTORY_SEPARATOR;  //Para no preocuparnos de la plataforma en la que se implemente
-//require('registro.php');
-//require('guardarDocumento.php');
 session_start();
+include('configDB.php');
+// Datos de conexion
+$data_mysql = new datamysql();
+$us = $this->data_mysql->getUs();
+$pas = $this->data_mysql->getPas();
+$hos = $this->data_mysql->getHos();
+$db = $this->data_mysql->getDB();
 
-//$conexion = mysql_connect("192.168.2.5","mbittle","5rtZAGYq");
-$conexion = mysql_connect("localhost","root","lisa");
+$conexion = mysql_connect($hos,$us,$pas);
     //Control
     if(!$conexion){die('La conexion ha fallado por:'.mysql_error());}
    // mysql_select_db("tis_mbittle",$conexion);
-     mysql_select_db("saetis",$conexion);
+     mysql_select_db($db,$conexion);
  
  $UsuarioActivo = $_SESSION['usuario'];
 

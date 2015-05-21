@@ -23,6 +23,8 @@
     include '../Modelo/conexion.php';
     require '../Vista/PHPMailerAutoload.php';
     require '../Vista/class.phpmailer.php';
+    include 'configDB.php';
+    $data_mysql = new datamysql();
     
     if($camposNoVacios) {
 
@@ -43,24 +45,19 @@
                      
                 if(!is_array($verNL))
                 {
-
-                    /*$db = 'tis_mbittle';
-                    $host = '192.168.2.5';
-                    $user = 'mbittle';
-                    $pass = '5rtZAGYq';*/
-                    
-                    $db = 'saetis';
-                    $host = 'localhost';
-                    $user = 'root';
-                    $pass = 'lisa';
+                    $db = $this->data_mysql->getDB();
+                    $host = $this->data_mysql->getHos();
+                    $user = $this->data_mysql->getUs();
+                    $pass = $this->data_mysql->getPas;
 
                     try {
                       
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "lisa";
+                        $servername = $this->data_mysql->getHos();
+                        $username = $this->data_mysql->getUs();
+                        $password = $this->data_mysql->getPas();
+                        $databas = $this->data_mysql->getDB();
 
-                        $conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
+                        $conn = new PDO("mysql:host=$servername;dbname=$databas", $username, $password);
 
                     } catch (Exception $e) {
 
