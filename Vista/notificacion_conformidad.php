@@ -67,6 +67,41 @@
     <!-- SB Admin CSS - Include with every page -->
     <link href="../Librerias/css/sb-admin.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.css" rel="stylesheet">
+     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+   
+
+
+<script>
+       /* $(function() {
+            console.log('execute');
+        $( "#from" ).datepicker({
+          minDate: new Date(),
+
+        changeMonth: true,
+        dateFormat: "yy-mm-dd",        
+        numberOfMonths: 1,
+        onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option","minDate" , selectedDate );
+        }
+        });
+        $( "#to" ).datepicker({
+            minDate: new Date(),
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        numberOfMonths: 1,
+        minDate: new Date(),
+        onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+
+
+        }
+        });
+        });*/
+    </script>
+
+
 
 </head>
 

@@ -24,6 +24,7 @@
 
     <!-- JQuery -->
     <script type="text/javascript" src="../Librerias/lib/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <!-- icheck -->
     <link href="../Librerias/icheck/skins/square/green.css" rel="stylesheet">
     <script src="../Librerias/lib/icheck.min.js"></script>
@@ -60,15 +61,55 @@
 
 
 
-
+    <script type="text/javascript" src="../Librerias/js/calendario_notacion_conformidad.js"></script>
     <link href="../Librerias/css/plugins/timeline/timeline.css" rel="stylesheet">
     <!-- SB Admin CSS - Include with every page -->
      <link href="../Librerias/css/sb-admin.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.css" rel="stylesheet">
+     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+   
+
+
+<script>
+        $(function() {
+            console.log('execute');
+        $( "#fechaInicioE" ).datepicker({
+          minDate: new Date(),
+
+        changeMonth: true,
+        dateFormat: "yy-mm-dd",        
+        numberOfMonths: 1,
+        onClose: function( selectedDate ) {
+        $( "#fechaFinalE" ).datepicker( "option","minDate" , selectedDate );
+        }
+        });
+        $( "#fechaFinalE" ).datepicker({
+            minDate: new Date(),
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        numberOfMonths: 1,
+        minDate: new Date(),
+        onClose: function( selectedDate ) {
+        $( "#fechaInicioE" ).datepicker( "option", "maxDate", selectedDate );
+
+
+        }
+        });
+        });
+    </script>
+
+
+
+
+
 
 </head>
 
 <body>
+
+ 
 
  
 <div id="wrapper">
@@ -322,18 +363,18 @@
                         </div> 
                         
                         <p>
-                            <label for="fechaInicioE"></label>
+                            <label for="fechaInicioG"></label>
                         </p>
 
                         <div class="row show-grid">
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="default" for="fechaInicioE">Fecha Inicio de  Entrega</label>
+                                    <label class="default" for="fechaInicioG">Fecha Inicio de  Entrega</label>
                                     
                                     <div class="form-group">
                                         <label>
-                                            <input class ="form-control" placeholder="AAAA-MM-DD" type="date" name="fechaInicioE" id="fechaInicioE" pattern="^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})$" required/>
+                                            <input id="fechaInicioE" class ="form-control" placeholder="AAAA-MM-DD" type="date" name="fecha" id="fechaInicioE" pattern="^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})$" required/ readonly>
                                         </label>
                                     </div>
                                 </div>
@@ -343,7 +384,7 @@
                                  Hora Inicio de Entrega:<span id="sprytextfield1"></label>
                                  <div class="form-group">
                                     <label for="horaInicioE">
-                                        <input  class ="form-control" placeholder="HH:MM"  type="time" name="   horaInicioE" pattern ="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required />
+                                        <input id="hora" class ="form-control" placeholder="HH:MM"  type="time" name="horaInicioE" pattern ="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required />
                                     </label>
                                 </div>
                             </div>
@@ -353,10 +394,10 @@
                         
                         <div class="row show-grid">
                           <div class="col-md-6">
-                              <label class="default" for="fechaFinalE">Fecha Final de Entrega</label>
+                              <label class="default" for="fecha">Fecha Final de Entrega</label>
                               <div class="form-group">
                                 <label>
-                                    <input  class ="form-control" placeholder="AAAA-MM-DD"  type="date" name="fechaFinalE" pattern="^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})$"  required/>
+                                    <input id="fechaF" class ="form-control" placeholder="AAAA-MM-DD"  type="fecha" name="fechaFinalE"  required/ readonly>
                                 </label>
                             </div>
                             
@@ -365,10 +406,10 @@
 
                         <div class="col-md-6">
                             <label class="default">
-                                Hora Final de Entrega :<td><span id="sprytextfield2"></label>
+                                Hora Final de Entrega :<td><span id="fecha"></label>
                                 <div class="form-group">
                                     <label for="horaLimite">
-                                        <input  class ="form-control"  placeholder="HH:MM" type="time" name="horaFinalE" id="horaFinalE" pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required/>
+                                        <input id="hora" class ="form-control"  placeholder="HH:MM" type="time" name="horaFinalE"  pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required/ readonly>
                                     </label>
                                 </div>
                                 

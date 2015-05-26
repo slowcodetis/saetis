@@ -28,6 +28,12 @@
     <script type="text/javascript" src="../Librerias/lib/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     
+    <!-- Bootstrap-datetimepicker -->
+    <link rel="stylesheet" type="text/css" href="../Librerias/lib/css/bootstrap-datetimepicker.css">
+    <script type="text/javascript" src="../Librerias/lib/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="../Librerias/lib/bootstrap-datetimepicker.es.js"></script>
+
+
     <!-- icheck -->
     <!-- Core CSS - Include with every page -->
     <link href="../Librerias/css/bootstrap.min.css" rel="stylesheet">
@@ -38,13 +44,16 @@
     <link href="../Librerias/css/plugins/timeline/timeline.css" rel="stylesheet">
      <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
      <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.css" rel="stylesheet">
-     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui..css" rel="stylesheet">
+     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
    
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="../Librerias/css/sb-admin.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/tabla-div.css" rel="stylesheet" type="text/css" />
+
+
+    <script type="text/javascript" src="../Librerias/js/calendario_notacion_conformidad.js"></script>
     
     <script>
 
@@ -63,7 +72,7 @@
         $(function() {
             console.log('execute');
         $( "#from" ).datepicker({
-          minDate: new Date(2015, 04, 21),
+          minDate: new Date(),
 
         changeMonth: true,
         dateFormat: "yy-mm-dd",        
@@ -73,12 +82,14 @@
         }
         });
         $( "#to" ).datepicker({
-            minDate: new Date(2015, 04, 21),
+            minDate: new Date(),
         dateFormat: "yy-mm-dd",
         changeMonth: true,
         numberOfMonths: 1,
+        minDate: new Date(),
         onClose: function( selectedDate ) {
         $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+
 
         }
         });

@@ -16,5 +16,16 @@ $(document).on('ready',function(){
                 step:5
 
         });
+
+          $('#fecha2').datetimepicker({
+                yearOffset:0,
+                lang:'es',
+                timepicker:false,
+                format:'Y-m-d',
+                formatDate:'Y/m/d',
+                minDate: new Date() // fecha actual es el minimo de seleccion en fechas
+                // and tommorow is maximum date calendar
+        });
+
     
     });
