@@ -8,7 +8,7 @@ include '../Controlador/filtroXSS.php';
 
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-$rolscape = mysql_real_escape_string($_POST['rol']);
+$rolscape = mysql_escape_string($_POST['rol']);
 $addini = $_POST['ini'];
 $addfin = $_POST['fin'];
 $addRol = filterXSS($rolscape);

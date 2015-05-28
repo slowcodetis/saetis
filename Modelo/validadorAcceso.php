@@ -28,8 +28,9 @@ class ControladorAccesoVistasPorUsuario {
     $servername = $this->data_mysql->getHos();
     $username = $this->data_mysql->getUs();
     $password = $this->data_mysql->getPas();
+    $dbn = $this->data_mysql->getDB();
 
-	$conn = new PDO("mysql:host=$servername;dbname=saetis", $username, $password);
+	$conn = new PDO("mysql:host=$servername;dbname=$dbn", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare('SELECT nombreUrl FROM ( SELECT IdUrl FROM (SELECT ROL_R FROM usuario_rol WHERE NOMBRE_U= :NOMBRE_U) AS uno, rol_url WHERE rol_url.IdRol = uno.ROL_R ) AS dos, url WHERE Id = dos.IdUrl AND nombreUrl = :nombreUrl');

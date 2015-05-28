@@ -8,7 +8,7 @@ $conectar = new conexion();
 
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-$rols = mysql_real_scape_string($_POST['rol']);
+$rols = mysql_escape_string($_POST['rol']);
 $addRol = filterXSS($rols);
 
 
