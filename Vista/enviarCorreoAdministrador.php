@@ -127,9 +127,6 @@
                                 <a href="#"><i class="fa fa-building-o fa-fw"></i>Tareas <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="add_roles.php">Añadir  Roles</a>
-                                    </li>
-                                    <li>
                                         <a href="add_gestion.php">Añadir  Gestion</a>
                                     </li>
                                     </ul>

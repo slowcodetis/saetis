@@ -4,10 +4,17 @@ class datosmysql{
     //public $passwordDB = '1q2w3e4r.';
     //public $hostDB = 'mysql.2freehosting.com';
     //public $nameDB = 'u156987063_sa';
+    /*
     public $usernameDB = 'root';
     public $passwordDB = 'Crhyst23';
     public $hostDB = 'localhost';
     public $nameDB = 'saetis';
+    */
+    public $usernameDB = 'root';
+    public $passwordDB = 'root';
+    public $hostDB = 'localhost';
+    public $nameDB = 'saetis';
+
 
     function getUs(){
         return $this->usernameDB;

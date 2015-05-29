@@ -10,8 +10,6 @@
     $permiso2="asesor";
     $permiso3="grupoEmpresa";
     
-    
-    
     $hora = date("h:i:s");
     $fecha= date ("Y-m-d");
  
@@ -38,7 +36,6 @@
                     $_SESSION['administrador'] = $permisosenbase;
                     $peticion1 = $conectar->consulta("INSERT INTO `sesion` (`ID_S`, `NOMBRE_U`, `FECHA_S`, `HORA_S`, `IP_S`)" . " VALUES (NULL, '$usuario', '$fecha', '$hora', '$ip');");
                     echo'<html><head><meta http-equiv="REFRESH" content="0;url=principal.php"></head></html>';
-                  
             }
             else
             {

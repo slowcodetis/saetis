@@ -1,7 +1,7 @@
 
 <?php 
- session_start();
- $uActivo = $_SESSION['usuario'];
+    session_start();
+    $uActivo = $_SESSION['usuario'];
 
     //Impide ingresar a vistas que no son validas para un tipo de usuario
     //redireccionando al index.php
@@ -146,9 +146,6 @@
                         <li>
                             <a href="#"><i class="fa fa-building-o fa-fw"></i>Tareas <span class="fa arrow"></span></a>
                                  <ul class="nav nav-third-level">
-                                 <li>
-                                     <a href="add_roles.php">Añadir  Roles</a>
-                                </li>
                                 <li>
                                      <a href="add_gestion.php">Añadir  Gestion</a>
                                 </li>

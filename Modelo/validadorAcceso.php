@@ -82,13 +82,15 @@ class ControladorAccesoVistasPorUsuario {
 
 	function puedeAcceder($nombreArchivo, $usuario) {
 
+        //echo "<script>alert('No tienes permisos para ver esa pagina l $usuario l')</script>";
+
         $vistas = array();
         $vistas = $this->listaVistas($nombreArchivo, $usuario);
 
         if(count($vistas) == 0) {
 
         	$principalGrupoEmpresa = "inicio_grupo_empresa.php";
-	    	$principalAsesor = "inicio_Asesor.php";
+	    	$principalAsesor = "inicio_asesor.php";
 	    	$principalAdministrador = "principal.php";
         	
         	$principal = $this->vistaPrincipal($usuario, $principalGrupoEmpresa);
