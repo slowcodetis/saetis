@@ -267,16 +267,25 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header"> Subir Documentos </h2>
+            <h2 class="page-header"> Subir Documento </h2>
         </div>
     </div><!-- /.col-lg-12 -->
     <div class="row">
         <div class="col-lg-8">
             <div class="col-lg-12">
-                <fieldset>
-                    <legend> Desplazar o Buscar Documento </legend>
-                    <form action="../Modelo/upload.php" class="dropzone" data-toggle="tooltip" data-placement="right" title="Arrastre documentos a esta &aacute;rea">
-                        
+                
+                    <legend> Subir Documeno </legend>
+
+                    <form action="GuardarDocumentoAsesor.php" method="POST" enctype="multipart/form-data">
+                        <fieldset>
+                            <div class="form-group">
+                                <input name="archivoA" id="archivoA" type="file" class = "btn btn-primary" required>
+                            </div>
+                        <input type="hidden" name="Documento" value="'.$Doc.'">
+                            <div class="form-group">
+                                <input type="submit" value="Subir Documento" class= "btn btn-primary">
+                            </div>
+                        </fieldset>
                     </form>
                     <div class="col-sm-8">  
                         <a data-toggle="modal" class="btn btn-primary" href="javascript:void('')" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"></span>
@@ -295,7 +304,7 @@
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
-                    </fieldset> 
+                    
                 </div>  
             </div><!-- /.col-lg-8 -->
         </div><!-- /.row -->

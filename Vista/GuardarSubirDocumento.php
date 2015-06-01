@@ -18,7 +18,7 @@ $clas = new conexion();
         }
     }
     
-    $ruta = "$rutaDirectorio/" . $_FILES['archivoA']['name'];
+            $ruta = "$rutaDirectorio/" . $_FILES['archivoA']['name'];
             $rutaDocumento="/Repositorio/$UsuarioActivo/" . $_FILES['archivoA']['name'];
         
             try{
