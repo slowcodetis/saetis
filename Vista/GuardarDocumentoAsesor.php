@@ -3,8 +3,7 @@
 
     include '../Modelo/conexion.php';
     $UsuarioActivo = $_SESSION['usuario'];
-    $DocumentoR = "descripcion 1";
-
+    
     $rutaDirectorio="../Repositorio/asesor/$UsuarioActivo";  
     $clas = new conexion();
 
@@ -39,8 +38,9 @@
             date_default_timezone_set('America/La_Paz');
             $fecha=  date('Y-m-d');
             $hora=  date("G:H:i");
+            $DocumentoR = "Documento ".$idRegistro;
+
             $clas->consulta("INSERT INTO `registro` (NOMBRE_U,TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R)  VALUES ('$UsuarioActivo','documento subido','habilitado','$DocumentoR','$fecha','$hora')");
-            
             $clas->consulta("INSERT INTO `documento` (ID_R,TAMANIO_D,RUTA_D,VISUALIZABLE_D,DESCARGABLE_D) VALUES ($idRegistro,$tamanio,'$rutaDocumento','$visualizable','$descargable')");
             echo '<script>alert("Documento subido exitosamente");
                           location.href = "../Vista/lista_doc_subidos.php";
