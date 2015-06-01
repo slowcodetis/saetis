@@ -30,6 +30,12 @@ function consulta($consulta) {
     return $resultado;
 }
 
+function consulta_real($consulta) {
+    global $link;
+    $resultado = mysql_query($consulta,$link);
+    return $resultado;   
+}
+
 function consulta_publicaciones($consulta) {
     global $link;
     $resultado = mysql_query($consulta,$link);

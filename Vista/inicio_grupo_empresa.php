@@ -11,6 +11,21 @@
     $objValidador->puedeAcceder($urlActual, $uActivo);
     
     $conexion = new conexion();
+
+    $asesor = "Aun no selecciono un asesor";
+    $repLegal = "Aun no selecciono un Representante Legal";
+
+    $retornoConsulta = $conexion->consulta_real("SELECT REPRESENTANTE_LEGAL_GE FROM grupo_empresa WHERE NOMBRE_U = \"$uActivo\";");
+    if($retornoConsulta) {
+        $rowDocs = mysql_fetch_row($retornoConsulta);
+        $repLegal = $rowDocs[0];    
+    }
+    $retornoConsulta = $conexion->consulta_real("SELECT NOMBRES_A, APELLIDOS_A FROM inscripcion, asesor WHERE NOMBRE_U = NOMBRE_UA AND NOMBRE_UGE = \"$uActivo\";");
+    if($retornoConsulta) {
+        $rowDocs = mysql_fetch_row($retornoConsulta);
+        $asesor = $rowDocs[0] ." ". $rowDocs[1];
+    }
+
 ?>
 <html>
 
@@ -127,13 +142,10 @@
                                     
                                         $docsReq = $conexion->consulta("SELECT NOMBRE_R FROM registro, documento_r, inscripcion, inscripcion_proyecto WHERE inscripcion_proyecto.CODIGO_P = documento_r.CODIGO_P AND documento_r.ID_R = registro.ID_R AND inscripcion_proyecto.NOMBRE_U = '$uActivo' AND inscripcion.NOMBRE_UGE = inscripcion_proyecto.NOMBRE_U");
                                      
-                                        while ($rowDocs = mysql_fetch_row($docsReq))
-                                        {
-                                            
+                                        while ($rowDocs = mysql_fetch_row($docsReq)) {
                                             echo '<li>
-                                                  <a href="SubirDocumento.php?doc='.$rowDocs[0].'">'.$rowDocs[0].'</a>
-                                                   </li>';  
-                                            
+                                            <a href="SubirDocumento.php?doc='.$rowDocs[0].'">'.$rowDocs[0].'</a>
+                                            </li>';
                                         }
                                         
                                     ?>
@@ -199,7 +211,10 @@
                 <div class="col-lg-8">
                   
                     <div class="col-lg-12">
-                                
+                        
+                        <h5>Asesor: <span id="asesor"> <?php echo $asesor ?> </span> </h5> 
+                        <h5>Representante Legal: <span id="repLegal"> <?php echo $repLegal ?> </span> </h5>
+
                         <img  src="../Librerias/images/SAETIS.png" alt="portadaInicio" class=" img-thumbnail">
                         
                     </div>  
