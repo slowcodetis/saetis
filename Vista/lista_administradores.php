@@ -360,6 +360,7 @@ WHERE  u.NOMBRE_U = r.NOMBRE_U  AND r.ROL_R = 'administrador'");
                                                             echo "<a href ='eliminar_administrador.php?id_us=".$fila['NOMBRE_U']."' class='verificar'><font color='blue'>Eliminar</font></a>";
                                                          ?>
                                                 </div>
+
                                                     <?php
 
                                             }
@@ -423,7 +424,6 @@ WHERE  u.NOMBRE_U = r.NOMBRE_U  AND r.ROL_R = 'administrador'");
                                 }
 
                                 //Cerrar
-                         
                         ?>  
                                                            
                                                       </div>                                         

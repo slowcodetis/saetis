@@ -801,7 +801,7 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
       </div>
       <div class="modal-body">
       	<div class="row-fluid body-preview">
-	</div>
+		</div>
       </div>
       
     </div>

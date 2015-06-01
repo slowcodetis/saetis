@@ -28,7 +28,17 @@ function consulta($consulta) {
     global $link;
     $resultado = mysql_query($consulta,$link)  or die('error en la consulta' . mysql_error());
     return $resultado;
-    
+}
+
+function consulta_publicaciones($consulta) {
+    global $link;
+    $resultado = mysql_query($consulta,$link);
+
+        if(!$resultado) {
+            echo "<script>alert('No se pudo realizar su publicacion')</script>";
+        }
+
+    return $resultado;
 }
 
 function cerrarConexion() {
