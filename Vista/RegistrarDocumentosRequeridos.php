@@ -1,4 +1,4 @@
-<?php  
+f<?php  
 
     include '../Modelo/conexion.php';
     $con = new conexion(); 
@@ -92,6 +92,7 @@
         numberOfMonths: 1,
         minDate: new Date(),
         onClose: function( selectedDate ) {
+            minDate: new Date(),
         $( "#fechaInicioE" ).datepicker( "option", "maxDate", selectedDate );
 
 
@@ -383,8 +384,8 @@
                                 <label class="default">
                                  Hora Inicio de Entrega:<span id="sprytextfield1"></label>
                                  <div class="form-group">
-                                    <label for="horaInicioE">
-                                        <input id="hora" class ="form-control" placeholder="HH:MM"  type="time" name="horaInicioE" pattern ="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required />
+                                    <label for="horaINICIO">
+                                        <input id="horaInicio" class ="form-control" placeholder="HH:MM"  name="horaInicio" pattern ="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required/>
                                     </label>
                                 </div>
                             </div>
@@ -397,7 +398,7 @@
                               <label class="default" for="fecha">Fecha Final de Entrega</label>
                               <div class="form-group">
                                 <label>
-                                    <input id="fechaF" class ="form-control" placeholder="AAAA-MM-DD"  type="fecha" name="fechaFinalE"  required/ readonly>
+                                    <input id="fechaFinalE" class ="form-control" placeholder="AAAA-MM-DD"  type="date" name="fecha"  required/ readonly>
                                 </label>
                             </div>
                             
@@ -406,10 +407,10 @@
 
                         <div class="col-md-6">
                             <label class="default">
-                                Hora Final de Entrega :<td><span id="fecha"></label>
+                                Hora Final de Entrega :<td><span id="sprytextfield1"></label>
                                 <div class="form-group">
                                     <label for="horaLimite">
-                                        <input id="hora" class ="form-control"  placeholder="HH:MM" type="time" name="horaFinalE"  pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required/ readonly>
+                                        <input id="horafinal" class ="form-control"  placeholder="HH:MM" type="time"  name="horaFinal"  pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required/>
                                     </label>
                                 </div>
                                 

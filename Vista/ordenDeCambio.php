@@ -399,7 +399,8 @@ include '../Modelo/validadorAcceso.php';
                      <div class="form-group">
                         <label class="col-xs-2 control-label">Hora de la reuni&oacute;n:</label>
                         <div class="col-sm-1" >
-                        <input class="form-control" style="width:500px;heigth:30px;"  name="hora" id="hora"  placeholder="HH:MM" readonly="readonly">
+                        <input id="horaInicio" class ="form-control" style="width:500px;heigth:30px;" placeholder="HH:MM" type="time"  name="horaInicio"  pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required/>
+                    </div>
                     </div>
       
                     </div><!--end/fecha-->

@@ -88,8 +88,10 @@
         numberOfMonths: 1,
         minDate: new Date(),
         onClose: function( selectedDate ) {
+              minDate: new Date(),
         $( "#from" ).datepicker( "option", "maxDate", selectedDate );
 
+        
 
         }
         });
