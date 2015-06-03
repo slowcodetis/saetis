@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 03, 2015 at 01:40 AM
+-- Generation Time: Jun 03, 2015 at 04:41 PM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.7
 
@@ -1022,7 +1022,6 @@ INSERT INTO `rol_url` (`id`, `idUrl`, `idRol`) VALUES
 (19, 19, 'administrador'),
 (20, 20, 'administrador'),
 (21, 21, 'administrador'),
-(22, 22, 'administrador'),
 (23, 23, 'administrador'),
 (24, 24, 'administrador'),
 (25, 11, 'administrador'),
@@ -1087,7 +1086,7 @@ CREATE TABLE `sesion` (
   `FECHA_S` date NOT NULL,
   `HORA_S` time NOT NULL,
   `IP_S` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=189 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sesion`
@@ -1119,7 +1118,13 @@ INSERT INTO `sesion` (`ID_S`, `NOMBRE_U`, `FECHA_S`, `HORA_S`, `IP_S`) VALUES
 (185, 'LeticiaB', '2015-06-02', '06:44:18', '::1'),
 (186, 'LeticiaB', '2015-06-02', '06:46:36', '::1'),
 (187, 'LeticiaB', '2015-06-02', '08:15:55', '::1'),
-(188, 'FreeValue', '2015-06-03', '12:06:20', '::1');
+(188, 'FreeValue', '2015-06-03', '12:06:20', '::1'),
+(189, 'GE', '2015-06-03', '04:25:02', '::1'),
+(190, 'GE', '2015-06-03', '04:25:07', '::1'),
+(191, 'LeticiaB', '2015-06-03', '04:25:17', '::1'),
+(192, 'LeticiaB', '2015-06-03', '04:25:31', '::1'),
+(193, 'GE', '2015-06-03', '04:25:41', '::1'),
+(194, 'Admin1', '2015-06-03', '04:41:28', '::1');
 
 -- --------------------------------------------------------
 
@@ -1131,49 +1136,41 @@ CREATE TABLE `socio` (
   `CODIGO_S` int(11) NOT NULL,
   `NOMBRE_U` varchar(50) NOT NULL,
   `NOMBRES_S` varchar(50) NOT NULL,
-  `APELLIDOS_S` varchar(50) NOT NULL
+  `APELLIDOS_S` varchar(50) NOT NULL,
+  `GESTION` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1 AVG_ROW_LENGTH=819;
-
-DELETE FROM `socio`;
-
-ALTER TABLE `socio`
-  ADD `GESTION` int(11) NOT NULL;
-ALTER TABLE `socio`
-  ADD KEY `FK_SOCIO_GESTION` (`GESTION`); 
-ALTER TABLE `socio`
-  ADD CONSTRAINT `FK_SOCIO_GESTION` FOREIGN KEY (`GESTION`) REFERENCES `gestion` (`ID_G`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Dumping data for table `socio`
 --
 
 INSERT INTO `socio` (`CODIGO_S`, `NOMBRE_U`, `NOMBRES_S`, `APELLIDOS_S`, `GESTION`) VALUES
-(17, 'FreeValue', 'Oscar', 'Gamboa Acho', '1'),
-(19, 'FreeValue', 'Valeri', 'Crespo Gutierrez', '1'),
-(20, 'FreeValue', 'Ruddy', 'Marquina Escobar', '1'),
-(21, 'FreeValue', 'Juan', 'Perez', '1'),
-(22, 'FreeValue', 'Nombre', 'Apellido', '1'),
-(23, 'FreeValue', 'Nombre', 'Apellido', '1'),
-(25, 'Nuevo123', 'Santiago', 'Quiroga', '1'),
-(30, 'Nuevo123', 'Melisa', 'Carballo', '1'),
-(31, 'Nuevo123', 'Cristhian', 'Lima', '1'),
-(33, 'Nuevo123', 'Rodrigo', 'Rivera', '1'),
-(37, 'Nuevo123', '', '', '1'),
-(38, 'Test', 'Test', 'Test', '1'),
-(39, 'Test', 'Test', 'Test', '1'),
-(40, 'Test', 'Test', 'Test', '1'),
-(41, 'Test', 'TestR', 'TestR', '1'),
-(42, 'Test', 'Test', 'TestR', '1'),
-(43, 'GE', 'GE', 'GE', '1'),
-(44, 'GE', '', '', '1'),
-(45, 'GE', '', '', '1'),
-(46, 'loco', 'loco', 'loco', '1'),
-(47, 'loco', 'loco', 'loco', '1'),
-(48, 'loco', 'loco', 'loco', '1'),
-(49, 'loco', 'loco', 'loco', '1'),
-(50, 'No Representante', 'Socio 1', 'Socio 2', '1'),
-(51, 'No Representante', 'Socio 2', 'Socio 1', '1'),
-(52, 'No Representante', 'Socio 3', 'Socio 3', '1');
+(17, 'FreeValue', 'Oscar', 'Gamboa Acho', 1),
+(19, 'FreeValue', 'Valeri', 'Crespo Gutierrez', 1),
+(20, 'FreeValue', 'Ruddy', 'Marquina Escobar', 1),
+(21, 'FreeValue', 'Juan', 'Perez', 1),
+(22, 'FreeValue', 'Nombre', 'Apellido', 1),
+(23, 'FreeValue', 'Nombre', 'Apellido', 1),
+(25, 'Nuevo123', 'Santiago', 'Quiroga', 1),
+(30, 'Nuevo123', 'Melisa', 'Carballo', 1),
+(31, 'Nuevo123', 'Cristhian', 'Lima', 1),
+(33, 'Nuevo123', 'Rodrigo', 'Rivera', 1),
+(37, 'Nuevo123', '', '', 1),
+(38, 'Test', 'Test', 'Test', 1),
+(39, 'Test', 'Test', 'Test', 1),
+(40, 'Test', 'Test', 'Test', 1),
+(41, 'Test', 'TestR', 'TestR', 1),
+(42, 'Test', 'Test', 'TestR', 1),
+(43, 'GE', 'GE', 'GE', 1),
+(44, 'GE', '', '', 1),
+(45, 'GE', '', '', 1),
+(46, 'loco', 'loco', 'loco', 1),
+(47, 'loco', 'loco', 'loco', 1),
+(48, 'loco', 'loco', 'loco', 1),
+(49, 'loco', 'loco', 'loco', 1),
+(50, 'No Representante', 'Socio 1', 'Socio 2', 1),
+(51, 'No Representante', 'Socio 2', 'Socio 1', 1),
+(52, 'No Representante', 'Socio 3', 'Socio 3', 1);
 
 -- --------------------------------------------------------
 
@@ -1669,7 +1666,8 @@ ALTER TABLE `sesion`
 --
 ALTER TABLE `socio`
   ADD PRIMARY KEY (`CODIGO_S`) USING BTREE,
-  ADD KEY `FK_GRUPO_EMPRESA__SOCIO` (`NOMBRE_U`) USING BTREE;
+  ADD KEY `FK_GRUPO_EMPRESA__SOCIO` (`NOMBRE_U`) USING BTREE,
+  ADD KEY `FK_SOCIO_GESTION` (`GESTION`);
 
 --
 -- Indexes for table `tipo`
@@ -1820,7 +1818,7 @@ ALTER TABLE `seguimiento`
 -- AUTO_INCREMENT for table `sesion`
 --
 ALTER TABLE `sesion`
-  MODIFY `ID_S` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=189;
+  MODIFY `ID_S` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=195;
 --
 -- AUTO_INCREMENT for table `socio`
 --
@@ -2093,6 +2091,7 @@ ALTER TABLE `sesion`
 -- Constraints for table `socio`
 --
 ALTER TABLE `socio`
+  ADD CONSTRAINT `FK_SOCIO_GESTION` FOREIGN KEY (`GESTION`) REFERENCES `gestion` (`ID_G`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `FK_GRUPO_EMPRESA__SOCIO` FOREIGN KEY (`NOMBRE_U`) REFERENCES `grupo_empresa` (`NOMBRE_U`);
 
 --
