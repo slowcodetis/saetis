@@ -60,7 +60,12 @@
     <link href="../Librerias/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
     <link href="../Librerias/css/plugins/timeline/timeline.css" rel="stylesheet">
 
-
+    <style>
+        .menuScroll {
+            overflow: auto;
+            max-height: 500%;
+        }
+    </style>
 
     <link href="../Librerias/css/plugins/timeline/timeline.css" rel="stylesheet">
     <!-- SB Admin CSS - Include with every page -->
@@ -109,7 +114,7 @@
         </ul>
         <!-- /.navbar-top-links -->
 
-        <div class="navbar-default navbar-static-side" role="navigation">
+        <div class="navbar-default navbar-static-side menuScroll" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>

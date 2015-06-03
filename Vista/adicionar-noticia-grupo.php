@@ -96,12 +96,17 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 
     <style>
-            .textbox
-            {
-                resize:none;
-                width: 1026px;
-                height: 240px;
-            }
+        .textbox
+        {
+            resize:none;
+            width: 1026px;
+            height: 240px;
+        }
+        
+        .menuScroll {
+            overflow: auto;
+            max-height: 500%;
+        }
     </style>
 
 </head>
@@ -146,7 +151,7 @@
             </ul>
             <!-- /.navbar-top-links -->
             
-            <div class="navbar-default navbar-static-side" role="navigation">
+            <div class="navbar-default navbar-static-side menuScroll" role="navigation">
                 <div class="sidebar-collapse">
                     <ul class="nav" id="side-menu">
                         

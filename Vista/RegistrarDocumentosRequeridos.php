@@ -70,7 +70,12 @@ f<?php
      <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.css" rel="stylesheet">
      <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
    
-
+     <style>
+        .menuScroll {
+            overflow: auto;
+            max-height: 500%;
+        }
+    </style>
 
 <script>
         $(function() {
@@ -150,7 +155,7 @@ f<?php
         </ul>
         <!-- /.navbar-top-links -->
 
-        <div class="navbar-default navbar-static-side" role="navigation">
+        <div class="navbar-default navbar-static-side menuScroll" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>

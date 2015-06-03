@@ -61,6 +61,12 @@
     <script type="text/javascript" src="../Librerias/calendario2/jquery.datetimepicker.js"></script>
     <script type="text/javascript" src="../Librerias/js/validar_notificacion.js"></script>
 
+    <style>
+        .menuScroll {
+            overflow: auto;
+            max-height: 500%;
+        }
+    </style>
 
     <script type="text/javascript">
         function mostrarReferencia()
@@ -132,7 +138,7 @@
         </ul>
         <!-- /.navbar-top-links -->
 
-        <div class="navbar-default navbar-static-side" role="navigation">
+        <div class="navbar-default navbar-static-side menuScroll" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>

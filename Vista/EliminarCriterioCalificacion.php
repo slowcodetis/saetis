@@ -56,7 +56,12 @@
     <script src="../Librerias/js/CrearModalidadCalificacion.js"></script>
 
 
-
+    <style>
+        .menuScroll {
+            overflow: auto;
+            max-height: 500%;
+        }
+    </style>
 
 
     <link href="../Librerias/css/plugins/timeline/timeline.css" rel="stylesheet">
@@ -106,7 +111,7 @@
         </ul>
         <!-- /.navbar-top-links -->
 
-        <div class="navbar-default navbar-static-side" role="navigation">
+        <div class="navbar-default navbar-static-side menuScroll" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>

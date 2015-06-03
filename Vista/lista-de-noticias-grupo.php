@@ -61,7 +61,12 @@
     <!-- JS -->
     <script type="text/javascript" src="../Librerias/lib/funcion.js"></script>
     
-
+    <style>
+        .menuScroll {
+            overflow: auto;
+            max-height: 500%;
+        }
+    </style>
 
 
     <!-- Page-Level Plugin CSS - Dashboard -->
@@ -112,7 +117,7 @@
             </ul>
             <!-- /.navbar-top-links -->
             
-            <div class="navbar-default navbar-static-side" role="navigation">
+            <div class="navbar-default navbar-static-side menuScroll" role="navigation">
                 <div class="sidebar-collapse">
                     <ul class="nav" id="side-menu">
                         

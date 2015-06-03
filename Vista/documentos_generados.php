@@ -65,6 +65,12 @@
     <link href="../Librerias/css/sb-admin.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 
+    <style>
+        .menuScroll {
+            overflow: auto;
+            max-height: 500%;
+        }
+    </style>
 </head>
 
 <body>
@@ -107,7 +113,7 @@
         </ul>
         <!-- /.navbar-top-links -->
 
-        <div class="navbar-default navbar-static-side" role="navigation">
+        <div class="navbar-default navbar-static-side menuScroll" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
