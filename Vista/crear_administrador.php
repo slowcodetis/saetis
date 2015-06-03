@@ -64,6 +64,6 @@ if($camposNoVacios) {
     }
 }
 else {
-    echo"<script type=\"text/javascript\">alert('No puede existir uno o mas campos vacios'); window.location='registro_administrador.php';</script>";  
+    echo"<script type=\"text/javascript\">alert('No puede existir uno o mas campos vacios'); window.history.back();</script>";  
 }
 ?>

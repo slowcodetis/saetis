@@ -402,32 +402,28 @@ include '../Modelo/validadorAcceso.php';
       
                     </div><!--end/fecha-->
 
-                     <div class="form-group">
-                        <label class="col-xs-2 control-label">Hora de la reuni&oacute;n:</label>
-                        <div class="col-sm-1" >
-                        <input id="horaInicio" class ="form-control" style="width:500px;heigth:30px;" placeholder="HH:MM" type="time"  name="horaInicio"  pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required/>
-                    </div>
-                    </div>
-      
-                    </div><!--end/fecha-->
+                         <div class="form-group">
+                            <label class="col-xs-2 control-label">Hora de la reuni&oacute;n:</label>
+                            <div class="col-sm-1" >
+                                <input class="form-control" style="width:500px;heigth:30px;"  name="hora" id="hora"  placeholder="HH:MM" readonly="readonly">
+                            </div>
+                        </div>
                     
                     <div class="form-group">
                         <label class="col-xs-2 control-label">Lugar de la reuni&oacute;n:</label>
                         <div class="col-sm-2" >
-                        <input class="form-control" style="width:500px;heigth:30px;"  name="lugar">
-                      </div>
+                            <input class="form-control" style="width:500px;heigth:30px;"  name="lugar">
+                        </div>
                         
                     </div><!--end/lugar-->
-
-
-                      <div class="form-group" >
-                        <label class="col-sm-2 control-label">Observaciones</label>
-                         <a onclick="agregarHijo()" class="link-dos" > Agregar Observacion&nbsp;&nbsp;</a><span class="glyphicon glyphicon-plus"></span>
-                         <a onclick="quitarHijo()" class="link-dos" > Quitar Observacion&nbsp;&nbsp;</a> <span class="glyphicon glyphicon-minus"></span>
-                         
-                         <div id = "observaciones" style="height: 200px;width:600px;overflow: scroll">
-                         </div>
-                      </div><!--end/observaciones-->
+                  <div class="form-group" >
+                    <label class="col-sm-2 control-label">Observaciones</label>
+                     <a onclick="agregarHijo()" class="link-dos" > Agregar Observacion&nbsp;&nbsp;</a><span class="glyphicon glyphicon-plus"></span>
+                     <a onclick="quitarHijo()" class="link-dos" > Quitar Observacion&nbsp;&nbsp;</a> <span class="glyphicon glyphicon-minus"></span>
+                     
+                     <div id = "observaciones" style="height: 200px;width:600px;overflow: scroll">
+                     </div>
+                  </div><!--end/observaciones-->
                      
                     
                     <div class   ="form-group">

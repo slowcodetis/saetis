@@ -16,11 +16,6 @@
     $camposNoVacios = $camposNoVacios && strlen(trim($rol)) > 0;
     $camposNoVacios = $camposNoVacios && strlen(trim($Apellido)) > 0;
     $camposNoVacios = $camposNoVacios && strlen(trim($Telefono)) > 0;
-    if($camposNoVacios){
-     echo '<script>alert(" no vacio");</script>';
-    } else {
-       echo '<script>alert("vacio");</script>';
-    }
 
     include '../Modelo/conexion.php';
     require '../Vista/PHPMailerAutoload.php';
@@ -95,7 +90,7 @@
 
     } else {
         echo '<script>alert("Los campos no pueden estar vacios");</script>';
-        echo '<script>window.location="RegistrarUsuario.php";</script>';
+        echo '<script>window.history.back();</script>';
     }
    
 ?>

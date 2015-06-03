@@ -7,6 +7,9 @@
 </html>
 
 <?php
+
+    
+
 include '../Modelo/conexion_pd.php';
 include '../Modelo/crear_oc_pdf.php';
 include 'ValidadorIntervaloFecha.php';
@@ -20,10 +23,15 @@ $nombreAp = $nomAp->fetchObject();
 $nomA = $nombreAp->NOMBRES_A;
 $apeA = $nombreAp->APELLIDOS_A;
 $nAsesor = $nomA." ".$apeA ;
+    
+
+
     if (isset($_POST['lista'])) 
     {
+
         if (isset($_POST['fecha']))
         {
+
             $fecha = $_POST['fecha'];
             if($validador->validarTiempoFecha($fecha)){
                 if (isset($_POST['hora']))
@@ -145,6 +153,7 @@ $nAsesor = $nomA." ".$apeA ;
                                             $remplazo['sexto_p'] = intval($califi [5]);
                                             $remplazo['septimo_p'] = intval($califi [6]);
                                             $obDetalle = "[".count($observ)."]{";
+                                            
                                             for ($i=0;$i<count($observ);$i++)
                                             {
                                                 if($i!=0)
@@ -222,7 +231,6 @@ $nAsesor = $nomA." ".$apeA ;
                                               $row= $consulta->fetchObject();
                                               $nombDoc = $row->NOMBRE_R;
                                             }
-                                           
                                             //if (strcasecmp($nombreDoc, $nombDoc)!=0) 
                                             {
                                                 $comentar = $conexion->query("INSERT INTO registro (NOMBRE_U,TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R) VALUES ('$nombreUA','publicaciones','Habilitado','$nombreDoc','$fecha','$hora')")or

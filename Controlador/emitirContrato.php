@@ -164,7 +164,7 @@
             }
             else{        
             
-               echo"<script type=\"text/javascript\">alert('Por favor, seleccione una grupo empresa'); window.location='../Vista/contrato.php';</script>";  
+               echo"<script type=\"text/javascript\">alert('Por favor, seleccione una grupo empresa'); window.history.back();;</script>";  
             }
         }
         else

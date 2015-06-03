@@ -114,6 +114,6 @@
         }
     }
     else {
-        echo"<script type=\"text/javascript\">alert('Los campos no pueden estar vacios'); window.location='RegistrarGrupoEmpresa.php';</script>";
+        echo"<script type=\"text/javascript\">alert('Los campos no pueden estar vacios'); window.history.back();</script>";
     } 
 ?>

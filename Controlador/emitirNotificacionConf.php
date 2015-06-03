@@ -233,7 +233,7 @@ $nAsesor = $nomA." ".$apeA ;
         	    }
             }
             else {
-                echo"<script type=\"text/javascript\">alert('La fecha ingresada es previa a la actual, seleccione otra.'); window.location='../Vista/notificacion_conformidad.php';</script>";      
+                echo"<script type=\"text/javascript\">alert('La fecha ingresada es previa a la actual, seleccione otra.'); window.history.back();</script>";      
             }
         }
     }
