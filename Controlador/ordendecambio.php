@@ -13,6 +13,9 @@
 include '../Modelo/conexion_pd.php';
 include '../Modelo/crear_oc_pdf.php';
 include 'ValidadorIntervaloFecha.php';
+
+include '../Controlador/filtroXSS.php';
+
 session_start();
 $conexion = new conexion();
 $validador = new ValidadorFecha();
@@ -32,7 +35,7 @@ $nAsesor = $nomA." ".$apeA ;
         if (isset($_POST['fecha']))
         {
 
-            $fecha = $_POST['fecha'];
+            $fecha = filterXSS($_POST['fecha']);
             if($validador->validarTiempoFecha($fecha)){
                 if (isset($_POST['hora']))
                 {
@@ -47,14 +50,14 @@ $nAsesor = $nomA." ".$apeA ;
                                     
                         if($existeF)
                         {
-                            $nEmpresa=$_POST['lista']; 
+                            $nEmpresa=filterXSS($_POST['lista']); 
                                    
                             if(strnatcasecmp($nEmpresa, "Seleccione una grupo empresa")!=0)
                             {
-                                $fecha = $_POST['fecha'];
-                                $hora = $_POST['hora'];
-                                $lugar = $_POST['lugar'];
-                                $arr = $_POST['text'];
+                                $fecha = filterXSS($_POST['fecha']);
+                                $hora = filterXSS($_POST['hora']);
+                                $lugar = filterXSS($_POST['lugar']);
+                                $arr = filterXSS($_POST['text']);
                                 
                                 $califi = array();
                                 $observ =array();

@@ -2,21 +2,21 @@
 
 include '../Modelo/conexion.php';
 //include '../Modelo/ValidadorIntervaloFecha.php';
-
+include '../Controlador/filtroXSS.php';
 $conect = new conexion();
 //$validador = new ValidadorFecha();
 date_default_timezone_set('America/Puerto_Rico');
 
 session_start();
 $UsuarioActivo = $_SESSION['usuario'];
-$proyecto =$_POST['proyecto'];
+$proyecto = filterXSS($_POST['proyecto']);
 
-$nombreDoc = trim($_POST['nombreDocumento']);
-$FechaInicioEntrega = date("Y-m-d",strtotime($_POST['fechaInicioE']));
-$HoraInicioEntrega = $_POST['horaInicioE'];
-$FechaFinalEntrega = date("Y-m-d",strtotime($_POST['fechaFinalE']));
-$HoraFinalEntrega = $_POST['horaFinalE'];
-$DescripcionDocumento = $_POST['DescripcionDocumento'];
+$nombreDoc = filterXSS(trim($_POST['nombreDocumento']));
+$FechaInicioEntrega = filterXSS(date("Y-m-d",strtotime($_POST['fechaInicioE'])));
+$HoraInicioEntrega = filterXSS($_POST['horaInicioE']);
+$FechaFinalEntrega = filterXSS(date("Y-m-d",strtotime($_POST['fechaFinalE'])));
+$HoraFinalEntrega = filterXSS($_POST['horaFinalE']);
+$DescripcionDocumento = filterXSS($_POST['DescripcionDocumento']);
 
 //$fechaValida = true;
 //$fechaValida = $fechaValida && $validador->validarTiempoFecha($FechaInicioEntrega) && $validador->validarTiempoFecha($FechaFinalEntrega);

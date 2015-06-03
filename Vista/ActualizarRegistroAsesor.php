@@ -1,13 +1,16 @@
 <?php
 session_start();
     include '../Modelo/conexion.php';
+
+    include '../Controlador/filtroXSS.php';
+
     $conectar = new conexion();
-    $name = $_POST['nombreUsuario'];
-    $RealName = $_POST['nombreReal'];
-    $password = $_POST['password'];
-    $emailUsuario = $_POST['email'];
-    $apellidoUsuario = $_POST['apellido'];
-    $telefonoUsuario = $_POST['telefono'];
+    $name = filterXSS($_POST['nombreUsuario']);
+    $RealName = filterXSS($_POST['nombreReal']);
+    $password = filterXSS($_POST['password']);
+    $emailUsuario = filterXSS($_POST['email']);
+    $apellidoUsuario = filterXSS($_POST['apellido']);
+    $telefonoUsuario = filterXSS($_POST['telefono']);
 
 
 $updLogin=$_SESSION['usuario'];

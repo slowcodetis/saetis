@@ -1,13 +1,19 @@
 <?php
 
     include '../Modelo/conexion.php';
+    include '../Controlador/filtroXSS.php';
     session_start();
     $conexion = new conexion();
   
-    $nombreU = $_SESSION['usuario']  ;
+    /*$nombreU = $_SESSION['usuario'];
     $nombProy = $_POST['nombreProy'];
     $descProy = $_POST['desProy'];
-    $conv = $_POST['convocatoria'];
+    $conv = $_POST['convocatoria'];*/
+
+    $nombreU = filterXSS($_SESSION['usuario']);
+    $nombProy = filterXSS($_POST['nombreProy']);
+    $descProy = filterXSS($_POST['desProy']);
+    $conv = filterXSS($_POST['convocatoria']);
     
     $seleccion = "SELECT id_g "
         . "FROM gestion "

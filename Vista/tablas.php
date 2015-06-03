@@ -3,29 +3,31 @@
   include '../Modelo/conexion.php';
   include '../Controlador/ValidadorIntervaloFecha.php';
   
+  include '../Controlador/filtroXSS.php';
+
   session_start();
   $validador = new ValidadorFecha();
   $conect = new conexion();
 
-  $fechap   = $_POST["fecha1"];
+  $fechap   = filterXSS($_POST["fecha1"]);
 
 
   $scriptExito = "<script>alert('Publicacion realizada con exito')</script>";
 
-  if($validador->validarTiempoFecha($fechap)){
+  //if($validador->validarTiempoFecha($fechap)){
     $userAct = $_SESSION['usuario'];
     if(isset($_POST["enviar"])){
-            $destino= $_POST["Conocido"];
+            $destino= filterXSS($_POST["Conocido"]);
 
             if($destino=="Publico")
             {
                 $grupoE="PUBLICO";
-                $titulo      = $_POST["campoTitulo"];
-                $desDoc  = $_POST["campoDescripcion"];
-                $fechap   = $_POST["fecha1"];
+                $titulo      = filterXSS($_POST["campoTitulo"]);
+                $desDoc  = filterXSS($_POST["campoDescripcion"]);
+                $fechap   = filterXSS($_POST["fecha1"]);
 
-                $horap        = $_POST["hora1"];
-                $rutap        = $_POST["recurso"];
+                $horap        = filterXSS($_POST["hora1"]);
+                $rutap        = filterXSS($_POST["recurso"]);
                 $eshora=strftime($horap).":00";
                 $fecha       = date('Y-m-d');
                 $hora        =  date("G:H:i");
@@ -61,15 +63,15 @@
 
              if($destino=="Grupo Empresa")
             {
-                $grupoEmp=$_POST["grupoempresa"];
+                $grupoEmp=filterXSS($_POST["grupoempresa"]);
                 if($grupoEmp=="TODOS")
                 {
                   $destinoG="Todas las Grupo Empresas";
-                  $titulo      = $_POST["campoTitulo"];
-                  $desDoc  = $_POST["campoDescripcion"];
-                  $fechap   = $_POST["fecha1"];
-                  $horap        = $_POST["hora1"];
-                  $rutap        = $_POST["recurso"];
+                  $titulo      = filterXSS($_POST["campoTitulo"]);
+                  $desDoc  = filterXSS($_POST["campoDescripcion"]);
+                  $fechap   = filterXSS($_POST["fecha1"]);
+                  $horap        = filterXSS($_POST["hora1"]);
+                  $rutap        = filterXSS($_POST["recurso"]);
                   $eshora=strftime($horap).":00";
                   $fecha       = date('Y-m-d');
                   $hora        =  date("G:H:i");
@@ -112,11 +114,11 @@
                     else{
 
                       $destinoG="Todos los Proyectos";
-                      $titulo      = $_POST["campoTitulo"];
-                      $desDoc  = $_POST["campoDescripcion"];
-                      $fechap   = $_POST["fecha1"];
-                      $horap        = $_POST["hora1"];
-                      $rutap        = $_POST["recurso"];
+                      $titulo      = filterXSS($_POST["campoTitulo"]);
+                      $desDoc  = filterXSS($_POST["campoDescripcion"]);
+                      $fechap   = filterXSS($_POST["fecha1"]);
+                      $horap        = filterXSS($_POST["hora1"]);
+                      $rutap        = filterXSS($_POST["recurso"]);
                       $eshora=strftime($horap).":00";
                       $fecha       = date('Y-m-d');
                       $hora        =  date("G:H:i");
@@ -156,15 +158,15 @@
 
               if($destino=="Proyectos")
             {
-                $proyecto=$_POST["proyecto"];
+                $proyecto=filterXSS($_POST["proyecto"]);
                 if($proyecto=="TODOS")
                 {
                   $destinoG="Todos los Proyectos";
-                  $titulo      = $_POST["campoTitulo"];
-                  $desDoc  = $_POST["campoDescripcion"];
-                  $fechap   = $_POST["fecha1"];
-                  $horap        = $_POST["hora1"];
-                  $rutap        = $_POST["recurso"];
+                  $titulo      = filterXSS($_POST["campoTitulo"]);
+                  $desDoc  = filterXSS($_POST["campoDescripcion"]);
+                  $fechap   = filterXSS($_POST["fecha1"]);
+                  $horap        = filterXSS($_POST["hora1"]);
+                  $rutap        = filterXSS($_POST["recurso"]);
                   $eshora=strftime($horap).":00";
                   $fecha       = date('Y-m-d');
                   $hora        =  date("G:H:i");
@@ -206,11 +208,11 @@
 
                     else{
                       $destinoG="Todos los Proyectos";
-                      $titulo      = $_POST["campoTitulo"];
-                      $desDoc  = $_POST["campoDescripcion"];
-                      $fechap   = $_POST["fecha1"];
-                      $horap        = $_POST["hora1"];
-                      $rutap        = $_POST["recurso"];
+                      $titulo      = filterXSS($_POST["campoTitulo"]);
+                      $desDoc  = filterXSS($_POST["campoDescripcion"]);
+                      $fechap   = filterXSS($_POST["fecha1"]);
+                      $horap        = filterXSS($_POST["hora1"]);
+                      $rutap        = filterXSS($_POST["recurso"]);
                       $eshora=strftime($horap).":00";
                       $fecha       = date('Y-m-d');
                       $hora        =  date("G:H:i");
@@ -244,8 +246,8 @@
                 }
             }
     }
-  }
-  else {
-    echo"<script type=\"text/javascript\">alert('La fecha introducida es anterior a la fecha actual, cambie de fecha'); window.location='../Vista/publicar_asesor.php';</script>";
-  }          
+  //}
+  //else {
+    //echo"<script type=\"text/javascript\">alert('La fecha introducida es anterior a la fecha actual, cambie de fecha'); window.location='../Vista/publicar_asesor.php';</script>";
+  //}          
 ?>
