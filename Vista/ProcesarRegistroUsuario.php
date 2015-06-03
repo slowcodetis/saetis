@@ -8,6 +8,7 @@
     $Apellido = $_POST['apellido'];
     $Telefono = $_POST['telefono'];
 
+    $camposNoVacios = true;
     $camposNoVacios = $camposNoVacios && strlen(trim($Name)) > 0;
     $camposNoVacios = $camposNoVacios && strlen(trim($RealName)) > 0;
     $camposNoVacios = $camposNoVacios && strlen(trim($Pass)) > 0;
@@ -15,8 +16,11 @@
     $camposNoVacios = $camposNoVacios && strlen(trim($rol)) > 0;
     $camposNoVacios = $camposNoVacios && strlen(trim($Apellido)) > 0;
     $camposNoVacios = $camposNoVacios && strlen(trim($Telefono)) > 0;
-
-
+    if($camposNoVacios){
+     echo '<script>alert(" no vacio");</script>';
+    } else {
+       echo '<script>alert("vacio");</script>';
+    }
 
     include '../Modelo/conexion.php';
     require '../Vista/PHPMailerAutoload.php';
@@ -24,61 +28,9 @@
     if ($camposNoVacios){
       $conect = new conexion();
       $mail = new PHPMailer();
-
       $Sel_U = $conect->consulta("SELECT NOMBRE_U FROM usuario WHERE NOMBRE_U = '$Name' ");
       $Sel_U2 = mysql_fetch_row($Sel_U);
-      /////////////////////////////////////////////////////////////////////////////////////////////////
-    
-
-     /** $mystring = $Email;
-      $findme1   = 'hotmail';
-      $findme2   = 'gmail';
-      $findme3   = 'yahoo';
-      $pos1 = strpos($mystring, $findme1);
-      $pos2 = strpos($mystring, $findme2);
-      $pos3 = strpos($mystring, $findme3);
-      if ($pos1 === false) 
-      {
-          if($pos2 === false)
-          {
-              if($pos3 === false)
-                  {
-                   $numeroCorreo=0;
-                  }
-              else
-                 {
-                   $numeroCorreo=1;
-                 }
-          }
-          else
-          {
-             $numeroCorreo=1;
-          }
-           
-      
-      } 
-      else 
-      {
-      $numeroCorreo=1;
-      }
-
-      */
-     /** $numeroCorreo = 1;
-      
-      if(isset($Name) && isset($RealName) && isset($Pass) && isset($Email) && isset($Apellido) && isset($Telefono)) {
-        $numeroCorreo = 1;
-       
-      } else {
-        $numeroCorreo = 0;
-      }
-      */
-      
-     // echo "<script>alert('$rol');</script>";
-      ///////////////////////////////////////////////////////////////////////////////////////////////////
-      
-      
-       if (!is_array($Sel_U2)) 
-       {
+       if (!is_array($Sel_U2)) {
              
             //Definir que vamos a usar SMTP
             $mail->IsSMTP();
@@ -127,9 +79,6 @@
             if(!$mail->Send()) {
               echo "Error: " . $mail->ErrorInfo;
             } else {
-
-
-
               $conect->consulta("INSERT INTO usuario(NOMBRE_U, ESTADO_E, PASSWORD_U, TELEFONO_U, CORREO_ELECTRONICO_U) VALUES('$Name','Deshabilitado','$Pass','$Telefono','$Email')"); 
 
               $conect->consulta("INSERT INTO asesor(NOMBRE_U, NOMBRES_A, APELLIDOS_A) VALUES('$Name','$RealName','$Apellido')");  
@@ -139,19 +88,12 @@
               echo '<script>alert("Su solicitud se envio correctamente");</script>';
               echo '<script>window.location="RegistrarUsuario.php";</script>';
             }
-          
-    }
-    else{
+        } else {
+            echo '<script>alert("El nombre de usuario ya esta registrado");</script>';
+            echo '<script>window.location="RegistrarUsuario.php";</script>';
+        }
 
-
-        echo '<script>alert("El nombre de usuario ya esta registrado");</script>';
-        echo '<script>window.location="RegistrarUsuario.php";</script>';
-        
-
-    }
-    }
-    else
-    {
+    } else {
         echo '<script>alert("Los campos no pueden estar vacios");</script>';
         echo '<script>window.location="RegistrarUsuario.php";</script>';
     }
