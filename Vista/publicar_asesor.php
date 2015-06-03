@@ -56,6 +56,12 @@
     <script type="text/javascript" src="../Librerias/lib/funcion.js"></script>
     <script type="text/javascript" src="../Librerias/lib/funcionSeguimiento.js"></script>
 
+    <script type="text/javascript" src="../Librerias/js/calendario_notacion_conformidad.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Librerias/calendario2/jquery.datetimepicker.css"/>
+    <script type="text/javascript" src="../Librerias/calendario2/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="../Librerias/js/validar_notificacion.js"></script>
+
+
     <script type="text/javascript">
         function mostrarReferencia()
         {
@@ -373,7 +379,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" >Fecha de publicacion:</label>
                     <div class="col-xs-8">
-                            <input class="form-control" type="date" name="fecha1" placeholder="AAAA-MM-DD" pattern="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$" required/> 
+                            <input class="form-control" type="fecha" id="fecha" name="fecha" placeholder="AAAA-MM-DD" pattern="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$" required/ readonly> 
                     </div>
                 </div>
                                 
