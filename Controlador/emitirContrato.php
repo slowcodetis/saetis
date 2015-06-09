@@ -99,7 +99,8 @@
                     $texto = str_replace($buscar['convocatoria'], $remplazo['convocatoria'], $texto);
                         
                     file_put_contents($tex,$texto);
-                      exec("/usr/texbin/pdflatex -interaction=nonstopmode $tex",$final);
+                      //exec("/usr/texbin/pdflatex -interaction=nonstopmode $tex",$final);
+                      shell_exec("/usr/bin/pdflatex -output-directory /var/www/LaTeX_server/upload --interaction batchmode $tex");
                     file_put_contents($tex, $textoAux);
                     unlink($log);
                     unlink($aux);

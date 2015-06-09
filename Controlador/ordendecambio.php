@@ -234,7 +234,7 @@ $nAsesor = $nomA." ".$apeA ;
                                               $row= $consulta->fetchObject();
                                               $nombDoc = $row->NOMBRE_R;
                                             }
-                                            //if (strcasecmp($nombreDoc, $nombDoc)!=0) 
+                                            if (strcasecmp($nombreDoc, $nombDoc)!=0) 
                                             {
                                                 $comentar = $conexion->query("INSERT INTO registro (NOMBRE_U,TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R) VALUES ('$nombreUA','publicaciones','Habilitado','$nombreDoc','$fecha','$hora')")or
                                                 die("Error");
@@ -246,19 +246,22 @@ $nAsesor = $nomA." ".$apeA ;
                                                 $destinat=$conexion->query("INSERT INTO receptor (ID_R,RECEPTOR_R) VALUES('$id','$nEmpresa')");
                                                 $guardar = $conexion->query("INSERT INTO periodo (ID_R,fecha_p,hora_p) VALUES ('$id','$fecha','$hora')") or
                                                 die("Error");
+                                                echo"<script type=\"text/javascript\">alert('Se genero correctamente la orden de cambio'); window.location='../Vista/publicaciones.php';</script>";
                                             }
-                                            echo"<script type=\"text/javascript\">alert('Se genero correctamente la orden de cambio'); window.location='../Vista/ordenDeCambio.php';</script>";  
+                                            else {
+                                                echo"<script type=\"text/javascript\">alert('Ya se genero una orden de cambio para la grupo empresa seleccionada'); window.location='../Vista/publicaciones.php';</script>";
+                                            }
                                        }
                                     }
                                     else
                                     {
-                                        echo"<script type=\"text/javascript\">alert('La grupo empresa seleccionada aun no ha subido todos los documentos requeridos'); window.location='../Vista/ordenDeCambio.php';</script>"; 
+                                        echo"<script type=\"text/javascript\">alert('La grupo empresa seleccionada aun no ha subido todos los documentos requeridos');  window.history.back();</script>"; 
                                     }
                     }
                     }
                             else
                             {        
-                                echo"<script type=\"text/javascript\">alert('Por favor, seleccione una grupo empresa'); window.location='../Vista/ordenDeCambio.php';</script>";  
+                                echo"<script type=\"text/javascript\">alert('Por favor, seleccione una grupo empresa');  window.history.back();</script>";  
                             }
                         }
                         else
@@ -269,7 +272,7 @@ $nAsesor = $nomA." ".$apeA ;
                 }
             }
             else {
-                echo"<script type=\"text/javascript\">alert('La fecha ingresada es previa a la actual, seleccione otra.'); window.location='../Vista/ordenDeCambio.php';</script>";
+                echo"<script type=\"text/javascript\">alert('La fecha ingresada es previa a la actual, seleccione otra.');  window.history.back();</script>";
             }   
         }
     }

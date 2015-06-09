@@ -151,43 +151,38 @@ $nAsesor = $nomA." ".$apeA ;
 
                                         $file = "NotificacionConformidad".'_'.$nEmpresa.'.pdf';
 
-                                           if (!file_exists($rutaD)) 
-                                            {
+                                            if (!file_exists($rutaD)) {
                                                 $oldmask = umask(0); 
                                                 mkdir($rutaD, 0777,TRUE);
                                                 umask($oldmask);
                                                 chown($rutaD, "bittle2014"); 
                                                 chgrp($rutaD, "webtis");
 
-                                                if(!file_exists("../".$nombreUGE."/index.html"))
-                                                {
+                                                if(!file_exists("../".$nombreUGE."/index.html")) {
                                                     fopen("../".$nombreUGE."/index.html", "x");
                                                 }
-
                                             }
 
                                             //rename("NotificacionConformidad.pdf", $file);
-                                           rename("NotificacionConformidad.pdf", $rutaD.$pdf );
+                                            rename("NotificacionConformidad.pdf", $rutaD.$pdf );
 
-                                           $nruta = "../Repositorio/".$nombreUGE."/NC/"."NotificacionConformidad.pdf";
-                                           $fecha = date('Y-m-d');
-                                           $hora  = date("G:H:i");
-                                           $visible = "TRUE";
-                                           $descargar = "TRUE";
-                                           $nombreDoc = "Notificacion de Conformidad de ".$nombreCGE;
-                                           $nombDoc = "";
+                                            $nruta = "../Repositorio/".$nombreUGE."/NC/"."NotificacionConformidad.pdf";
+                                            $fecha = date('Y-m-d');
+                                            $hora  = date("G:H:i");
+                                            $visible = "TRUE";
+                                            $descargar = "TRUE";
+                                            $nombreDoc = "Notificacion de Conformidad de ".$nombreCGE;
+                                            $nombDoc = "";
 
-                                           $consulta = $conexion->query("SELECT `NOMBRE_R` FROM `registro` WHERE `NOMBRE_R` LIKE '$nombreDoc' ");
-                                           
-                                           $numRows = $consulta->rowCount();
-                                           
-                                           if($numRows>0){
+                                            $consulta = $conexion->query("SELECT `NOMBRE_R` FROM `registro` WHERE `NOMBRE_R` LIKE '$nombreDoc' ");
+
+                                            $numRows = $consulta->rowCount();
+                                            
+                                            if($numRows>0){
                                               $row= $consulta->fetchObject();
                                               $nombDoc = $row->NOMBRE_R;
-                                           }
-
-                                           //if (strcasecmp($nombreDoc, $nombDoc)!=0) 
-                                           {
+                                            }
+                                            if (strcasecmp($nombreDoc, $nombDoc)!=0) {
                                                 $comentar = $conexion->query("INSERT INTO registro (NOMBRE_U,TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R) VALUES ('$nombreUA','publicaciones','Habilitado','$nombreDoc','$fecha','$hora')")or
                                                 die("Error");
 
@@ -200,9 +195,11 @@ $nAsesor = $nomA." ".$apeA ;
                                                 $destina=$conexion->query("INSERT INTO receptor (ID_R,RECEPTOR_R) VALUES('$id','$nEmpresa')");
                                                 $guardar = $conexion->query("INSERT INTO periodo (ID_R,fecha_p,hora_p) VALUES ('$id','$fecha','$hora')") or
                                                 die("Error");
-                                           }
-
-                                        
+                                                echo"<script type=\"text/javascript\">alert('Se genero correctamente la notificacion de conformidad'); window.location='../Vista/publicaciones.php';</script>";  
+                                            }
+                                            else {
+                                                echo"<script type=\"text/javascript\">alert('Ya se genero una notificacion de conformidad para la grupo empresa seleccionada'); window.location='../Vista/publicaciones.php';</script>";
+                                            }
 
                                             $directorioIndex = "../".$nombreUGE."/NC/index.html";
                 
@@ -211,25 +208,19 @@ $nAsesor = $nomA." ".$apeA ;
                                                 $directorioIndex = "../".$nombreUGE."/NC/index.html";
                                                 fopen($directorioIndex, "x");
                                             }*/
-
-                                            echo"<script type=\"text/javascript\">alert('Se genero correctamente la notificacion de conformidad'); window.location='../Vista/notificacion_conformidad.php';</script>";  
-                                                                 
-                                        }   
-                                        
-                                    }
-                                    else
-                                    {
-                                
-                                        echo"<script type=\"text/javascript\">alert('La grupo empresa seleccionada aun no ha subido todos los documentos requeridos'); window.location='../Vista/notificacion_conformidad.php';</script>";  
-                                    }			
+                                    }   
+                                }
+                                else
+                                {
+                            
+                                    echo"<script type=\"text/javascript\">alert('La grupo empresa seleccionada aun no ha subido todos los documentos requeridos'); window.history.back();</script>";  
+                                }			
         			        } 
-                            else
-                            {        
-                                echo"<script type=\"text/javascript\">alert('Por favor, seleccione una grupo empresa'); window.location='../Vista/notificacion_conformidad.php';</script>";  
+                            else {        
+                                echo"<script type=\"text/javascript\">alert('Por favor, seleccione una grupo empresa'); window.history.back();</script>";  
                             }
                         }
-                        else
-                        {
+                        else {
                             echo"<script type=\"text/javascript\">alert('Por favor, suba la plantilla de Notificacion de Conformidad a su repositorio.'); window.location='../Vista/notificacion_conformidad.php';</script>";      
                         }
         		    }		
