@@ -54,7 +54,7 @@ $nAsesor = $nomA." ".$apeA ;
                                    
                             if(strnatcasecmp($nEmpresa, "Seleccione una grupo empresa")!=0)
                             {
-                                $fecha2 = filterXSS($_POST['fecha']);
+                                $fecha = filterXSS($_POST['fecha']);
                                 $hora = filterXSS($_POST['hora']);
                                 $lugar = filterXSS($_POST['lugar']);
                                 $arr = filterXSS($_POST['text']);
@@ -143,8 +143,8 @@ $nAsesor = $nomA." ".$apeA ;
 											$pdf->SetAutoPageBreak(true,45); 
 
 $texto = '  Esta adenda de corrección debe ser entregada por correo electrónico antes de la firma del contrato, misma que debe hacerse llegar al correo leticia@memi.umss.edu.bo.
-  Paralelamnete se solicita, indicar el día de su preferencia para realizar revisiones, puesta en marcha y seguimiento de su propuesta de desarrollo en el tiempo que dure el contrato con TIS.
-  Asímismo, recordar que para el día de la firma del contrato que se realizará el día <b>'. $fecha . '</b> a horas <b>'.$hora.'</b> en <b>'.$lugar .'</b>; se requiere de una copia física de la Boleta de Garantía, emitida a favor de TIS por parte de <b>'.$nombreCGE.'</b>.';
+  Paralelamnete se solicita, indicar el día de su preferencia para realizar revisiones, puesta en marcha y seguimiento de su propuesta de desarrollo en el tiempo que dure el contrato con TIS.';
+  $texto2 = '  Asímismo, recordar que para el día de la firma del contrato que se realizará el día <b>'. $fecha . '</b> a horas <b>'.$hora.'</b> en <b>'.$lugar .'</b>; se requiere de una copia física de la Boleta de Garantía, emitida a favor de TIS por parte de <b>'.$nombreCGE.'</b>.';
 
 											$puntajes = array('0','0','0','0','0','0','0');
 											$descripciones = array('  Cumplimiento de especificaciones del proponente',utf8_decode('  Claridad en la organización de la empresa proponente'),utf8_decode('  Cumplimiento de especificaciones técnicas'),'  Claridad en el proceso de desarrollo',utf8_decode('  Plazo de ejecución'),'  Precio total','  Uso de herramientas en el proceso de desarrollo');
@@ -178,11 +178,12 @@ $texto = '  Esta adenda de corrección debe ser entregada por correo electrónic
 											}
 											$pdf->Ln();
 											//$pdf->MultiCell(0,5,utf8_decode($texto));
-											$pdf->writeHTML(utf8_decode($texto));
+											$pdf->MultiCell(0,5,utf8_decode($texto));
+											$pdf->writeHTML(utf8_decode($texto2));
 											//$pdf->writeHTML('This is my disclaimer. <b>THESE WORDS NEED TO BE BOLD.</b> These words do not need to be bold.');
 
 														mkdir("../Repositorio/".$nombreUGE."/OC");
-											$pdf->Output('../Repositorio/Nuevo123/OC/OrdenCambio.pdf','F');
+											$pdf->Output('../Repositorio/'.$nombreUGE.'/OC/OrdenCambio.pdf','F');
 											
                                             $rutaD="../Repositorio/asesor/".$nombreUGE."/OC/";
                                             $file = "OrdenCambio".'_'.$nEmpresa.'.pdf';

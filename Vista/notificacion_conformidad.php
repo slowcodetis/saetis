@@ -451,7 +451,7 @@
 
                     <div class   ="form-group">
                       <div class   ="col-sm-8">
-                         <input class ="btn btn-primary" type="submit" value= "Generar" id= "enviar" name="enviar" onclick ="this.form.action='../Controlador/emitirNotificacionConf.php?id=0'"></input> &nbsp;&nbsp;                      
+                         <input class ="btn btn-primary" type="submit" value= "Generar" id= "enviar" name="enviar" onclick ="this.form.action='../Controlador/GeneradorNotificacionConformidad.php?id=0'"></input> &nbsp;&nbsp;                      
                       </div>
                     </div><!--end/submit-->
 
