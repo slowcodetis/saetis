@@ -193,7 +193,7 @@
                                                                             <div class="col-md-6">
                                                                                 <div class="btn-group open">
                                                                                 <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="Seleccionar..." style="width: 300px;">Seleccione los destinatario(s) <b class="caret"></b></button>
-                                                                                <ul class="multiselect-container dropdown-menu">';
+                                                                                <ul class="multiselect-container dropdown-menu" style="max-height:200px;width:300px;overflow: auto;">';
                                                         $listaItems = "";
                                                         $sql=$conectar->consulta("SELECT u.NOMBRE_U from usuario as u");
                                                 		while($row=mysql_fetch_array($sql)) {

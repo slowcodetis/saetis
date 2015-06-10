@@ -49,6 +49,10 @@ class ValidadorFecha {
 
         return $res;
     }
+
+    function estaEnRango($fecha, $inicio, $fin) {
+        return $this->validarIntervalosFecha($inicio, $fecha) && $this->validarIntervalosFecha($fecha, $fin);
+    }
 }
 
 ?>
