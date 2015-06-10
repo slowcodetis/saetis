@@ -80,9 +80,9 @@
                 <!-- /.navbar-header -->
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                    <a data-toggle="modal" href="javascript:void('')" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"></span>
-                    Repositorio</a>
-                </li>
+                        <a data-toggle="modal" href="javascript:void('')" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"></span>
+                        Repositorio</a>
+                    </li>
                     <li>
                         <a href="lista-de-noticias.php"><i class="glyphicon glyphicon-comment"></i> Foro</a>
                     </li>
@@ -344,7 +344,7 @@
                         <!-- /.row -->
                             <div style="display: none;" aria-hidden="true" class="modal fade" id="myModal">
                                 <div class="modal-dialog modal-lg">
-                                    <div class="modal-content" style="max-width: 920;">
+                                    <div class="modal-content" style="max-width: 920px;">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                             <h4 class="modal-title">Buscador</h4>

@@ -66,7 +66,7 @@
         .menuScroll {
             /*overflow: auto;*/
             overflow-y:scroll;
-            max-height: 500%;
+            max-height: 300px;
         }
     </style>
 
@@ -297,7 +297,7 @@
         
         <div style="display: none;" aria-hidden="true" class="modal fade" id="myModal">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content" style="max-width: 920;">
+                <div class="modal-content" style="max-width: 920px;">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="modal-title">Buscador</h4>
