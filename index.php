@@ -70,7 +70,7 @@
             <?php                                  
 
                    $valor='0';
-                   $peticion11 = $conectar->consulta("select count(*) from receptor where RECEPTOR_R='PUBLICO'"); 
+                   $peticion11 = $conectar->consulta("select count(*) from receptor RE, registro RG where RE.RECEPTOR_R='PUBLICO' and RE.ID_R = RG.ID_R and RG.FECHA_R <= DATE(NOW())"); 
                    while($fila = mysql_fetch_array($peticion11))
                    $valor= $fila["count(*)"] ;                         
                    $row_Recordset1='Descargar';
