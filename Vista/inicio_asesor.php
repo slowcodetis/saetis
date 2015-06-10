@@ -64,7 +64,8 @@
 
     <style>
         .menuScroll {
-            overflow: auto;
+            /*overflow: auto;*/
+            overflow-y:scroll;
             max-height: 500%;
         }
     </style>
@@ -89,6 +90,13 @@
         <!-- /.navbar-header -->
 
         <ul class="nav navbar-top-links navbar-right">
+            
+            <li>
+                <a data-toggle="modal" href="javascript:void('')" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"></span>
+            Repositorio</a>
+            </li>
+
+
             <li>
                 <a href="lista-de-noticias.php"><i class="glyphicon glyphicon-comment"></i> Foro</a>
             </li>
@@ -112,8 +120,8 @@
         </ul>
         <!-- /.navbar-top-links -->
 
-        <div class="navbar-default navbar-static-side menuScroll" role="navigation">
-            <div class="sidebar-collapse">
+        <div class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse menuScroll">
                 <ul class="nav" id="side-menu">
                     <li>
                         <a href="AdministrarGrupoEmpresa.php"><i class="glyphicon glyphicon-book"></i> Administrar Grupo Empresas</a>
@@ -286,10 +294,7 @@
             <div class="col-lg-12">
                 <img  src="../Librerias/images/SAETIS.png" alt="portadaInicio" class=" img-thumbnail">
             </div>
-            <div class="col-sm-8">  
-            <a data-toggle="modal" class="btn btn-primary" href="javascript:void('')" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"></span>
-            Repositorio</a>
-        </div>
+        
         <div style="display: none;" aria-hidden="true" class="modal fade" id="myModal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="max-width: 920;">
