@@ -1,13 +1,9 @@
 <?php
   
-  echo 'ok';
-
   include '../Librerias/fpdf17/fpdf.php';
   include '../Modelo/conexion.php';
   session_start();
   $conexion = new conexion();
-
-  echo 'ok';
 
   if (isset($_POST['grupoempresa']))
   {
@@ -72,27 +68,30 @@
                   $pdf = new PDF_MC_Table('P', 'mm', 'Letter');
                   $pdf->AddPage('P');
                   $pdf->SetFont('helvetica','',10);
-                  $pdf->SetMargins(35, 40 , 55);
+                  $pdf->SetMargins(35, 35 , 55);
                   $pdf->SetAutoPageBreak(true,45); 
 
-$texto = 'Que suscriben la empresa Taller de Ingeniería de Software - TIS, que en lo sucesivo se denominará TIS, por una parte, y la consultora <b>'.$nLargoGE.'</b>, registrada debidamente en el Departamento de Procesamiento de Datos y Registro e Inscripciones, domiciliada en la ciudad de Cochabamba, que en lo sucesivo se denominará <b>'.$nCortoGE[0].'</b>, por otra parte, de conformidad a las claúsulas que se detallan a continuación:';
-$parte1 = 'PRIMERA.- TIS contratará los servicios del Contratista para la provisión del Tesis sobre la materia de Observatorio 3, consultoría que se realizará, conforme a la modalidad y presupuesto entregado por la Consultora, en su documento de propuesta técnica, y normas estipuladas por TIS.';
+$texto = 'Que suscriben la empresa Taller de Ingeniería de Software - TIS, que en lo sucesivo se denominará TIS, por una parte, y la consultora '.$nLargoGE.', registrada debidamente en el Departamento de Procesamiento de Datos y Registro e Inscripciones, domiciliada en la ciudad de Cochabamba, que en lo sucesivo se denominará '.$nCortoGE[0].', por otra parte, de conformidad a las claúsulas que se detallan a continuación:';
+//$texto = 'Que suscriben la empresa Taller de Ingeniería de Software - TIS, que en lo sucesivo se denominará TIS, por una parte, y la consultora <b>'.$nLargoGE.'</b>, registrada debidamente en el Departamento de Procesamiento de Datos y Registro e Inscripciones, domiciliada en la ciudad de Cochabamba, que en lo sucesivo se denominará <b>'.$nCortoGE[0].'</b>, por otra parte, de conformidad a las claúsulas que se detallan a continuación:';
+$parte1 = 'PRIMERA.- TIS contratará los servicios del Contratista para la provisión del '.$sistema[0].', consultoría que se realizará, conforme a la modalidad y presupuesto entregado por la Consultora, en su documento de propuesta técnica, y normas estipuladas por TIS.';
 $parte2 = 'SEGUNDO.- El objeto de este contrato es la provisión de un producto software.';
-$parte3 = 'TERCERO.- La consultora <b>'.$nCortoGE[0].'</b>, se hace responsable por la buena ejecución de las distintas fases, que involucren su ingeniería del proyecto, especificadas en la propuesta técnica corregida de acuerdo al pliego de especificaciones.';
-$parte4 = 'CUARTO.- Para cualquier otro punto no estipulado en el presente contrato, debe hacerse referencia a la '.$convo[0].', al Pliego de Especificaciones y/o al PG-TIS (Plan Global - TIS)';
+$parte3 = 'TERCERO.- La consultora '.$nCortoGE[0].', se hace responsable por la buena ejecución de las distintas fases, que involucren su ingeniería del proyecto, especificadas en la propuesta técnica corregida de acuerdo al pliego de especificaciones.';
+//$parte3 = 'TERCERO.- La consultora <b>'.$nCortoGE[0].'</b>, se hace responsable por la buena ejecución de las distintas fases, que involucren su ingeniería del proyecto, especificadas en la propuesta técnica corregida de acuerdo al pliego de especificaciones.';
+$parte4 = 'CUARTO.- Para cualquier otro punto no estipulado en el presente contrato, debe hacerse referencia al CPTIS, al Pliego de Especificaciones y/o al PG-TIS (Plan Global - TIS)';
 $parte5 = 'QUINTO.- Se pone en evidencia que cualquier incumplimiento de las cláusulas estipuladas en el presente contrato, es pasible a la disolución del mismo.';
 $parte6 = 'SEXTO.- La consultora '.$nCortoGE[0].', declara su absoluta conformidad con los términos del presente contrato. Se deja constancia de que los datos y antecedentes personales jurídicos proporcionados por el adjudicatario son verídicos.';
 $parte7 = 'SEPTIMO.- El presente contrato se disuelve también, por cualquier motivo de incumplimiento a normas establecidas en PG-TIS (Plan Global - TIS).';
 $parte8 = 'OCTAVO.- Por la disolución del contrato, TIS tiene todo el derecho de ejecutar la boleta de garantía, que es entregada por el contratado como documento de seriedad de la empresa.';
 $parte9 = 'NOVENO.- La información que TIS brinde al contratado debe ser de rigurosa confidencialidad, y no utilizarse para otros fines que no sea el desarrollo del proyecto.';
-$parte10 = 'DECIMO.- TIS representada por su directorio Lic. Corina Flores V., Lic. M. Leticia Blanco C., Lic. David Escalera F., Lic. Patricia Rodriguez y Lic. Marco Montecinos, y por otra la consultora <b>'.$nLargoGE.'</b>, representada por su representante legal '.$represen[0].', dan su plena conformidad a los términos y condiciones establecidos en el presente Contrato de Prestación de Servicios y Consultoría, firmando en constancia al pie de presente documento.';
+$parte10 = 'DECIMO.- TIS representada por su directorio Lic. Corina Flores V., Lic. M. Leticia Blanco C., Lic. David Escalera F., Lic. Patricia Rodriguez y Lic. Marco Montecinos, y por otra la consultora '.$nLargoGE.', representada por su representante legal '.$represen[0].', dan su plena conformidad a los términos y condiciones establecidos en el presente Contrato de Prestación de Servicios y Consultoría, firmando en constancia al pie de presente documento.';
+//$parte10 = 'DECIMO.- TIS representada por su directorio Lic. Corina Flores V., Lic. M. Leticia Blanco C., Lic. David Escalera F., Lic. Patricia Rodriguez y Lic. Marco Montecinos, y por otra la consultora <b>'.$nLargoGE.'</b>, representada por su representante legal '.$represen[0].', dan su plena conformidad a los términos y condiciones establecidos en el presente Contrato de Prestación de Servicios y Consultoría, firmando en constancia al pie de presente documento.';
 //$texto1 = '  Paralelamnete se solicita, indicar el día de su preferencia para realizar revisiones, puesta en marcha y seguimiento de su propuesta de desarrollo en el tiempo que dure el contrato con TIS.';
 $parteFecha = 'Cochabamba, '.$fecha2;
 //$texto2 = '  Asimismo, recordar que para el día de la firma del contrato se requiere de una copia física de la Boleta de Garantía, emitida a favor de TIS por parte de <b>'.$nEmpresa.'</b>.';
 
                   $descripciones = array('  Cumplimiento de especificaciones del proponente',utf8_decode('  Claridad en la organización de la empresa proponente'),utf8_decode('  Cumplimiento de especificaciones técnicas'),'  Claridad en el proceso de desarrollo',utf8_decode('  Plazo de ejecución'),'  Precio total','  Uso de herramientas en el proceso de desarrollo');
                   $puntajesReferenciales = array('15 puntos','10 puntos','30 puntos','10 puntos', '10 puntos','15 puntos','10 puntos');
-                  $pdf->SetFont('Helvetica','',18);
+                  $pdf->SetFont('Helvetica','',22);
                   $pdf->Cell(0,10,'',0,1,'C');
                   $pdf->Ln();
                   $pdf->Ln();
@@ -103,39 +102,38 @@ $parteFecha = 'Cochabamba, '.$fecha2;
                   $pdf->SetFont('Helvetica','',12);
                   $pdf->Cell(0,8, $fecha2,0,1,'C');
                   $pdf->Ln();
-                  $pdf->SetWidths(array(90,22,20,40));
                   $pdf->SetFont('Helvetica','',10);
                   
                   $pdf->SetFont('Helvetica','',10);
                   //$pdf->MultiCell(0,5,utf8_decode($texto));
-                  $pdf->writeHTML(utf8_decode($texto));
-                  $pdf->Ln();
+                  $pdf->MultiCell(0,5,utf8_decode($texto));
+                  //$pdf->writeHTML(utf8_decode($texto));
+                  //$pdf->Ln();
                   $pdf->MultiCell(0,5,utf8_decode($parte1));
                   $pdf->MultiCell(0,5,utf8_decode($parte2));
-                  $pdf->writeHTML(utf8_decode($parte3));
-                  $pdf->Ln();
+                  $pdf->MultiCell(0,5,utf8_decode($parte3));
+                  //$pdf->writeHTML(utf8_decode($parte3));
+                  //$pdf->Ln();
                   $pdf->MultiCell(0,5,utf8_decode($parte4));
                   $pdf->MultiCell(0,5,utf8_decode($parte5));
-                  $pdf->writeHTML(utf8_decode($parte6));
-                  $pdf->Ln();
+                  //$pdf->writeHTML(utf8_decode($parte6));
+                  //$pdf->Ln();
+                  $pdf->MultiCell(0,5,utf8_decode($parte6));
                   $pdf->MultiCell(0,5,utf8_decode($parte7));
                   $pdf->MultiCell(0,5,utf8_decode($parte8));
                   $pdf->MultiCell(0,5,utf8_decode($parte9));
-                  $pdf->writeHTML(utf8_decode($parte10));
-                  $pdf->Ln();
-                  //$pdf->MultiCell(0,5,utf8_decode($texto));
-                  //$pdf->MultiCell(0,5,utf8_decode($texto1));
-                  //$pdf->writeHTML(utf8_decode($texto2));
-                  //$pdf->writeHTML('This is my disclaimer. <b>THESE WORDS NEED TO BE BOLD.</b> These words do not need to be bold.');
+                  $pdf->MultiCell(0,5,utf8_decode($parte10));
+                  //$pdf->writeHTML(utf8_decode($parte10));
+                  //$pdf->Ln();
                   $nombCorto = $nCortoGE[0];
                   $pdf->Cell(0,10, $parteFecha, 0, 0, 'C');
                   $pdf->Ln();
                   $pdf->Ln();
                   $pdf->Ln();
                   $pdf->Ln();
-                  $pdf->Cell(30,10, 'REPRESENTATE', 0, 0, 'C');$pdf->Cell(0,10, $represen[0], 0, 0, 'C');
+                  $pdf->Cell(50,10, 'REPRESENTATE', 0, 0, 'C');$pdf->Cell(0,10, $represen[0], 0, 0, 'C');
                   $pdf->Ln();
-                  $pdf->Cell(30,10, 'MIEMBRO DIRECTORIO', 0, 0, 'C');$pdf->Cell(0,10, 'CONSULTORA', 0, 0, 'C');
+                  $pdf->Cell(50,10, 'MIEMBRO DIRECTORIO', 0, 0, 'C');$pdf->Cell(0,10, 'CONSULTORA', 0, 0, 'C');
                               mkdir('../Repositorio/'.$nombreUA.'/Contratos/');
                   $pdf->Output('../Repositorio/'.$nombreUA.'/Contratos/Contrato'.$nombCorto.'.pdf','F');
                   
