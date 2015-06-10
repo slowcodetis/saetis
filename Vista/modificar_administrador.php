@@ -41,8 +41,8 @@
     
     <style>
         .menuScroll {
-            overflow: auto;
-            max-height: 500%;
+            overflow-y: scroll;
+            max-height: 400px;
         }
     </style>
 

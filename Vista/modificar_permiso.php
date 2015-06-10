@@ -29,7 +29,12 @@
     
     	<link href="css/style.css" rel="stylesheet" type="text/css" />
 
-
+    <style>
+        .menuScroll {
+            overflow-y: scroll;
+            max-height: 400px;
+        }
+    </style>
 
 </head>
 
@@ -84,7 +89,7 @@
                       
                   
              <div class="navbar-default navbar-static-side" role="navigation">
-                <div class="sidebar-collapse">
+                <div class="sidebar-collapse menuScroll">
                     <ul class="nav" id="side-menu">
                         
                                 <li>
@@ -106,7 +111,6 @@
                                     <ul class="nav nav-third-level">
                                         <li>
                                             <a href="lista_grupoEmpresa.php"> Integrantes </a>
-                                            
                                         </li>
                                         <li>
                                             <a href="ListaGrupoEmpresas.php"> Lista de Grupo Empresas </a>
