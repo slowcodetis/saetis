@@ -36,33 +36,37 @@
             $mail->SMTPDebug  = 0;
 
             //Ahora definimos gmail como servidor que aloja nuestro SMTP
-            $mail->Host       = 'smtp.gmail.com';
+//            $mail->Host       = 'smtp.gmail.com';
+            $mail->Host       = 'mx1.2freehosting.com';
             //$mail->Host = 'smtp-mail.outlook.com';
             //$mail->Host = 'smtp.live.com';
             //$mail->Host = 'smtp.mail.yahoo.com';
 
             //El puerto será el 587 ya que usamos encriptación TLS
-            $mail->Port       = 587;
+            $mail->Port       = 2525;
             //$mail->Port       = 465;
 
             //Definmos la seguridad como TLS
-            $mail->SMTPSecure = 'tls';
+//            $mail->SMTPSecure = 'tls';
             //Tenemos que usar gmail autenticados, así que esto a TRUE
             $mail->SMTPAuth   = true;
             
             //Definimos la cuenta que vamos a usar. Dirección completa de la misma
             //
             //$mail->Username   = "jhonny_h_crespo@yahoo.com";
-            $mail->Username   = "saetis.oficial@gmail.com";
+//            $mail->Username   = "saetis.oficial@gmail.com";
+            $mail->Username   = "saetis@saetis.3eeweb.com";
             
             //Introducimos nuestra contraseña de gmail
-            $mail->Password   = "saetis.oficial1";
+//            $mail->Password   = "saetis.oficial1";
+            $mail->Password   = "1q2w3e4r.";
             //Definimos el remitente (dirección y, opcionalmente, nombre)
-            $mail->SetFrom('saetis.oficial@gmail.com', 'Saetis');
+            //           $mail->SetFrom('saetis.oficial@gmail.com', 'Saetis');
+            $mail->SetFrom('saetis@saetis.3eeweb.com', $UsuarioActivo);
             //Esta línea es por si queréis enviar copia a alguien (dirección y, opcionalmente, nombre)
             //$mail->AddReplyTo('replyto@correoquesea.com','El de la réplica');
             //Y, ahora sí, definimos el destinatario (dirección y, opcionalmente, nombre)
-            $mail->AddAddress('adm.saetis@gmail.com', 'Administrador');
+            $mail->AddAddress('saetis@saetis.3eeweb.com', 'Administrador');
             //Definimos el tema del email
             $mail->Subject = 'Solicitud de Registro';
             //Para enviar un correo formateado en HTML lo cargamos con la siguiente función. Si no, puedes meterle directamente una cadena de texto.
