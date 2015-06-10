@@ -22,6 +22,7 @@
 
     <!-- JQuery -->
     <script type="text/javascript" src="../Librerias/lib/jquery-2.1.0.min.js"></script>
+    <script src="../Librerias/js/jquery-1.10.2.js"></script>
     <!-- icheck -->
     <link href="../Librerias/icheck/skins/square/green.css" rel="stylesheet">
     <script src="../Librerias/lib/icheck.min.js"></script>
@@ -74,10 +75,6 @@
 
 <div id="wrapper">
 
-
-      <!--<h2>design by <a href="#" title="flash templates">flash-templates-today.com</a></h2>-->
-
-
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -88,6 +85,7 @@
             </button>
             <a class="navbar-brand" href="inicio_asesor.php">Inicio </a>
         </div>
+        
         <!-- /.navbar-header -->
 
         <ul class="nav navbar-top-links navbar-right">
@@ -287,7 +285,24 @@
 
             <div class="col-lg-12">
                 <img  src="../Librerias/images/SAETIS.png" alt="portadaInicio" class=" img-thumbnail">
-            </div>  
+            </div>
+            <div class="col-sm-8">  
+            <a data-toggle="modal" class="btn btn-primary" href="javascript:void('')" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"></span>
+            Repositorio</a>
+        </div>
+        <div style="display: none;" aria-hidden="true" class="modal fade" id="myModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="max-width: 920;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Buscador</h4>
+                    </div>
+                    <div class="modal-body" style="padding:0px; margin:0px; width: 560px;">
+                        <iframe src="../Librerias/filemanager/dialogo.php?type=0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; " frameborder="0" height="500" width="896"></iframe>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->  
             <!-- /.panel -->
         </div>
         <!-- /.col-lg-8 -->
