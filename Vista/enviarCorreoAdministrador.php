@@ -135,6 +135,9 @@
                                     <li>
                                         <a href="add_gestion.php">Añadir  Gestion</a>
                                     </li>
+                                    <li>
+                                         <a href="add_roles.php">Añadir Rol</a>
+                                    </li>
                                     </ul>
                                 <!-- /.nav-second-level -->
                             </li>

@@ -26,6 +26,8 @@
         $asesor = $rowDocs[0] ." ". $rowDocs[1];
     }
 
+    
+
 ?>
 <html>
 
@@ -217,9 +219,20 @@
                   
                     <div class="col-lg-12">
                         
-                        <h5>Asesor: <span id="asesor"> <?php echo $asesor ?> </span> </h5> 
-                        <h5>Representante Legal: <span id="repLegal"> <?php echo $repLegal ?> </span> </h5>
-
+                        <h5><strong>Asesor:</strong> <span id="asesor"> <?php echo $asesor ?> </span> </h5> 
+                        <h5><strong>Representante Legal:</strong> <span id="repLegal"> <?php echo $repLegal ?> </span> </h5>
+                        <p></p>
+                        <h5><strong>Miembros de la Empresa:</strong> </h5>
+                        <ul>
+                        <?php 
+                            $idGE = $_SESSION['usuario'];
+                            $retornoConsulta = $conexion -> consulta_real("SELECT NOMBRES_S, APELLIDOS_S FROM `socio`WHERE NOMBRE_U LIKE '$idGE'");
+                            while($miembros =  mysql_fetch_array($retornoConsulta)){
+                                        echo "<li>".$miembros[0]." ".$miembros[1]."</li>";
+                                    }
+                                    
+                        ?> 
+                        </ul>  
                         <img  src="../Librerias/images/SAETIS.png" alt="portadaInicio" class=" img-thumbnail">
                         
                     </div>  

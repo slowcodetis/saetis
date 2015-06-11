@@ -10,6 +10,7 @@
     include '../Modelo/validadorAcceso.php';
     $objValidador = new ControladorAccesoVistasPorUsuario(' ');
     $urlActual = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
+    
     $objValidador->puedeAcceder($urlActual, $uActivo);
 
 
@@ -52,6 +53,14 @@
         });
 
     </script>
+
+    <style>
+        .menuScroll {
+            overflow-y: scroll;
+            max-height: 400px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -98,7 +107,7 @@
            <div class="sidebar-collapse">      
                                         
              <div class="navbar-default navbar-static-side" role="navigation">
-                <div class="sidebar-collapse">
+                <div class="sidebar-collapse menuScroll">
                     <ul class="nav" id="side-menu">
                         
                                 <li>
@@ -157,6 +166,9 @@
                                  <ul class="nav nav-third-level">
                                 <li>
                                      <a href="add_gestion.php">Añadir  Gestion</a>
+                                </li>
+                                <li>
+                                     <a href="add_roles.php">Añadir Rol</a>
                                 </li>
   
                                 </ul>
