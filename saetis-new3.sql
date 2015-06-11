@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 03, 2015 at 06:31 PM
+-- Generation Time: Jun 11, 2015 at 05:39 AM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.7
 
@@ -175,7 +175,15 @@ CREATE TABLE `criterio_evaluacion` (
   `ID_CRITERIO_E` int(11) NOT NULL,
   `NOMBRE_U` varchar(50) NOT NULL,
   `NOMBRE_CRITERIO_E` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `criterio_evaluacion`
+--
+
+INSERT INTO `criterio_evaluacion` (`ID_CRITERIO_E`, `NOMBRE_U`, `NOMBRE_CRITERIO_E`) VALUES
+(1, 'LeticiaB', 'Evaluar Puntualidad'),
+(2, 'LeticiaB', 'Criterio 2');
 
 -- --------------------------------------------------------
 
@@ -207,13 +215,14 @@ INSERT INTO `descripcion` (`ID_R`, `DESCRIPCION_D`) VALUES
 (102, 'Contrato'),
 (110, 'Contrato'),
 (111, 'Contrato'),
-(113, 'Notificacion de Conformidad'),
-(124, 'Orden de Cambio'),
 (172, '<script>alert(â€˜xssâ€™);</script>'),
 (173, 'Doc Prueba'),
 (174, '<sc<x>ript> alert("alerta")</sc<x>ript>'),
-(178, 'Notificacion de Conformidad'),
-(180, 'Orden de Cambio');
+(219, 'if i was on LA'),
+(220, 'Todavia no<p>vamos que se puede</p>'),
+(223, 'Notificacion de Conformidad'),
+(225, 'Orden de Cambio'),
+(227, 'Contrato');
 
 -- --------------------------------------------------------
 
@@ -228,7 +237,7 @@ CREATE TABLE `documento` (
   `RUTA_D` varchar(100) NOT NULL,
   `VISUALIZABLE_D` tinyint(1) NOT NULL,
   `DESCARGABLE_D` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `documento`
@@ -239,8 +248,6 @@ INSERT INTO `documento` (`ID_D`, `ID_R`, `TAMANIO_D`, `RUTA_D`, `VISUALIZABLE_D`
 (18, 71, 91161, '/Repositorio/FreeValue/Screen Shot 2015-04-13 at 9.29.18 AM.png', 1, 1),
 (19, 73, 136573, '/Repositorio/Nuevo123/Articulo Agil RiveraOrtegaRodrigoDavid.pdf', 1, 1),
 (20, 74, 123719, '/Repositorio/Nuevo123/CronogramaInvierno4-2014yGestion2-2014v5_2014-07-09_09-43.pdf', 1, 1),
-(46, 113, 1024, '../Repositorio/FreeValue/NC/NotificacionConformidad.pdf', 0, 0),
-(57, 124, 1024, '../Repositorio/FreeValue/OC/OrdenCambio.pdf', 0, 0),
 (79, 157, 60250, '/Repositorio/asesor/LeticiaB/Para Crys', 1, 1),
 (80, 158, 60250, '/Repositorio/asesor/LeticiaB/Para Crys', 1, 1),
 (81, 159, 60250, '/Repositorio/asesor/LeticiaB/Para Crys', 1, 1),
@@ -249,8 +256,11 @@ INSERT INTO `documento` (`ID_D`, `ID_R`, `TAMANIO_D`, `RUTA_D`, `VISUALIZABLE_D`
 (84, 162, 60250, '/Repositorio/asesor/LeticiaB/Para Crys', 1, 1),
 (85, 163, 60250, '/Repositorio/asesor/LeticiaB/Para Crys', 1, 1),
 (87, 165, 60250, '/Repositorio/asesor/LeticiaB/Para Crys', 1, 1),
-(97, 178, 1024, '../Repositorio/Nuevo123/NC/NotificacionConformidad.pdf', 0, 0),
-(99, 180, 1024, '../Repositorio/Nuevo123/OC/OrdenCambio.pdf', 0, 0);
+(138, 219, 1024, '', 0, 0),
+(139, 220, 1024, '', 0, 0),
+(142, 223, 1024, '../Repositorio/Nuevo123/NC/NotificacionConformidad.pdf', 0, 0),
+(144, 225, 1024, '../Repositorio/Nuevo123/OC/OrdenCambio.pdf', 0, 0),
+(145, 227, 1024, '../Repositorio/LeticiaB/Contratos/ContratoSlow Code.pdf', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -261,7 +271,7 @@ INSERT INTO `documento` (`ID_D`, `ID_R`, `TAMANIO_D`, `RUTA_D`, `VISUALIZABLE_D`
 CREATE TABLE `documento_r` (
   `ID_R` int(11) NOT NULL,
   `CODIGO_P` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=174 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `documento_r`
@@ -302,14 +312,14 @@ INSERT INTO `entrega` (`ID_R`, `ENTREGABLE_P`, `ENTREGADO_P`) VALUES
 (79, 'Entregable 2', 0),
 (79, 'Entregable 3', 1),
 (80, 'Entregable 5', 0),
-(80, 'Entregable 6', 0),
+(80, 'Entregable 6', 1),
 (81, 'Entregable', 0),
 (81, 'Entregable 2', 0),
 (81, 'Entregable 3', 0),
 (81, 'Entregable 4', 0),
 (81, 'Entregable 5', 0),
 (81, 'Entregable 6', 0),
-(81, 'Entregable 7', 0);
+(81, 'Entregable 7', 1);
 
 -- --------------------------------------------------------
 
@@ -376,14 +386,16 @@ CREATE TABLE `evaluacion` (
   `ID_E` bigint(20) unsigned NOT NULL,
   `NOTA_E` int(11) NOT NULL,
   `PORCENTAJE` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `evaluacion`
 --
 
 INSERT INTO `evaluacion` (`ID_R`, `ID_E`, `NOTA_E`, `PORCENTAJE`) VALUES
-(76, 1, 1, 90);
+(76, 1, 1, 90),
+(77, 2, 3, 5),
+(78, 3, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -464,7 +476,7 @@ CREATE TABLE `gestion` (
   `NOM_G` varchar(45) NOT NULL,
   `FECHA_INICIO_G` date NOT NULL,
   `FECHA_FIN_G` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 AVG_ROW_LENGTH=8192;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 AVG_ROW_LENGTH=8192;
 
 --
 -- Dumping data for table `gestion`
@@ -703,10 +715,10 @@ CREATE TABLE `periodo` (
 --
 
 INSERT INTO `periodo` (`ID_R`, `fecha_p`, `hora_p`) VALUES
-(113, '2015-05-21', '05:05:42'),
-(124, '2015-05-21', '14:14:23'),
-(178, '2015-06-03', '18:18:07'),
-(180, '2015-06-03', '18:18:12');
+(219, '0000-00-00', '20:20:00'),
+(220, '0000-00-00', '20:31:00'),
+(223, '2015-06-10', '05:05:09'),
+(225, '2015-06-10', '05:05:30');
 
 -- --------------------------------------------------------
 
@@ -855,10 +867,11 @@ CREATE TABLE `receptor` (
 --
 
 INSERT INTO `receptor` (`ID_R`, `RECEPTOR_R`) VALUES
-(113, 'FreeValue SRL'),
-(124, 'FreeValue SRL'),
-(178, 'Slow Code SRL'),
-(180, 'Slow Code SRL');
+(219, 'PUBLICO'),
+(220, 'PUBLICO'),
+(223, 'Slow Code SRL'),
+(225, 'Slow Code SRL'),
+(227, 'Slow Code SRL');
 
 -- --------------------------------------------------------
 
@@ -874,7 +887,7 @@ CREATE TABLE `registro` (
   `NOMBRE_R` varchar(50) NOT NULL,
   `FECHA_R` date NOT NULL,
   `HORA_R` time NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=latin1 AVG_ROW_LENGTH=8192;
+) ENGINE=InnoDB AUTO_INCREMENT=247 DEFAULT CHARSET=latin1 AVG_ROW_LENGTH=8192;
 
 --
 -- Dumping data for table `registro`
@@ -903,8 +916,6 @@ INSERT INTO `registro` (`ID_R`, `NOMBRE_U`, `TIPO_T`, `ESTADO_E`, `NOMBRE_R`, `F
 (79, 'Nuevo123', 'pago planificacion', 'en proceso', 'Actividad 1', '2015-04-22', '00:54:42'),
 (80, 'Nuevo123', 'pago planificacion', 'en proceso', 'Actividad 2', '2015-04-22', '00:54:42'),
 (81, 'Nuevo123', 'pago planificacion', 'en proceso', 'Actividad 3', '2015-04-22', '00:54:42'),
-(113, 'LeticiaB', 'publicaciones', 'Habilitado', 'Notificacion de Conformidad de FreeValue', '2015-05-21', '05:05:42'),
-(124, 'LeticiaB', 'publicaciones', 'Habilitado', 'Orden de Cambio de FreeValue', '2015-05-21', '14:14:23'),
 (157, 'LeticiaB', 'documento subido', 'habilitado', 'Documento 157', '2015-06-01', '14:14:31'),
 (158, 'LeticiaB', 'documento subido', 'habilitado', 'Documento 158', '2015-06-01', '14:14:32'),
 (159, 'LeticiaB', 'documento subido', 'habilitado', 'Documento 159', '2015-06-01', '14:14:33'),
@@ -914,8 +925,19 @@ INSERT INTO `registro` (`ID_R`, `NOMBRE_U`, `TIPO_T`, `ESTADO_E`, `NOMBRE_R`, `F
 (163, 'LeticiaB', 'documento subido', 'habilitado', 'Documento 163', '2015-06-01', '14:14:34'),
 (165, 'LeticiaB', 'documento subido', 'habilitado', 'Documento 165', '2015-06-01', '14:14:35'),
 (173, 'LeticiaB', 'documento requerido', 'Habilitado', 'Doc Prueba', '2015-06-03', '11:40:12'),
-(178, 'LeticiaB', 'publicaciones', 'Habilitado', 'Notificacion de Conformidad de Slow Code', '2015-06-03', '18:18:07'),
-(180, 'LeticiaB', 'publicaciones', 'Habilitado', 'Orden de Cambio de Slow Code', '2015-06-03', '18:18:12');
+(219, 'LeticiaB', 'publicaciones', 'Habilitado', 'California Dreamer', '2015-06-10', '02:02:28'),
+(220, 'LeticiaB', 'publicaciones', 'Habilitado', 'Algo habra que hacer', '2015-06-10', '02:02:30'),
+(223, 'LeticiaB', 'publicaciones', 'Habilitado', 'Notificacion de Conformidad de Slow Code', '2015-06-10', '05:05:09'),
+(225, 'LeticiaB', 'publicaciones', 'Habilitado', 'Orden de Cambio de Slow Code', '2015-06-10', '05:05:30'),
+(226, 'LeticiaB', 'seguimiento', 'seguimiento registrado', 'revision', '2015-06-10', '14:16:54'),
+(227, 'LeticiaB', 'Contrato', 'Habilitado', 'ContratoSlow Code.pdf', '2015-06-10', '23:23:07'),
+(239, 'LeticiaB', 'publicaciones', 'Habilitado', 'DEvian', '2015-06-10', '20:40:00'),
+(240, 'LeticiaB', 'publicaciones', 'Habilitado', 'DEvian', '2015-12-10', '20:40:00'),
+(241, 'LeticiaB', 'publicaciones', 'Habilitado', 'DEvian', '2016-08-10', '20:40:00'),
+(242, 'LeticiaB', 'publicaciones', 'Habilitado', 'ugh', '2015-06-10', '22:20:00'),
+(243, 'LeticiaB', 'publicaciones', 'Habilitado', 'ugh', '2016-03-10', '22:20:00'),
+(244, 'LeticiaB', 'publicaciones', 'Habilitado', 'ughdddddd', '2015-06-10', '22:20:00'),
+(245, 'LeticiaB', 'publicaciones', 'Habilitado', 'ughdddddd', '2015-06-10', '22:20:00');
 
 -- --------------------------------------------------------
 
@@ -995,7 +1017,7 @@ CREATE TABLE `rol_url` (
   `id` int(11) NOT NULL,
   `idUrl` int(11) NOT NULL,
   `idRol` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rol_url`
@@ -1054,7 +1076,8 @@ INSERT INTO `rol_url` (`id`, `idUrl`, `idRol`) VALUES
 (51, 49, 'asesor'),
 (52, 50, 'administrador'),
 (53, 51, 'asesor'),
-(54, 52, 'asesor');
+(54, 52, 'asesor'),
+(55, 53, 'administrador');
 
 -- --------------------------------------------------------
 
@@ -1073,7 +1096,14 @@ CREATE TABLE `seguimiento` (
   `CONCLUSION_S` varchar(200) NOT NULL,
   `OBSERVACION_S` varchar(200) NOT NULL,
   `FECHA_S` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `seguimiento`
+--
+
+INSERT INTO `seguimiento` (`ID_S`, `ID_R`, `ROL_S`, `GRUPO_S`, `ACTIVIDAD_S`, `HECHO_S`, `RESULTADO_S`, `CONCLUSION_S`, `OBSERVACION_S`, `FECHA_S`) VALUES
+(1, 226, 'asesor', 'Nuevo123', 'actividad 1', 1, 'La logro', 'conclusiones satisfactiorias', 'Cambiar vistas', '2015-06-10');
 
 -- --------------------------------------------------------
 
@@ -1087,7 +1117,7 @@ CREATE TABLE `sesion` (
   `FECHA_S` date NOT NULL,
   `HORA_S` time NOT NULL,
   `IP_S` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=207 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=266 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sesion`
@@ -1137,7 +1167,66 @@ INSERT INTO `sesion` (`ID_S`, `NOMBRE_U`, `FECHA_S`, `HORA_S`, `IP_S`) VALUES
 (203, 'Nuevo123', '2015-06-03', '05:34:29', '::1'),
 (204, 'Admin1', '2015-06-03', '06:25:17', '::1'),
 (205, 'LeticiaB', '2015-06-03', '06:25:28', '::1'),
-(206, 'Admin1', '2015-06-03', '06:25:38', '::1');
+(206, 'Admin1', '2015-06-03', '06:25:38', '::1'),
+(207, 'LeticiaB', '2015-06-03', '09:29:23', '::1'),
+(208, 'LeticiaB', '2015-06-03', '09:29:30', '::1'),
+(209, 'Admin1', '2015-06-03', '09:29:39', '::1'),
+(210, 'LeticiaB', '2015-06-03', '09:30:15', '::1'),
+(211, 'Nuevo123', '2015-06-08', '04:53:09', '::1'),
+(212, 'Nuevo123', '2015-06-08', '04:53:22', '::1'),
+(213, 'Nuevo123', '2015-06-08', '04:53:39', '::1'),
+(214, 'LeticiaB', '2015-06-08', '04:53:52', '::1'),
+(215, 'LeticiaB', '2015-06-08', '04:53:58', '::1'),
+(216, 'LeticiaB', '2015-06-08', '05:35:17', '::1'),
+(217, 'LeticiaB', '2015-06-08', '08:24:37', '::1'),
+(218, 'LeticiaB', '2015-06-08', '08:24:54', '::1'),
+(219, 'LeticiaB', '2015-06-09', '05:12:02', '::1'),
+(220, 'LeticiaB', '2015-06-09', '05:12:12', '::1'),
+(221, 'LeticiaB', '2015-06-09', '07:45:24', '::1'),
+(222, 'LeticiaB', '2015-06-09', '07:45:40', '::1'),
+(223, 'LeticiaB', '2015-06-09', '10:13:33', '::1'),
+(224, 'LeticiaB', '2015-06-10', '02:26:47', '::1'),
+(225, 'LeticiaB', '2015-06-10', '02:28:39', '::1'),
+(226, 'LeticiaB', '2015-06-10', '03:21:14', '::1'),
+(227, 'Admin1', '2015-06-10', '03:23:40', '::1'),
+(228, 'LeticiaB', '2015-06-10', '03:38:31', '::1'),
+(229, 'LeticiaB', '2015-06-10', '03:40:03', '::1'),
+(230, 'Admin1', '2015-06-10', '05:31:40', '::1'),
+(231, 'LeticiaB', '2015-06-10', '06:21:45', '::1'),
+(232, 'LeticiaB', '2015-06-10', '06:21:54', '::1'),
+(233, 'Admin1', '2015-06-10', '08:03:51', '::1'),
+(234, 'Admin1', '2015-06-10', '08:03:59', '::1'),
+(235, 'Admin1', '2015-06-10', '08:04:34', '::1'),
+(236, 'LeticiaB', '2015-06-10', '08:09:21', '::1'),
+(237, 'LeticiaB', '2015-06-10', '08:09:34', '::1'),
+(238, 'Admin1', '2015-06-10', '08:09:55', '::1'),
+(239, 'LeticiaB', '2015-06-10', '08:10:37', '::1'),
+(240, 'LeticiaB', '2015-06-10', '08:32:39', '::1'),
+(241, 'LeticiaB', '2015-06-10', '10:53:09', '::1'),
+(242, 'Nuevo123', '2015-06-10', '10:56:16', '::1'),
+(243, 'LeticiaB', '2015-06-10', '10:58:30', '::1'),
+(244, 'Nuevo123', '2015-06-10', '11:02:02', '::1'),
+(245, 'LeticiaB', '2015-06-10', '11:02:14', '::1'),
+(246, 'Nuevo123', '2015-06-10', '11:02:29', '::1'),
+(247, 'LeticiaB', '2015-06-10', '11:06:51', '::1'),
+(248, 'Admin1', '2015-06-11', '12:04:58', '::1'),
+(249, 'LeticiaB', '2015-06-11', '12:20:53', '::1'),
+(250, 'LeticiaB', '2015-06-11', '01:37:32', '::1'),
+(251, 'LeticiaB', '2015-06-11', '02:04:26', '::1'),
+(252, 'FreeValue', '2015-06-11', '02:23:01', '::1'),
+(253, 'Nuevo123', '2015-06-11', '02:24:33', '::1'),
+(254, 'LeticiaB', '2015-06-11', '02:27:17', '::1'),
+(255, 'LeticiaB', '2015-06-11', '02:31:21', '::1'),
+(256, 'Nuevo123', '2015-06-11', '03:37:08', '::1'),
+(257, 'FreeValue', '2015-06-11', '03:38:52', '::1'),
+(258, 'Nuevo123', '2015-06-11', '03:39:35', '::1'),
+(259, 'LeticiaB', '2015-06-11', '03:40:21', '::1'),
+(260, 'Admin1', '2015-06-11', '05:12:17', '::1'),
+(261, 'Admin1', '2015-06-11', '05:12:42', '::1'),
+(262, 'LeticiaB', '2015-06-11', '05:14:55', '::1'),
+(263, 'Admin1', '2015-06-11', '05:16:31', '::1'),
+(264, 'LeticiaB', '2015-06-11', '05:26:21', '::1'),
+(265, 'Admin1', '2015-06-11', '05:26:34', '::1');
 
 -- --------------------------------------------------------
 
@@ -1222,7 +1311,7 @@ CREATE TABLE `url` (
   `id` int(11) NOT NULL,
   `nombreUrl` varchar(50) NOT NULL,
   `descripcion` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `url`
@@ -1280,7 +1369,8 @@ INSERT INTO `url` (`id`, `nombreUrl`, `descripcion`) VALUES
 (49, 'lista-de-noticias.php', ''),
 (50, 'enviarCorreoAdministrador.php', ''),
 (51, 'modificar_asesor.php', ''),
-(52, 'ConfiguracionFechasRecepcion.php', '');
+(52, 'ConfiguracionFechasRecepcion.php', ''),
+(53, 'add_roles.php', '');
 
 -- --------------------------------------------------------
 
@@ -1731,22 +1821,22 @@ ALTER TABLE `criteriocalificacion`
 -- AUTO_INCREMENT for table `criterio_evaluacion`
 --
 ALTER TABLE `criterio_evaluacion`
-  MODIFY `ID_CRITERIO_E` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_CRITERIO_E` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `documento`
 --
 ALTER TABLE `documento`
-  MODIFY `ID_D` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=100;
+  MODIFY `ID_D` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=158;
 --
 -- AUTO_INCREMENT for table `documento_r`
 --
 ALTER TABLE `documento_r`
-  MODIFY `ID_R` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=175;
+  MODIFY `ID_R` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=174;
 --
 -- AUTO_INCREMENT for table `evaluacion`
 --
 ALTER TABLE `evaluacion`
-  MODIFY `ID_E` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `ID_E` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `formulario`
 --
@@ -1766,7 +1856,7 @@ ALTER TABLE `from_crit_c`
 -- AUTO_INCREMENT for table `gestion`
 --
 ALTER TABLE `gestion`
-  MODIFY `ID_G` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `ID_G` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `indicador`
 --
@@ -1816,22 +1906,22 @@ ALTER TABLE `puntaje_ge`
 -- AUTO_INCREMENT for table `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `ID_R` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=181;
+  MODIFY `ID_R` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=247;
 --
 -- AUTO_INCREMENT for table `rol_url`
 --
 ALTER TABLE `rol_url`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT for table `seguimiento`
 --
 ALTER TABLE `seguimiento`
-  MODIFY `ID_S` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_S` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sesion`
 --
 ALTER TABLE `sesion`
-  MODIFY `ID_S` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=207;
+  MODIFY `ID_S` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=266;
 --
 -- AUTO_INCREMENT for table `socio`
 --
@@ -1841,7 +1931,7 @@ ALTER TABLE `socio`
 -- AUTO_INCREMENT for table `url`
 --
 ALTER TABLE `url`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
 --
 -- Constraints for dumped tables
 --
@@ -2104,8 +2194,8 @@ ALTER TABLE `sesion`
 -- Constraints for table `socio`
 --
 ALTER TABLE `socio`
-  ADD CONSTRAINT `FK_SOCIO_GESTION` FOREIGN KEY (`GESTION`) REFERENCES `gestion` (`ID_G`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_GRUPO_EMPRESA__SOCIO` FOREIGN KEY (`NOMBRE_U`) REFERENCES `grupo_empresa` (`NOMBRE_U`);
+  ADD CONSTRAINT `FK_GRUPO_EMPRESA__SOCIO` FOREIGN KEY (`NOMBRE_U`) REFERENCES `grupo_empresa` (`NOMBRE_U`),
+  ADD CONSTRAINT `FK_SOCIO_GESTION` FOREIGN KEY (`GESTION`) REFERENCES `gestion` (`ID_G`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `usuario`
