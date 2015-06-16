@@ -1,11 +1,10 @@
 <?php
+    include '../Modelo/conexion.php';
+    $UsuarioActivo = $_POST['Usuario'];
+    $DocumentoR = $_POST['Documento'];
 
-include '../Modelo/conexion.php';
-$UsuarioActivo = $_POST['Usuario'];
-$DocumentoR = $_POST['Documento'];
-
-$rutaDirectorio="../Repositorio/$UsuarioActivo";  
-$clas = new conexion();
+    $rutaDirectorio="../Repositorio/$UsuarioActivo";  
+    $clas = new conexion();
 
     if(!file_exists($rutaDirectorio))
     {
@@ -18,15 +17,13 @@ $clas = new conexion();
         }
     }
     
-            $ruta = "$rutaDirectorio/" . $_FILES['archivoA']['name'];
-            $rutaDocumento="/Repositorio/$UsuarioActivo/" . $_FILES['archivoA']['name'];
-        
-            try{
+        $ruta = "$rutaDirectorio/" . $_FILES['archivoA']['name'];
+        $rutaDocumento="/Repositorio/$UsuarioActivo/" . $_FILES['archivoA']['name'];
+    
+        try{
             $resultado = move_uploaded_file($_FILES['archivoA']['tmp_name'], $ruta);
             if ($resultado) {
-                
                 //recuperamos la idRegistro siguiente que se insertara en la BD de registro para enviarlo a documento
-                //$resultadoUno=$clas->consulta("SELECT auto_increment FROM `information_schema`.tables WHERE TABLE_SCHEMA = 'tis_mbittle' AND TABLE_NAME = 'registro'");
                 $resultadoUno=$clas->consulta("SELECT auto_increment FROM `information_schema`.tables WHERE TABLE_SCHEMA = 'saetis' AND TABLE_NAME = 'registro'");
                 while ($filas = mysql_fetch_array($resultadoUno)) {
                     $idRegistro=(integer)$filas['0'];
@@ -44,16 +41,10 @@ $clas = new conexion();
                 echo '<script>alert("Documento subido exitosamente");
                               location.href = "../Vista/inicio_grupo_empresa.php";
                       </script>';
-                
             }
-            }
-             catch (Exception $e) {
-                    echo 'Ha ocurrido un error: ',  $e->getMessage(), "\n";
-                }
-
-$clas->cerrarConexion();
-    
-   
-
-
+        }
+        catch (Exception $e) {
+            echo 'Ha ocurrido un error: ',  $e->getMessage(), "\n";
+        }
+    $clas->cerrarConexion();
 ?>

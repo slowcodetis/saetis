@@ -456,11 +456,11 @@
                         
                     </div><!--end/lugar-->
 
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label class="col-xs-2 control-label">Documentos a subir</label>
                         <div class="col-sm-2" >
                         <input class="form-control" style="width:500px;heigth:30px;"  name="lugar">
-                      </div>
+                    </div-->
                         
                     </div><!--end/lugar-->
 

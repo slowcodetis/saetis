@@ -41,7 +41,6 @@
     <script type="text/javascript" src="../Librerias/lib/bootstrapValidator.js"></script>
     <!-- Validators -->
     
-    
     <script type="text/javascript" src="../Librerias/lib/validator/diferenteActividadPlanificacion.js"></script>
     <script type="text/javascript" src="../Librerias/lib/validator/diferenteEntregable.js"></script>
     <script type="text/javascript" src="../Librerias/lib/validator/stringLength.js"></script>
@@ -63,7 +62,6 @@
         }
     </style>
 
-
     <!-- Page-Level Plugin CSS - Dashboard -->
     <link href="../Librerias/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
     <link href="../Librerias/css/plugins/timeline/timeline.css" rel="stylesheet">
@@ -74,8 +72,7 @@
 
 <body>
 
-   
-<div id="wrapper">
+    <div id="wrapper">
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -273,7 +270,6 @@
     </div>
     <script src="../Librerias/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="../Librerias/js/sb-admin.js"></script>
-
 </body>
 
 </html><!DOCTYPE html>
