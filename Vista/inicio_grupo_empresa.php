@@ -154,6 +154,14 @@
                                             <a href="SubirDocumento.php?doc='.$rowDocs[0].'">'.$rowDocs[0].'</a>
                                             </li>';
                                         }
+
+                                        $docsReq = $conexion->consulta("SELECT NOMBRE_R FROM registro, documento_requerido_oc WHERE documento_requerido_oc.REGISTRO_ID = registro.ID_R AND documento_requerido_oc.USUARIO_ID = '$uActivo'");
+                                     
+                                        while ($rowDocs = mysql_fetch_row($docsReq)) {
+                                            echo '<li>
+                                            <a href="SubirDocumento.php?doc='.$rowDocs[0].'">'.$rowDocs[0].'</a>
+                                            </li>';
+                                        }
                                         
                                     ?>
                                     </ul>
