@@ -16,6 +16,7 @@
 
     <!-- JQuery -->
     <script type="text/javascript" src="../Librerias/lib/jquery-2.1.0.min.js"></script>
+    <script src="../Librerias/js/jquery-1.10.2.js"></script>
     <!-- icheck -->
     <link href="../Librerias/icheck/skins/square/green.css" rel="stylesheet">
     <script src="../Librerias/lib/icheck.min.js"></script>
@@ -52,7 +53,13 @@
     <script type="text/javascript" src="../Librerias/lib/funcion.js"></script>
 
 
-
+    <style>
+        .menuScroll {
+            /*overflow: auto;*/
+            overflow-y:scroll;
+            max-height: 300px;
+        }
+    </style>
 
 
     <link href="../Librerias/css/plugins/timeline/timeline.css" rel="stylesheet">
@@ -78,6 +85,12 @@
         <!-- /.navbar-header -->
 
         <ul class="nav navbar-top-links navbar-right">
+
+            <li>
+                <a data-toggle="modal" href="javascript:void('')" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"></span>
+            Repositorio</a>
+            </li>
+            
             <li>
                 <a href="lista-de-noticias.php"><i class="glyphicon glyphicon-comment"></i> Foro</a>
             </li>
@@ -102,7 +115,7 @@
         <!-- /.navbar-top-links -->
 
         <div class="navbar-default navbar-static-side" role="navigation">
-            <div class="sidebar-collapse">
+            <div class="sidebar-collapse menuScroll">
                 <ul class="nav" id="side-menu">
                     <li>
                         <a href="AdministrarGrupoEmpresa.php"><i class="glyphicon glyphicon-book"></i> Administrar Grupo Empresas</a>
@@ -294,6 +307,14 @@
                                         {
                                             echo  "<b> La grupo empresa no subi&oacute; propuestas</b><br><br><a class='btn btn-primary' href='documentos_recibidos.php'>Volver Atras</a> ";
                                         }
+
+                                        $consultaUno=$con->consulta("SELECT DISTINCT r.`NOMBRE_R`,d.`RUTA_D` FROM `registro` AS r,`documento` AS d WHERE d.`ID_R` = r.`ID_R` AND r.`TIPO_T` LIKE 'documento subido orden de cambio' AND r.`NOMBRE_U` LIKE '$ax'");
+                                        if(mysql_num_rows($consultaUno) != 0)
+                                        {
+                                            while ($conAuxDos = mysql_fetch_array($consultaUno)) {
+                                                echo "<a class='btn btn-default btn-lg btn-block' href='..".$conAuxDos['1']."'>".$conAuxDos[0]."</a><br>";
+                                            }
+                                        }
                                     }
                                     
                                 }
@@ -305,6 +326,22 @@
                     </div>
                 </div><!-- /.col-lg-12 -->
             </div><!-- /.row -->
+
+
+            <div style="display: none;" aria-hidden="true" class="modal fade" id="myModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" style="max-width: 920px;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title">Buscador</h4>
+                        </div>
+                        <div class="modal-body" style="padding:0px; margin:0px; width: 560px;">
+                            <iframe src="../Librerias/filemanager/dialogo.php?type=0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; " frameborder="0" height="500" width="896"></iframe>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->  
+
         </div><!-- /#page-wrapper -->
 
     </div>

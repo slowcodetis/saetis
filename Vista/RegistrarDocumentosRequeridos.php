@@ -1,4 +1,4 @@
-f<?php  
+<?php  
 
     include '../Modelo/conexion.php';
     $con = new conexion(); 

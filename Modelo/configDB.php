@@ -12,7 +12,7 @@ public $nameDB = 'saetis';
 */
 
 public $usernameDB = 'root';
-public $passwordDB = 'lisa';
+public $passwordDB = 'root';
 public $hostDB = 'localhost';
 public $nameDB = 'saetis';
 

@@ -66,7 +66,16 @@
                 $consulta1 = "SELECT ID_R FROM `registro` WHERE NOMBRE_R = '$fraseClave' AND  TIPO_T = 'publicaciones'";
                 $contrato1 = $conexion->consulta($consulta1);
                 $cantC2= mysql_num_rows($contrato1);
-                if($cantC1 == 1 || $cantC2 == 1) {
+
+                $consulta1 = "SELECT ID_R FROM `registro` WHERE NOMBRE_U = '$nombreUGE[0]' AND TIPO_T = 'documento subido orden de cambio'";
+                $contrato1 = $conexion->consulta($consulta1);
+                $docSubidos = mysql_num_rows($contrato1);
+
+                $consulta1 = "SELECT REGISTRO_ID FROM `documento_requerido_oc` WHERE USUARIO_ID = '$nombreUGE[0]'";
+                $contrato1 = $conexion->consulta($consulta1);
+                $docRequeridos = mysql_num_rows($contrato1);
+                
+                if($cantC1 == 1 || ($cantC2 == 1 && $docRequeridos == $docSubidos)) {
 
                   if (is_array($planifi))
                   {       
@@ -89,7 +98,7 @@
                     $parte2 = 'SEGUNDO.- El objeto de este contrato es la provisión de un producto software.';
                     $parte3 = 'TERCERO.- La consultora '.$nCortoGE[0].', se hace responsable por la buena ejecución de las distintas fases, que involucren su ingeniería del proyecto, especificadas en la propuesta técnica corregida de acuerdo al pliego de especificaciones.';
                     //$parte3 = 'TERCERO.- La consultora <b>'.$nCortoGE[0].'</b>, se hace responsable por la buena ejecución de las distintas fases, que involucren su ingeniería del proyecto, especificadas en la propuesta técnica corregida de acuerdo al pliego de especificaciones.';
-                    $parte4 = 'CUARTO.- Para cualquier otro punto no estipulado en el presente contrato, debe hacerse referencia al CPTIS, al Pliego de Especificaciones y/o al PG-TIS (Plan Global - TIS)';
+                    $parte4 = 'CUARTO.- Para cualquier otro punto no estipulado en el presente contrato, debe hacerse referencia al CPTIS, al Pliego de Especificaciones y/o al PG-TIS (Plan Global - TIS).';
                     $parte5 = 'QUINTO.- Se pone en evidencia que cualquier incumplimiento de las cláusulas estipuladas en el presente contrato, es pasible a la disolución del mismo.';
                     $parte6 = 'SEXTO.- La consultora '.$nCortoGE[0].', declara su absoluta conformidad con los términos del presente contrato. Se deja constancia de que los datos y antecedentes personales jurídicos proporcionados por el adjudicatario son verídicos.';
                     $parte7 = 'SEPTIMO.- El presente contrato se disuelve también, por cualquier motivo de incumplimiento a normas establecidas en PG-TIS (Plan Global - TIS).';
