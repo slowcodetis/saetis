@@ -308,7 +308,7 @@
 
                                <a href="#" class="list-group-item">
                                        <i ></i> <p size="5"><font size="3"><b><?php echo $titulo?></b><p></p>
-                                       <i ></i> Posteado por <b><?php echo $posteado?></b> -
+                                       <i ></i> Publicado por <b><?php echo $posteado?></b> -
                                        <i ></i> <b> <?php echo $vistos?></b> Visualizaciones -
                                        <i ></i> <b><?php echo $comentarios?></b> Comentarios -
                                        <i ></i> <?php echo $fecha?>s

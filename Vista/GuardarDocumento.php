@@ -5,7 +5,7 @@ include '../Modelo/conexion.php';
 include '../Controlador/filtroXSS.php';
 $conect = new conexion();
 //$validador = new ValidadorFecha();
-date_default_timezone_set('America/Puerto_Rico');
+date_default_timezone_set('America/La_Paz');
 
 session_start();
 $UsuarioActivo = $_SESSION['usuario'];
@@ -13,9 +13,9 @@ $proyecto = filterXSS($_POST['proyecto']);
 
 $nombreDoc = filterXSS(trim($_POST['nombreDocumento']));
 $FechaInicioEntrega = filterXSS(date("Y-m-d",strtotime($_POST['fechaInicioE'])));
-$HoraInicioEntrega = filterXSS($_POST['horaInicioE']);
+$HoraInicioEntrega = filterXSS($_POST['horaInicio']);
 $FechaFinalEntrega = filterXSS(date("Y-m-d",strtotime($_POST['fechaFinalE'])));
-$HoraFinalEntrega = filterXSS($_POST['horaFinalE']);
+$HoraFinalEntrega = filterXSS($_POST['horaFinal']);
 $DescripcionDocumento = filterXSS($_POST['DescripcionDocumento']);
 
 //$fechaValida = true;
@@ -33,9 +33,7 @@ $DescripcionDocumento = filterXSS($_POST['DescripcionDocumento']);
 
 	if (is_array($ExistenciaDoc)) {
 
-		echo "<SCRIPT LANGUAGE='javascript'>". 
-	            " alert('Error, ya existe un registro con ese nombre');".
-	            " document.location=('RegistrarDocumentosRequeridos.php');</SCRIPT>";
+		echo "<SCRIPT LANGUAGE='javascript'> alert('Error, ya existe un registro con ese nombre'); window.history.back();</SCRIPT>";
 	}
 	else{
 
@@ -52,15 +50,13 @@ $DescripcionDocumento = filterXSS($_POST['DescripcionDocumento']);
 
 		
 		
-	  $InsertarProyecto = $conect->consulta("INSERT INTO documento_r VALUES('$DocId[0]', '$p_id[0]')");
+		$InsertarProyecto = $conect->consulta("INSERT INTO documento_r VALUES('$DocId[0]', '$p_id[0]')");
 
 		if ($InsertarDocumento and $InsertarPlazo and $InsertarDescripcion) {
 
-				echo "<SCRIPT LANGUAGE='javascript'>". 
-			            " alert('Exito, el registro del documento se realizo exitosamente.');".
-			            " document.location=('../Vista/RegistrarDocumentosRequeridos.php');</SCRIPT>";
+				echo "<SCRIPT LANGUAGE='javascript'> alert('Exito, el registro del documento se realizo exitosamente.'); window.history.back();</SCRIPT>";
 		}
-		else{
+		else {
 		
 			echo "<SCRIPT LANGUAGE='javascript'>". 
 			            " alert('Error, no se pudo registrar el documento');".

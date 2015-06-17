@@ -6,6 +6,8 @@
     require_once '../Modelo/Model/FechaRealizacion.php';
     require_once '../Modelo/conexion.php';
     session_start();
+
+    date_default_timezone_set ('America/La_Paz');
         
     $uActivo = $_SESSION['usuario'];
     $con = new conexion();
