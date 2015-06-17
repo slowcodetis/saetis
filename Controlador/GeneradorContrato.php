@@ -155,9 +155,9 @@
                         $pdf->Ln();
                         $pdf->Cell(50,10, 'MIEMBRO DIRECTORIO', 0, 0, 'C');$pdf->Cell(0,10, 'CONSULTORA', 0, 0, 'C');
                             mkdir('../Repositorio/'.$nombreUA.'/Contratos/');
-                        $pdf->Output('../Repositorio/'.$nombreUA.'/Contratos/Contrato'.$nombCorto.'.pdf','F');
+                        $pdf->Output('../Repositorio/'.$nombreUA.'/Contratos/Contrato '.$nombCorto.'.pdf','F');
 
-                        $pdf = 'Contrato'.$nombCorto.".pdf"; 
+                        $pdf = 'Contrato '.$nombCorto.".pdf"; 
                         $descrip = "../Repositorio/".$nombreUA."/Contratos/".$pdf;
                         $fecha = date('Y-m-d');
                         $hora = date("G:H:i");
