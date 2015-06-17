@@ -99,7 +99,7 @@
                                     $queryStat = "SELECT ID_R FROM `registro` WHERE NOMBRE_R ='$fraseClave' AND  TIPO_T = 'publicaciones'";
                                     $stmt2 = $conexion->query($queryStat);
                                     
-                                    if($stmt1->fetchColumn() == 0 && $stmt2->fetchColumn() == 0) {
+                                    if($stmt1->fetchColumn() == 0 && $stmt2->fetchColumn() == 0) { //verifica que no se emitio una notificaicon de conformidad o una orden de cambio
 
                                         if($validador->estaEnRango($fechaReunion, $fechaIni, $fechaFini)) {
  
@@ -145,9 +145,9 @@
             											$pdf->SetMargins(35, 40 , 55);
             											$pdf->SetAutoPageBreak(true,45); 
 
-    $texto = '  Esta adenda de corrección debe ser entregada por correo electrónico antes de la firma del contrato, misma que debe hacerse llegar al correo leticia@memi.umss.edu.bo.
-      Paralelamnete se solicita, indicar el día de su preferencia para realizar revisiones, puesta en marcha y seguimiento de su propuesta de desarrollo en el tiempo que dure el contrato con TIS.';
-    $texto2 = '  Asímismo, recordar que para el día de la firma del contrato que se realizará el día <b>'. $fechaReunion . '</b> a horas <b>'.$horaReunion.'</b> en <b>'.$lugar .'</b>; se requiere de una copia física de la Boleta de Garantía, emitida a favor de TIS por parte de <b>'.$nombreCGE.'</b>.';
+$texto = '  Esta adenda de corrección debe ser entregada por correo electrónico antes de la firma del contrato, misma que debe hacerse llegar al correo leticia@memi.umss.edu.bo.
+  Paralelamnete se solicita, indicar el día de su preferencia para realizar revisiones, puesta en marcha y seguimiento de su propuesta de desarrollo en el tiempo que dure el contrato con TIS.';
+$texto2 = '  Asímismo, recordar que para el día de la firma del contrato que se realizará el día <b>'. $fechaReunion . '</b> a horas <b>'.$horaReunion.'</b> en <b>'.$lugar .'</b>; se requiere de una copia física de la Boleta de Garantía, emitida a favor de TIS por parte de <b>'.$nombreCGE.'</b>.';
 
             											$puntajes = array('0','0','0','0','0','0','0');
             											$descripciones = array('  Cumplimiento de especificaciones del proponente',utf8_decode('  Claridad en la organización de la empresa proponente'),utf8_decode('  Cumplimiento de especificaciones técnicas'),'  Claridad en el proceso de desarrollo',utf8_decode('  Plazo de ejecución'),'  Precio total','  Uso de herramientas en el proceso de desarrollo');
@@ -230,7 +230,7 @@
                                                         
                                                             //Se guarda los documentos que debe de subir la grupo empresa
                                                         $FechaRegistrado = date('y-m-d');
-                                                        $HoraRegistrado = date('h:i:s');
+                                                        $HoraRegistrado = date('H:i:s');
                                                         foreach($_POST['documentos'] as $selected) {
                                                             
                                                             $nombreDocumento = 'Orden de Cambio '.$nombreUGE. ' ' . $selected;
@@ -239,33 +239,33 @@
                                                             $consulta = $conexion->query("SELECT MAX(ID_R) AS 'ID_R' FROM registro");
                                                             $row = $consulta->fetchObject();
                                                             $id1 = $row -> ID_R;
-
+                                                                //echo "<script> alert("'$id1','$FechaRegistrado','$fechaReunion','$HoraRegistrado','$horaReunion'");</script>";
                                                             $InsertarPlazo = $conexion->query("INSERT INTO plazo(`ID_R`, `FECHA_INICIO_PL`, `FECHA_FIN_PL`, `HORA_INICIO_PL`, `HORA_FIN_PL`) VALUES('$id1','$FechaRegistrado','$fechaReunion','$HoraRegistrado','$horaReunion')");
                                                             $InsertarDescripcion  = $conexion->query("INSERT INTO descripcion(`ID_R`, `DESCRIPCION_D`) VALUES('$id1', '$DescripcionDocumento')");
                                                             $InsertarDocumentoOrdenCambio = $conexion->query("INSERT INTO documento_requerido_oc(`usuario_id`, `registro_id`, `registro_id_oc`) VALUES ('$nombreUGE','$id1', '$id')");
                                                         }
                                                         echo"<script type=\"text/javascript\">alert('Se genero correctamente la orden de cambio'); window.location='../Vista/publicaciones.php';</script>";
-                                                    }
+                                                    }//---- FIN if(isset($_GET['id']))
                                                     //else {
                                                     //    echo"<script type=\"text/javascript\">alert('Ya se genero una orden de cambio para la grupo empresa seleccionada'); window.location='../Vista/publicaciones.php';</script>";
                                                     //}
-                                                }
+                                                }//--- FIN if(sizeof($_POST))
                                                 else {
-                                                    echo "<script>alert('Debe seleccionar al menos un archivo que debe de subir la grupo empresa para su habilitación'); window.history.back();</script>"   
+                                                    echo "<script>alert('Debe seleccionar al menos un archivo que debe de subir la grupo empresa para su habilitación'); window.history.back();</script>";   
                                                 }
-                                            }
+                                            }//--- FIN if(($DocSub == $docR) and $DocSub>=1)
                                             else {
                                                 echo"<script type=\"text/javascript\">alert('La grupo empresa seleccionada aun no ha subido todos los documentos requeridos');  window.history.back();</script>"; 
                                             }
-                                        }
+                                        }//--- FIN if($validador->estaEnRango($fechaReunion, $fechaIni, $fechaFini))
                                         else {
                                             echo"<script type=\"text/javascript\">alert('La fecha seleccionada esta fuera del rango de la gestion, seleccione otra por favor'); window.history.back();</script>";  
                                         }
-                                    }
+                                    }//--- FIN if($stmt1->fetchColumn() == 0 && $stmt2->fetchColumn() == 0)
                                     else {
                                         echo"<script>alert('Ya se genero una notificacion de conformidad o una orden de cambio para la grupo empresa seleccionada'); window.history.back();</script>";  
                                     }
-                                }
+                                }//--- FIN else
                             }
                             else {        
                                 echo"<script type=\"text/javascript\">alert('Por favor, seleccione una grupo empresa');  window.history.back();</script>";  
