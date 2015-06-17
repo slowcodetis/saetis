@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-
+    date_default_timezone_set ('America/La_Paz');
     include '../Modelo/conexion.php';
     session_start();
     $conexion = new conexion();

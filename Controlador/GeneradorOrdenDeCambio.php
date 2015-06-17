@@ -14,8 +14,6 @@
     include '../Modelo/conexion_pd.php';
     include '../Controlador/ValidadorIntervaloFecha.php';
     include '../Controlador/filtroXSS.php';
-
-
     date_default_timezone_set ('America/La_Paz');
 
     session_start();

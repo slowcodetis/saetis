@@ -12,6 +12,7 @@
     $urlActual = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
     $objValidador->puedeAcceder($urlActual, $uActivo);
 
+    date_default_timezone_set ('America/La_Paz');
 ?>
 <html>
 
@@ -131,13 +132,18 @@
                                     
                                         $docsReq = $conexion->consulta("SELECT NOMBRE_R FROM registro, documento_r, inscripcion, inscripcion_proyecto WHERE inscripcion_proyecto.CODIGO_P = documento_r.CODIGO_P AND documento_r.ID_R = registro.ID_R AND inscripcion_proyecto.NOMBRE_U = '$uActivo' AND inscripcion.NOMBRE_UGE = inscripcion_proyecto.NOMBRE_U");
                                      
-                                        while ($rowDocs = mysql_fetch_row($docsReq))
-                                        {
+                                        while ($rowDocs = mysql_fetch_row($docsReq)) {
                                             
                                             echo '<li>
                                                   <a href="SubirDocumento.php?doc='.$rowDocs[0].'">'.$rowDocs[0].'</a>
                                                    </li>';  
-                                            
+                                        }
+                                        $docsReq = $conexion->consulta("SELECT NOMBRE_R FROM registro, documento_requerido_oc WHERE documento_requerido_oc.REGISTRO_ID = registro.ID_R AND documento_requerido_oc.USUARIO_ID = '$uActivo'");
+                                     
+                                        while ($rowDocs = mysql_fetch_row($docsReq)) {
+                                            echo '<li>
+                                            <a href="SubirDocumentoOC.php?doc='.$rowDocs[0].'">'.$rowDocs[0].'</a>
+                                            </li>';
                                         }
                                         
                                     ?>

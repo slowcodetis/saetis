@@ -5,6 +5,8 @@
   session_start();
   $conexion = new conexion();
 
+  date_default_timezone_set ('America/La_Paz');
+
   if (isset($_POST['grupoempresa']))
   {
       $nLargoGE = $_REQUEST['grupoempresa'];
