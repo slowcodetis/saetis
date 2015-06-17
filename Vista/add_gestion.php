@@ -73,23 +73,27 @@
             console.log('execute');
         $( "#from" ).datepicker({
           minDate: new Date(),
-
+             maxDate: new Date('2015-09-16'),
         changeMonth: true,
         dateFormat: "yy-mm-dd",        
         numberOfMonths: 1,
         onClose: function( selectedDate ) {
+
         $( "#to" ).datepicker( "option","minDate" , selectedDate );
         }
+
         });
         $( "#to" ).datepicker({
-            minDate: new Date(),
+            minDate: new Date('2015-07-18'),
+            maxDate:new Date('2015-09-16'),
         dateFormat: "yy-mm-dd",
         changeMonth: true,
         numberOfMonths: 1,
         minDate: new Date(),
         onClose: function( selectedDate ) {
-              minDate: new Date(),
-        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+
+           
+        $( "#from" ).datepicker( "option", selectedDate );
 
         
 
