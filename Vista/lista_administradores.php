@@ -255,49 +255,45 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                  
                     <div class="mainbar">
-                                            <div class="article"><br><br>
+                        <div class="article"><br><br>
                             <h2><span>Lista de Administradores</span></h2> 
-                           
                         </div>
-                                            
-                                            
-                                   <div class="historia1">
-                            <div class="contenedor-fila2">
+                            <div class="historia1">
+                                <div class="contenedor-fila2">
                                     
-                                <div class="contenedor-columna">
-                                    <?php
-                                        echo "Nombre";
-                                    ?>
+                                    <div class="contenedor-columna">
+                                        <?php
+                                            echo "Nombre";
+                                        ?>
+                                    </div>  
+                                    <div class="contenedor-columna">
+                                        <?php
+                                            echo "Estado";
+                                        ?>
+                                    </div>
+            
+                                    <div class="contenedor-columna">
+                                        <?php
+                                            echo "Password";
+                                        ?>
+                                    </div>
+                                    <div class="contenedor-columna">
+                                        <?php
+                                            echo "Telefono";
+                                        ?>
+                                    </div>
+                                    <div class="contenedor-columna">
+                                        <?php
+                                            echo "e-mail";
+                                        ?>
+                                    </div>
+                                    <div class="contenedor-columna">
+                                        <?php
+                                            echo "rol";
+                                        ?>
+                                    </div>
                                 </div>  
-                                <div class="contenedor-columna">
-                                    <?php
-                                        echo "Estado";
-                                    ?>
-                                </div>
-        
-                                <div class="contenedor-columna">
-                                    <?php
-                                        echo "Password";
-                                    ?>
-                                </div>
-                                <div class="contenedor-columna">
-                                    <?php
-                                        echo "Telefono";
-                                    ?>
-                                </div>
-                                <div class="contenedor-columna">
-                                    <?php
-                                        echo "e-mail";
-                                    ?>
-                                </div>
-                                <div class="contenedor-columna">
-                                    <?php
-                                        echo "rol";
-                                    ?>
-                                </div>
-                                                        </div>  
                             <?php
                                 
                                 //Peticion
@@ -319,49 +315,51 @@ WHERE  u.NOMBRE_U = r.NOMBRE_U  AND r.ROL_R = 'administrador'");
                                             if($uActivo=="Admin1")
                                             {
 
-                                                    ?>
-                                                 <div class="contenedor-fila">
-                                                         <div class="contenedor-columna">
-                                                            <?php
-                                                                echo $fila['NOMBRE_U'];
-                                                            ?>
-                                                        </div>
-                                    
-                                                <div class="contenedor-columna">
-                                                     <?php
-                                                        echo $fila['ESTADO_E'];
-                                                     ?>
-                                                </div>
-            
-                                                <div class="contenedor-columna">
-                                                    <?php
-                                                        echo $fila['PASSWORD_U'];
-                                                     ?>
-                                                </div>
-                                    
-                                                <div class="contenedor-columna">
-                                                    <?php
-                                                         echo $fila['TELEFONO_U'];
-                                                     ?>
-                                                 </div>
-                                    
-                                                <div class="contenedor-columna">
-                                                     <?php
-                                                         echo $fila['CORREO_ELECTRONICO_U'];
-                                                    ?>
-                                                </div>
-                                                <div class="contenedor-columna">
-                                                     <?php
-                                                         echo $fila['ROL_R'];
-                                                     ?>
-                                                </div>  
-                                     
-                                    
-                                                 <div class="contenedor-columna">
+                                                ?>
+                                                <div class="contenedor-fila">
+                                                    <div class="contenedor-columna">
                                                         <?php
-                                                            echo "<a href ='eliminar_administrador.php?id_us=".$fila['NOMBRE_U']."' class='verificar'><font color='blue'>Eliminar</font></a>";
+                                                            echo $fila['NOMBRE_U'];
+                                                        ?>
+                                                    </div>
+                                        
+                                                    <div class="contenedor-columna">
+                                                         <?php
+                                                            echo $fila['ESTADO_E'];
                                                          ?>
+                                                    </div>
+                
+                                                    <div class="contenedor-columna">
+                                                        <?php
+                                                            echo $fila['PASSWORD_U'];
+                                                         ?>
+                                                    </div>
+                                        
+                                                    <div class="contenedor-columna">
+                                                        <?php
+                                                             echo $fila['TELEFONO_U'];
+                                                         ?>
+                                                    </div>
+                                        
+                                                    <div class="contenedor-columna">
+                                                         <?php
+                                                             echo $fila['CORREO_ELECTRONICO_U'];
+                                                        ?>
+                                                    </div>
+                                                    <div class="contenedor-columna">
+                                                         <?php
+                                                             echo $fila['ROL_R'];
+                                                         ?>
+                                                    </div>  
+                                         
+                                        
+                                                    <div class="contenedor-columna">
+                                                            <?php
+                                                                echo "<a href ='eliminar_administrador.php?id_us=".$fila['NOMBRE_U']."' class='verificar'><font color='blue'>Eliminar</font></a>";
+                                                             ?>
+                                                    </div>
                                                 </div>
+
 
                                                     <?php
 
@@ -371,16 +369,16 @@ WHERE  u.NOMBRE_U = r.NOMBRE_U  AND r.ROL_R = 'administrador'");
 
                                         ?>
                                             <div class="contenedor-fila">
-                                                         <div class="contenedor-columna">
-                                                            <?php
-                                                                echo $fila['NOMBRE_U'];
-                                                            ?>
-                                                        </div>
+                                                <div class="contenedor-columna">
+                                                    <?php
+                                                        echo $fila['NOMBRE_U'];
+                                                    ?>
+                                                </div>
                                     
                                                 <div class="contenedor-columna">
-                                                     <?php
+                                                    <?php
                                                         echo $fila['ESTADO_E'];
-                                                     ?>
+                                                    ?>
                                                 </div>
             
                                                 <div class="contenedor-columna">
@@ -393,7 +391,7 @@ WHERE  u.NOMBRE_U = r.NOMBRE_U  AND r.ROL_R = 'administrador'");
                                                     <?php
                                                          echo $fila['TELEFONO_U'];
                                                      ?>
-                                                 </div>
+                                                </div>
                                     
                                                 <div class="contenedor-columna">
                                                      <?php
@@ -405,7 +403,7 @@ WHERE  u.NOMBRE_U = r.NOMBRE_U  AND r.ROL_R = 'administrador'");
                                                          echo $fila['ROL_R'];
                                                      ?>
                                                 </div>  
-                                     
+                                            </div>
                                     
                                               
 
@@ -428,18 +426,13 @@ WHERE  u.NOMBRE_U = r.NOMBRE_U  AND r.ROL_R = 'administrador'");
                                 //Cerrar
                         ?>  
                                                            
-                                                      </div>                                         
-                    
+                        </div>                                         
                     </div>                    
-                    
-                    
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-     
         </div>
         <!-- /#page-wrapper -->
-
     </div>
     <!-- /#wrapper -->
 
