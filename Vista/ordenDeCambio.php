@@ -398,6 +398,13 @@ include '../Modelo/validadorAcceso.php';
                             <input class="form-control" style="width:500px;heigth:30px;"  name="lugar">
                         </div>
                     </div><!--end/lugar-->
+
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">Documentos que debe modificar: </label><br>
+                        <label class="col-xs-2 control-label">Parte A:</label> <input class="col-sm-2" type="checkbox" name="documentos[]" value="Parte A">
+                        <label class="col-xs-2 control-label">Parte B:</label> <input class="col-sm-2" type="checkbox" name="documentos[]" value="Parte B"> <br><br>
+                    </div><!--end/docuemtnos a modificar-->
+
                     <div class="form-group" >
                         <label class="col-sm-2 control-label">Observaciones</label>
                         <a onclick="agregarHijo()" class="link-dos" > Agregar Observacion&nbsp;&nbsp;</a><span class="glyphicon glyphicon-plus"></span>
@@ -406,10 +413,7 @@ include '../Modelo/validadorAcceso.php';
                         </div>
                     </div><!--end/observaciones-->
                     
-                    <div>
-                        <label class="col-xs-2 control-label">Parte A:</label> <input class="col-sm-2" type="checkbox" name="documentos[]" value="Parte A">
-                        <label class="col-xs-2 control-label">Parte B:</label> <input class="col-sm-2" type="checkbox" name="documentos[]" value="Parte B">
-                    </div>
+                    
 
                     <div class   ="form-group">
                         <div class   ="col-sm-8">
