@@ -406,6 +406,11 @@ include '../Modelo/validadorAcceso.php';
                         </div>
                     </div><!--end/observaciones-->
                     
+                    <div>
+                        <label class="col-xs-2 control-label">Parte A:</label> <input class="col-sm-2" type="checkbox" name="documentos[]" value="Parte A">
+                        <label class="col-xs-2 control-label">Parte B:</label> <input class="col-sm-2" type="checkbox" name="documentos[]" value="Parte B">
+                    </div>
+
                     <div class   ="form-group">
                         <div class   ="col-sm-8">
                             <input class ="btn btn-primary" type="submit" value= "Generar" id= "enviar" name="enviar" onclick ="this.form.action='../Controlador/GeneradorOrdenDeCambio.php?id=0'"></input> &nbsp;&nbsp;                      

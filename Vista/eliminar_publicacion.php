@@ -28,15 +28,17 @@
         $tamDocumentos=mysql_num_rows($resultadoConsula);
         if($tamDocumentos>0) {
             $filaRegistro = mysql_fetch_array($resultadoConsula);
-            $idRegistro = $filaRegistro[0];
-        
-            $delDes = $conect->consulta(" DELETE FROM `descripcion` WHERE ID_R='$idRegistro'");
-            $delDoc = $conect->consulta(" DELETE FROM `documento` WHERE ID_R='$idRegistro'");
-            $delPerio = $conect->consulta("DELETE FROM periodo WHERE ID_R = '$idRegistro' ");
-            $delPlazo = $conect->consulta("DELETE FROM plazo WHERE ID_R = '$idRegistro' ");
-            $delRecepcion = $conect->consulta("DELETE FROM receptor WHERE ID_R = '$idRegistro' ");
-            $delDocReqOC = $conect->consulta("DELETE FROM documento_requerido_oc WHERE REGISTRO_ID = '$idRegistro' ");
-            $delRegistro = $conect->consulta("DELETE FROM registro WHERE ID_R = '$idRegistro' ");
+            for($i = 0; $i < mysql_num_rows($resultadoConsula); $i++) {
+                
+                $idRegistro = $filaRegistro[$i];
+                $delDes = $conect->consulta(" DELETE FROM `descripcion` WHERE ID_R='$idRegistro'");
+                $delDoc = $conect->consulta(" DELETE FROM `documento` WHERE ID_R='$idRegistro'");
+                $delPerio = $conect->consulta("DELETE FROM periodo WHERE ID_R = '$idRegistro' ");
+                $delPlazo = $conect->consulta("DELETE FROM plazo WHERE ID_R = '$idRegistro' ");
+                $delRecepcion = $conect->consulta("DELETE FROM receptor WHERE ID_R = '$idRegistro' ");
+                $delDocReqOC = $conect->consulta("DELETE FROM documento_requerido_oc WHERE REGISTRO_ID = '$idRegistro' ");
+                $delRegistro = $conect->consulta("DELETE FROM registro WHERE ID_R = '$idRegistro' ");
+            }
         }
         $delRegis= $conect->consulta("DELETE FROM registro WHERE ID_R = '$idRegis' ");
         

@@ -387,7 +387,7 @@ f<?php
                                     
                                     <div class="form-group">
                                         <label>
-                                            <input id="fechaInicioE" class ="form-control" placeholder="AAAA-MM-DD" type="date" name="fecha" id="fechaInicioE" pattern="^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})$" required/ readonly>
+                                            <input id="fechaInicioE" class ="form-control" placeholder="AAAA-MM-DD" type="date" name="fechaInicioE" id="fechaInicioE" pattern="^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})$" required/ readonly>
                                         </label>
                                     </div>
                                 </div>
@@ -397,7 +397,7 @@ f<?php
                                  Hora Inicio de Entrega:<span id="sprytextfield1"></label>
                                  <div class="form-group">
                                     <label for="horaINICIO">
-                                        <input id="horaInicio" class ="form-control" placeholder="HH:MM"  name="horaInicio" pattern ="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required/>
+                                        <input id="horaInicio" class ="form-control" placeholder="HH:MM"  type="time" name="horaInicio" pattern ="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required/>
                                     </label>
                                 </div>
                             </div>
@@ -410,7 +410,7 @@ f<?php
                               <label class="default" for="fecha">Fecha Final de Entrega</label>
                               <div class="form-group">
                                 <label>
-                                    <input id="fechaFinalE" class ="form-control" placeholder="AAAA-MM-DD"  type="date" name="fecha"  required/ readonly>
+                                    <input id="fechaFinalE" class ="form-control" placeholder="AAAA-MM-DD"  type="date" name="fechaFinalE"  required/ readonly>
                                 </label>
                             </div>
                             

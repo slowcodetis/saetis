@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
 
+    date_default_timezone_set ('America/La_Paz');
+
     include '../Modelo/conexion.php';
     session_start();
     $uActivo = $_SESSION['usuario'];
@@ -159,7 +161,7 @@
                                      
                                         while ($rowDocs = mysql_fetch_row($docsReq)) {
                                             echo '<li>
-                                            <a href="SubirDocumento.php?doc='.$rowDocs[0].'">'.$rowDocs[0].'</a>
+                                            <a href="SubirDocumentoOC.php?doc='.$rowDocs[0].'">'.$rowDocs[0].'</a>
                                             </li>';
                                         }
                                         

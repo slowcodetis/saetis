@@ -233,17 +233,19 @@
                                                             //Se guarda los documentos que debe de subir la grupo empresa
                                                         $FechaRegistrado = date('y-m-d');
                                                         $HoraRegistrado = date('h:i:s');
-                                                        $nombreDocumento = 'Orden de Cambio '.$nombreUGE. 'documento';
-                                                        $InsertarDocumento = $conexion->query("INSERT INTO registro(NOMBRE_U, TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R) VALUES('$nombreUA','documento requerido ','Habilitado','Orden de Cambio 1','$FechaRegistrado', '$HoraRegistrado')");
-                                                        
-                                                        $consulta = $conexion->query("SELECT MAX(ID_R) AS 'ID_R' FROM registro");
-                                                        $row = $consulta->fetchObject();
-                                                        $id1 = $row -> ID_R;
+                                                        foreach($_POST['documentos'] as $selected) {
+                                                            
+                                                            $nombreDocumento = 'Orden de Cambio '.$nombreUGE. ' ' . $selected;
+                                                            $InsertarDocumento = $conexion->query("INSERT INTO registro(NOMBRE_U, TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R) VALUES('$nombreUA','documento requerido orden de cambio','Habilitado','$nombreDocumento','$FechaRegistrado', '$HoraRegistrado')");
+                                                            
+                                                            $consulta = $conexion->query("SELECT MAX(ID_R) AS 'ID_R' FROM registro");
+                                                            $row = $consulta->fetchObject();
+                                                            $id1 = $row -> ID_R;
 
-                                                        $InsertarPlazo = $conexion->query("INSERT INTO plazo(`ID_R`, `FECHA_INICIO_PL`, `FECHA_FIN_PL`, `HORA_INICIO_PL`, `HORA_FIN_PL`) VALUES('$id1','$FechaRegistrado','$fechaReunion','$HoraRegistrado','$horaReunion')");    /*VALUES('$id','$FechaInicioEntrega','$FechaFinalEntrega','$HoraInicioEntrega','$HoraFinalEntrega')");    */
-                                                        $InsertarDescripcion  = $conexion->query("INSERT INTO descripcion(`ID_R`, `DESCRIPCION_D`) VALUES('$id1', '$DescripcionDocumento')");
-                                                        $InsertarDocumentoOrdenCambio = $conexion->query("INSERT INTO documento_requerido_oc(`usuario_id`, `registro_id`, `registro_id_oc`) VALUES ('$nombreUGE','$id1', '$id')");
-
+                                                            $InsertarPlazo = $conexion->query("INSERT INTO plazo(`ID_R`, `FECHA_INICIO_PL`, `FECHA_FIN_PL`, `HORA_INICIO_PL`, `HORA_FIN_PL`) VALUES('$id1','$FechaRegistrado','$fechaReunion','$HoraRegistrado','$horaReunion')");
+                                                            $InsertarDescripcion  = $conexion->query("INSERT INTO descripcion(`ID_R`, `DESCRIPCION_D`) VALUES('$id1', '$DescripcionDocumento')");
+                                                            $InsertarDocumentoOrdenCambio = $conexion->query("INSERT INTO documento_requerido_oc(`usuario_id`, `registro_id`, `registro_id_oc`) VALUES ('$nombreUGE','$id1', '$id')");
+                                                        }
                                                         echo"<script type=\"text/javascript\">alert('Se genero correctamente la orden de cambio'); window.location='../Vista/publicaciones.php';</script>";
                                                     //}
                                                     //else {

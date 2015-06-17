@@ -36,7 +36,14 @@
                 date_default_timezone_set('America/La_Paz');
                 $fecha=  date('Y-m-d');
                 $hora=  date("G:H:i");
-                $clas->consulta("INSERT INTO `registro` (NOMBRE_U,TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R)  VALUES ('$UsuarioActivo','documento subido','habilitado','$DocumentoR','$fecha','$hora')");
+                $sas = $_POST['ordenCambio'];
+                echo "<script> alert('$sas');</script>";
+                if (strlen($sas) > 0) {
+                    $clas->consulta("INSERT INTO `registro` (NOMBRE_U,TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R)  VALUES ('$UsuarioActivo','documento subido orden de cambio','habilitado','$DocumentoR','$fecha','$hora')");    
+                }
+                else {
+                    $clas->consulta("INSERT INTO `registro` (NOMBRE_U,TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R)  VALUES ('$UsuarioActivo','documento subido','habilitado','$DocumentoR','$fecha','$hora')");
+                } 
                 $clas->consulta("INSERT INTO `documento` (ID_R,TAMANIO_D,RUTA_D,VISUALIZABLE_D,DESCARGABLE_D) VALUES ($idRegistro,$tamanio,'$rutaDocumento','$visualizable','$descargable')");
                 echo '<script>alert("Documento subido exitosamente");
                               location.href = "../Vista/inicio_grupo_empresa.php";

@@ -191,6 +191,7 @@
                 <div class="col-lg-12">
                     <h2 class="page-header">Subir Documento</h2>
                     <div class="col-lg-6" >
+                        <!--input type = "hidden" name="documentoOC" value=" orden de cambio" checked="checked"-->
                         
                         <?php
                             $selAsesor = $conexion->consulta("SELECT NOMBRE_UA FROM inscripcion WHERE NOMBRE_UGE='$uActivo'");
@@ -260,6 +261,7 @@
                                                     </div>
                                                 </fieldset>
                                                 <input type = "hidden" name="Usuario" value="'.$uActivo.'"">
+                                                <input type = "hidden" name="ordenCambio" value=" orden de Cambio"">
                                             </form>';
                                     }    
                                 }  

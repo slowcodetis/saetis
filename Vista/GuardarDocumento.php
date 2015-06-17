@@ -5,7 +5,7 @@ include '../Modelo/conexion.php';
 include '../Controlador/filtroXSS.php';
 $conect = new conexion();
 //$validador = new ValidadorFecha();
-date_default_timezone_set('America/Puerto_Rico');
+date_default_timezone_set('America/La_Paz');
 
 session_start();
 $UsuarioActivo = $_SESSION['usuario'];
@@ -13,9 +13,9 @@ $proyecto = filterXSS($_POST['proyecto']);
 
 $nombreDoc = filterXSS(trim($_POST['nombreDocumento']));
 $FechaInicioEntrega = filterXSS(date("Y-m-d",strtotime($_POST['fechaInicioE'])));
-$HoraInicioEntrega = filterXSS($_POST['horaInicioE']);
+$HoraInicioEntrega = filterXSS($_POST['horaInicio']);
 $FechaFinalEntrega = filterXSS(date("Y-m-d",strtotime($_POST['fechaFinalE'])));
-$HoraFinalEntrega = filterXSS($_POST['horaFinalE']);
+$HoraFinalEntrega = filterXSS($_POST['horaFinal']);
 $DescripcionDocumento = filterXSS($_POST['DescripcionDocumento']);
 
 //$fechaValida = true;
