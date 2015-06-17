@@ -37,7 +37,7 @@
                 $fecha=  date('Y-m-d');
                 $hora=  date("G:H:i");
                 $sas = $_POST['ordenCambio'];
-                echo "<script> alert('$sas');</script>";
+                
                 if (strlen($sas) > 0) {
                     $clas->consulta("INSERT INTO `registro` (NOMBRE_U,TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R)  VALUES ('$UsuarioActivo','documento subido orden de cambio','habilitado','$DocumentoR','$fecha','$hora')");    
                 }
