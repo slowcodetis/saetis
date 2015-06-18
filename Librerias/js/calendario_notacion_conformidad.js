@@ -6,7 +6,8 @@ $(document).on('ready',function(){
                 format:'Y-m-d',
                 formatDate:'Y/m/d',
                 minDate:'-1970/01/01', // fecha actual es el minimo de seleccion en fechas
-                maxDate:'+1970/04/01' // and tommorow is maximum date calendar
+                maxDate:'2015/06/30' 
+                //maxDate:'+1970/04/01' // and tommorow is maximum date calendar
         });
 
         $('#hora').datetimepicker({
