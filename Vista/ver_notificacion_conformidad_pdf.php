@@ -1,5 +1,6 @@
 <?php
 include '../Librerias/fpdf.php';
+
 $nombreEmpresa=$_POST['lista'];
 $fecha=$_POST['fecha'];
 $hora=$_POST['hora'];
@@ -12,33 +13,47 @@ $cali5=$_POST['cali5'];
 $cali6=$_POST['cali6'];
 $cali7=$_POST['cali7'];
 
+/*
+$nombreEmpresa="Empresa";
+$fecha="2015-06-06";
+$hora="10:10";
+$lugar="MEMI";
+$cali1="1";
+$cali2="1";
+$cali3="1";
+$cali4="1";
+$cali5="1";
+$cali6="1";
+$cali7="1";
+*/
+
 class PDF extends FPDF
 {
 // Cabecera de página
-function Header()
-{
-    $this->SetFont('Times','',20);
-    $this->Cell(80);
-    $this->Cell(30,10,  utf8_decode('Notificación de Conformidad'),0,0,'C');
-    $this->Ln();
-    $this->SetFont('Times','',14);
-    $this->Cell(190,10,'Ma. Leticia Blanco Coca',0,0,'C');
-    $this->Ln();
-    $this->SetFont('Times','',14);
-    date_default_timezone_set("America/La_Paz");
-    $arrayMeses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
-    $fecha_actual= date('d')." de ".$arrayMeses[date('m')-1]." de ".date('Y');
-    $this->Cell(190,10,  utf8_decode("$fecha_actual"),0,0,'C');
-    $this->Ln(20);
-}
+    function Header()
+    {
+        $this->SetFont('Times','',20);
+        $this->Cell(80);
+        $this->Cell(30,10,  utf8_decode('Notificación de Conformidad'),0,0,'C');
+        $this->Ln();
+        $this->SetFont('Times','',14);
+        $this->Cell(190,10,'Ma. Leticia Blanco Coca',0,0,'C');
+        $this->Ln();
+        $this->SetFont('Times','',14);
+        date_default_timezone_set("America/La_Paz");
+        $arrayMeses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+        $fecha_actual= date('d')." de ".$arrayMeses[date('m')-1]." de ".date('Y');
+        $this->Cell(190,10,  utf8_decode("$fecha_actual"),0,0,'C');
+        $this->Ln(20);
+    }
 
-function Footer()
-{
-    $this->SetY(-15);
-    $this->SetFont('Times','',8);
-    $this->Cell(0,10,  utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'C');
-    
-}
+    function Footer()
+    {
+        $this->SetY(-15);
+        $this->SetFont('Times','',8);
+        $this->Cell(0,10,  utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'C');
+        
+    }
 }
 
 // Creación del objeto de la clase heredada
@@ -106,7 +121,5 @@ $pdf->MultiCell(130, 5, utf8_decode('Paralelamente se solicita, indicar el dia d
 $pdf->Cell(30);
 $pdf->MultiCell(130,5,  utf8_decode('Asímismo, recordar que para el día de la firma del contrato se requiere de una copia física de la Boleta de Garantía, emitida a favor de TIS por parte de '."$nombreEmpresa."));
 $pdf->Output('prueba.pdf','I');
-
-
 
 ?>
