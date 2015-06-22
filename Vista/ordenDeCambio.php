@@ -59,7 +59,37 @@ include '../Modelo/validadorAcceso.php';
     <script type="text/javascript" src="../Librerias/lib/funcionSeguimiento.js"></script>
 
     <!--DateTime Picker-->
-    <script type="text/javascript" src="../Librerias/js/calendario_notacion_conformidad.js"></script>
+    <!--script type="text/javascript" src="../Librerias/js/calendario_notacion_conformidad.js"></script-->
+    <script type="text/javascript">
+        $(document).on('ready',function(){
+            $('#fecha').datetimepicker({
+                yearOffset:0,
+                lang:'es',
+                timepicker:false,
+                format:'Y-m-d',
+                formatDate:'Y/m/d',
+                minDate:'-1970/01/01', // fecha actual es el minimo de seleccion en fechas
+                maxDate:'2015/06/30' 
+                //maxDate:'+1970/04/01' // and tommorow is maximum date calendar
+            });
+
+            $('#hora').datetimepicker({
+                datepicker:false,
+                format:'H:i',
+                step:5
+
+            });
+            $('#fecha2').datetimepicker({
+                    yearOffset:0,
+                    lang:'es',
+                    timepicker:false,
+                    format:'Y-m-d',
+                    formatDate:'Y/m/d',
+                    minDate: new Date() // fecha actual es el minimo de seleccion en fechas
+                    // and tommorow is maximum date calendar
+            });
+        });
+    </script>
     <link rel="stylesheet" type="text/css" href="../Librerias/calendario2/jquery.datetimepicker.css"/>
     <script type="text/javascript" src="../Librerias/calendario2/jquery.datetimepicker.js"></script>
 

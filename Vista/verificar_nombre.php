@@ -39,14 +39,14 @@
                             <div class="form-group">
                                 
                                     <div class="form-group">
-                                        <form action="consultar_nombre.php" name="formulario1" role=form" method="post" onsubmit="return validarCampos(this)">
-                                        <label id="label"><h5>Introduzca el Nombre Largo de su empresa:</h5></label>
-                                        <input name="nombre" class="form-control" onkeypress="return validarLetras(event)"><br>
-                                        <label id="label"><h5>Introduzca el Nombre Corto de su empresa:</h5></label>
-                                        <input name="nombreCorto" class="form-control" onkeypress=" return validarLetras(event)"><br>
-                                        <button type="submit" class="btn btn-primary">Revisar</button><br><br>
-                                        
-                                        <form action="ver_nombres.php" name="formulario2" role=form" method="post" target="_blank">
+                                        <form action= "consultar_nombre.php" name="formulario1" role="form" method="post" onsubmit="return validarCampos(this)">
+                                            <label id="label"><h5>Introduzca el Nombre Largo de su empresa:</h5></label>
+                                            <input name="nombre" class="form-control" onkeypress="return validarLetras(event)"><br>
+                                            <label id="label"><h5>Introduzca el Nombre Corto de su empresa:</h5></label>
+                                            <input name="nombreCorto" class="form-control" onkeypress=" return validarLetras(event)"><br>
+                                            <button type="submit" class="btn btn-primary">Revisar</button><br><br>
+                                        </form>
+                                        <form action="ver_nombres.php" name="formulario2" role="form" method="post" target="_blank">
                                             <button type="submit" class="btn btn-primary" target="_blank" >Ver Nombres Registrados</button><br><br>
                                         </form>
                                     </div>

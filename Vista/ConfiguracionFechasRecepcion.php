@@ -68,9 +68,9 @@
     <!-- SB Admin CSS - Include with every page -->
     <link href="../Librerias/css/sb-admin.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
-     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.css" rel="stylesheet">
-     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+    <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+    <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.css" rel="stylesheet">
+    <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
    
 
      <style>
@@ -79,11 +79,7 @@
             max-height: 300px;
         }
     </style>
-
-
-
-
- <script>
+    <script>
 
         jQuery(document).ready(function() {
             console.log("hsdfjksdhfjks");
@@ -121,21 +117,9 @@
         });
         });
     </script>
-
-
-
-
-
 </head>
 
 <body>
-
-
-
-
-
-
-
 
 <div id="wrapper">
      <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
@@ -151,11 +135,10 @@
         <!-- /.navbar-header -->
 
         <ul class="nav navbar-top-links navbar-right">
-
-                    <li>
-                        <a data-toggle="modal" href="javascript:void('')" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"></span>
-                        Repositorio</a>
-                    </li>
+                <li>
+                    <a data-toggle="modal" href="javascript:void('')" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"></span>
+                    Repositorio</a>
+                </li>
             <li>
                 <a href="lista-de-noticias.php"><i class="glyphicon glyphicon-comment"></i> Foro</a>
             </li>
@@ -165,7 +148,6 @@
                     <?php echo $uActivo.' '; ?><i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-
                     <li>
                         <a href="modificar_asesor.php"><i class="fa fa-user fa-fw"></i> Modificar Datos personales</a>
                     </li>
@@ -294,177 +276,143 @@
             </div><!-- /.sidebar-collapse -->
         </div>
     </nav>
-<div class="modal fade modalRegistroAsistencia" role="dialog" data-backdrop="static" aria-hidden="true">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Asistencia</h4>
-            </div>
-            <div class="modal-body">
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="modal fade modalRegistroReportes" role="dialog" data-backdrop="static" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Reportes</h4>
-            </div>
-            <div class="modal-body">
-
+    <div class="modal fade modalRegistroAsistencia" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Asistencia</h4>
+                </div>
+                <div class="modal-body">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade modalSeguimiento" role="dialog" data-backdrop="static" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Ver Seguimientos</h4>
-            </div>
-            <div class="modal-body">
-
+    <div class="modal fade modalRegistroReportes" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Reportes</h4>
+                </div>
+                <div class="modal-body">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div id="page-wrapper">
+    <div class="modal fade modalSeguimiento" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Ver Seguimientos</h4>
+                </div>
+                <div class="modal-body">
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header"  > Configurar  Fechas de Recepci&oacute;n de Documentos </h2>
+                </div>
+            </div>
         </div>
-        <!-- /.col-lg-12 -->
     </div>
-    <!-- /.row -->
-    <div class="row">
-        <div class="col-lg-8">
-          <div class="row">
+
+    <div id="page-wrapper">
+
+        <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-default" id="configuracionFechas">
-                    <div class="panel-heading">
-                        <label class=" text-warning" for="descripcionDocumento">Seleccionar un  Documento a Recepcionar para realizar la configuraci&oacute;n de la Fecha </label>
+                <h2 class="page-header"  > Configurar  Fechas de Recepci&oacute;n de Documentos </h2>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default" id="configuracionFechas">
+                            <div class="panel-heading">
+                                <label class=" text-warning" for="descripcionDocumento">Seleccionar un  Documento a Recepcionar para realizar la configuraci&oacute;n de la Fecha </label>
+                            </div>
 
-                        
-                    </div>
-
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-
-                        <!-- Button trigger modal -->
-
-
-                        <form  method="POST" name="formulario" id="formulario" action="forms/actions/configurarFechaRecepcionCO.php" > 
-
-                            <!--<form id="form1" name="form1" method="post" action="< php  >">-->
-                            <p>
-                                <label class="default" > Seleccione el documento al que desea modificar el per&iacute;odo de entrega</label>
-                            </p>
-                            <select class="form-control    h1 " id="documentoRequerido" name="documentoRequerido"  >
-                                <option  class="form-control selected">
-                                    Seleccione el documento a Modificar
-                                </option>
-
-
-
-
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <!-- Button trigger modal -->
+                                <form  method="POST" name="formulario" id="formulario" action="forms/actions/configurarFechaRecepcionCO.php" > 
+                                    <!--<form id="form1" name="form1" method="post" action="< php  >">-->
+                                    <p>
+                                        <label class="default" > Seleccione el documento al que desea modificar el per&iacute;odo de entrega</label>
+                                    </p>
+                                    <select class="form-control    h1 " id="documentoRequerido" name="documentoRequerido"  >
+                                        <option  class="form-control selected">
+                                            Seleccione el documento a Modificar
+                                        </option>
+                                        <?php
+                                            $idDocumento="";
+                                            while($var1 =  mysql_fetch_array($a)){
+                                                echo "<option>".$var1[0]."</option>";
+                                                var_dump($var1);
+                                            }
+                                            $con->cerrarConexion();
+                                        ?>
+                                    </select>
+                                    <p>
+                                      <label for="fechaInicioE"></label>
+                                    </p>
+                                    <div class="row show-grid">
+                                        <div class="col-md-6">
+                                            <label class="default" for="fechaInicioE">Fecha Inicio de  Entrega</label>
+                                            <label>
+                                                <input class ="form-control" placeholder="AAAA-MM-DD" type="text" name="fechaInicioE" id="fechaInicioE" readonly="readonly" disabled="true" />
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="default"> Hora Inicio de Entrega:<span id="sprytextfield1"></label>
+                                            <label for="horaInicioE">
+                                                <input  class ="form-control" placeholder="HH:MM"  type="text" name="horaInicioE" id="horaInicioE"  readonly="readonly" disabled="true"/>
+                                            </label>
+                                        </div>
+                                    </div> 
+                                    <div class="row show-grid">
+                                        <div class="col-md-6">
+                                            <label class="default" for="fechaFinalE">Fecha Final de Entrega</label>
+                                            <label>
+                                                <input  class ="form-control" placeholder="AAAA-MM-DD"  type="text" name="fechaFinalE" id="fechaFinalE" readonly="readonly" disabled="true" />
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="default">Hora Final de Entrega :<td><span id="sprytextfield2"></label>
+                                            <label for="horaLimite">
+                                                <input  class ="form-control"  placeholder="HH:MM" type="text" name="horaFinalE" id="horaFinalE" readonly="readonly" disabled="true" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <p>
+                                        <input type="submit" class="btn btn-primary" name="aceptarFecha" id="aceptarFecha" value="Aceptar" data-toggle="modal" data-target="#myModal"/>
+                                        <input type="reset"class="btn btn-default" name="btnVover2" id="btnVover2" value="Limpiar Formulario" />
+                                    </p>
+                                    <input type="hidden" name = "usuarioasesor" value = "<?php echo "$uActivo"; ?>">
+                                </form>  
                                 <?php
 
+                                    //include 'forms/actions/configurarFechaRecepcionCO.php';
+                                    error_reporting (5);  
 
-                                $idDocumento="";
-                                while($var1 =  mysql_fetch_array($a)){
-
-                                    echo "<option>".$var1[0]."</option>";
-
-                                    var_dump($var1);
-
-
-
-                                }
-                                $con->cerrarConexion();
-                                ?>
-
-                            </select>
-
-                            <p>
-                              <label for="fechaInicioE"></label>
-                          </p>
-                          <div class="row show-grid">
-                              <div class="col-md-6">
-                                <label class="default" for="fechaInicioE">Fecha Inicio de  Entrega</label>
-                                <label>
-                                  <input class ="form-control" placeholder="AAAA-MM-DD" type="text" name="fechaInicioE" id="fechaInicioE" readonly="readonly" disabled="true" />
-                              </label>
-                          </div>
-                          <div class="col-md-6">
-                            <label class="default">
-                             Hora Inicio de Entrega:<span id="sprytextfield1"></label>
-                             <label for="horaInicioE">
-                                <input  class ="form-control" placeholder="HH:MM"  type="text" name="horaInicioE" id="horaInicioE"  readonly="readonly" disabled="true"/>
-                            </label>
-                        </div>
-
-                    </div> 
-
-
-                    <div class="row show-grid">
-                      <div class="col-md-6">
-                          <label class="default" for="fechaFinalE">Fecha Final de Entrega</label>
-                          <label>
-                              <input  class ="form-control" placeholder="AAAA-MM-DD"  type="text" name="fechaFinalE" id="fechaFinalE" readonly="readonly" disabled="true" />
-                          </label>
-                      </div>
-                      <div class="col-md-6">
-                        <label class="default">
-                            Hora Final de Entrega :<td><span id="sprytextfield2"></label>
-                            <label for="horaLimite">
-                                <input  class ="form-control"  placeholder="HH:MM" type="text" name="horaFinalE" id="horaFinalE" readonly="readonly" disabled="true" />
-                            </label>
-                        </div>
-                    </div>
-                    <p>&nbsp;</p>
-                    <p>
-                        <input type="submit" class="btn btn-primary" name="aceptarFecha" id="aceptarFecha" value="Aceptar" data-toggle="modal" data-target="#myModal"/>
-
-
-
-                      <input type="reset"class="btn btn-default" name="btnVover2" id="btnVover2" value="Limpiar Formulario" />
-                  </p>
-                    <input type="hidden" name = "usuarioasesor" value = "<?php echo "$uActivo"; ?>">
-
-
-              </form>  
-
-
-              <?php
-
-              //include 'forms/actions/configurarFechaRecepcionCO.php';
-              error_reporting (5);  
-
-              $txtfIni=$fechaIniRegistrado;
-              $txthIni=$horaIniRegistrado;  
-              $txtfFin=$fechaFinRegistrado; 
-              $txthFin=$horaFinRegistrado; 
-                                /** echo $txtfIni;
-                                 echo $txthIni;
-                                 echo $txtfFin;
-                                 echo $txthFin;
-                                **/
-                                 ?>     
+                                    $txtfIni=$fechaIniRegistrado;
+                                    $txthIni=$horaIniRegistrado;  
+                                    $txtfFin=$fechaFinRegistrado; 
+                                    $txthFin=$horaFinRegistrado; 
+                                    /** echo $txtfIni;
+                                    echo $txthIni;
+                                    echo $txtfFin;
+                                    echo $txthFin;
+                                    **/
+                                ?>     
                                 <script type="text/javascript">
-                                     var txtFecIni= "<?php echo $txtfIni; ?>";
-                                     var txtHorIni= "<?php echo $txthIni; ?>";
-                                     var txtFecFin= "<?php echo $txtfFin; ?>";
-                                     var txtHorFin= "<?php echo $txthFin; ?>";
+                                    var txtFecIni= "<?php echo $txtfIni; ?>";
+                                    var txtHorIni= "<?php echo $txthIni; ?>";
+                                    var txtFecFin= "<?php echo $txtfFin; ?>";
+                                    var txtHorFin= "<?php echo $txthFin; ?>";
 
                                     $('#documentoRequerido').on('change',function(e){
 
@@ -477,64 +425,46 @@
                                     });           
                                 </script>
                                  
-                                 <script type="text/javascript">
-
-
+                                <script type="text/javascript">
                                     /**
                                     $('#fechaFinalE').on('click', function(){
                                         var x = $('#fechaInicioE').val();
-                                            $.getScript('js/validacionCamposFecha.js',function(){
-                                                evaluarFecha2(x);
-                                              });
+                                        $.getScript('js/validacionCamposFecha.js',function(){
+                                            evaluarFecha2(x);
+                                        });
                                     });
                                     $('#documentoRequirido').on('OnChange', function(){
-                                        
-                                           
-                                            $.getScript('js/validacionCamposFecha.js',function(){
-                                            
-                                                
-                                                activarCampos();
-                                              });
-});**/
-
-
-
-</script>
-
-
-
-</div>
-<!-- /.panel -->
-</div>
-<!-- /.col-lg-6 -->
-
-</div>
-
-<!-- /.panel -->
-</div>
-<!-- /.col-lg-8 -->
-
-</div>
-<!-- /.row -->
-</div>
-
-                            <div style="display: none;" aria-hidden="true" class="modal fade" id="myModal">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content" style="width:920px;">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h4 class="modal-title">Buscador</h4>
-                                        </div>
-                                        <div class="modal-body" style="padding:0px; margin:0px; width: 560px;">
-                                            <iframe src="../Librerias/filemanager/dialogo.php?type=0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; " frameborder="0" height="500" width="896"></iframe>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->  
-   
-</div>
-<!-- /#page-wrapper -->
-
+                                        $.getScript('js/validacionCamposFecha.js',function(){
+                                            activarCampos();
+                                        });
+                                    });**/
+                                </script>
+                            </div>
+                            <!-- /.panel -->
+                        </div>
+                        <!-- /.col-lg-6 -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+            </div>
+            <!-- /.row -->
+        </div>
+            <div style="display: none;" aria-hidden="true" class="modal fade" id="myModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" style="width:920px;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title">Buscador</h4>
+                        </div>
+                        <div class="modal-body" style="padding:0px; margin:0px; width: 560px;">
+                            <iframe src="../Librerias/filemanager/dialogo.php?type=0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; " frameborder="0" height="500" width="896"></iframe>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->  
+    </div>
+    <!-- /#page-wrapper -->
 </div>
 
 <script src="../Librerias/js/plugins/metisMenu/jquery.metisMenu.js"></script>
