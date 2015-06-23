@@ -12,7 +12,6 @@ include '../Modelo/conexion.php';
     $Crit_C = $_POST['CritEscogidos'];
 
     $puntaje = $_POST['PuntajeForm'];
-
     $buscador=0;
 
     for ($v=0; $v < count($Crit_E) ; $v++) { 

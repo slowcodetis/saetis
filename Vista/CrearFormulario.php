@@ -1,19 +1,11 @@
 <?php  
-
     session_start();
     $uActivo = $_SESSION['usuario'];
-
     include '../Modelo/validadorAcceso.php';
     $objValidador = new ControladorAccesoVistasPorUsuario(' ');
     $urlActual = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
     $objValidador->puedeAcceder($urlActual, $uActivo);
-
-    
-
-
-
-    
-?> 
+?>  
  <!DOCTYPE html>
  <html>
 
