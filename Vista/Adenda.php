@@ -5,9 +5,9 @@
     $uActivo = $_SESSION['usuario'];
     $con=new conexion();
 
-    //$objValidador = new ControladorAccesoVistasPorUsuario(' ');
-    //$urlActual = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
-    //$objValidador->puedeAcceder($urlActual, $uActivo);
+    $objValidador = new ControladorAccesoVistasPorUsuario(' ');
+    $urlActual = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
+    $objValidador->puedeAcceder($urlActual, $uActivo);
 ?>
 <!DOCTYPE html>
 <html>
