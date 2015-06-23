@@ -192,6 +192,9 @@
                                 <a href="notificacion_conformidad.php">Emitir Notificaci&oacute;n de Conformidad</a>
                             </li>
                             <li>
+                                <a href="Adenda.php">Emitir Adenda </a>
+                            </li>
+                            <li>
                                 <a href="contrato.php">Emitir Contrato </a>
                             </li>
                             

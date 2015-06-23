@@ -16,6 +16,7 @@
 
     <!-- JQuery -->
     <script type="text/javascript" src="../Librerias/lib/jquery-2.1.0.min.js"></script>
+    <script src="../Librerias/js/jquery-1.10.2.js"></script>
     <!-- icheck -->
     <link href="../Librerias/icheck/skins/square/green.css" rel="stylesheet">
     <script src="../Librerias/lib/icheck.min.js"></script>
@@ -51,9 +52,12 @@
     <script type="text/javascript" src="../Librerias/lib/funcionSeguimiento.js"></script>
     <script src="../Librerias/js/evaluar.js"></script>
 
-
-
-
+    <style>
+        .menuScroll {
+            overflow-y: scroll;
+            max-height: 300px;
+        }
+    </style>
 
     <link href="../Librerias/css/plugins/timeline/timeline.css" rel="stylesheet">
     <!-- SB Admin CSS - Include with every page -->
@@ -103,7 +107,7 @@
         <!-- /.navbar-top-links -->
 
         <div class="navbar-default navbar-static-side" role="navigation">
-            <div class="sidebar-collapse">
+            <div class="sidebar-collapse menuScroll">
                 <ul class="nav" id="side-menu">
                     <li>
                         <a href="AdministrarGrupoEmpresa.php"><i class="glyphicon glyphicon-book"></i> Administrar Grupo Empresas</a>
@@ -148,6 +152,9 @@
                             </li>
                             <li>
                                 <a href="notificacion_conformidad.php">Emitir Notificaci&oacute;n de Conformidad</a>
+                            </li>
+                            <li>
+                                <a href="Adenda.php">Emitir Adenda </a>
                             </li>
                             <li>
                                 <a href="contrato.php">Emitir Contrato </a>
@@ -446,7 +453,20 @@
                 </div>                                      
             </div><!--Col-lg6-->
         </div><!--Col lg 12-->
-    </div><!-- /.row -->  
+    </div><!-- /.row -->
+            <div style="display: none;" aria-hidden="true" class="modal fade" id="myModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" style="width:920px;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title">Buscador</h4>
+                        </div>
+                        <div class="modal-body" style="padding:0px; margin:0px; width: 560px;">
+                            <iframe src="../Librerias/filemanager/dialogo.php?type=0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; " frameborder="0" height="500" width="896"></iframe>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->    
 </div><!-- /#page-wrapper -->
 
 </div>
