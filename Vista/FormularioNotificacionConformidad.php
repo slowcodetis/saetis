@@ -8,6 +8,39 @@
     $objValidador = new ControladorAccesoVistasPorUsuario(' ');
     $urlActual = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
     $objValidador->puedeAcceder($urlActual, $uActivo);
+    
+
+        $nEmpresa=$_POST['lista'];
+
+    $consulta = "SELECT gestion.FECHA_FIN_G FROM grupo_empresa, gestion, proyecto, inscripcion_proyecto WHERE proyecto.CODIGO_P = inscripcion_proyecto.CODIGO_P AND inscripcion_proyecto.NOMBRE_U = grupo_empresa.NOMBRE_U AND grupo_empresa.NOMBRE_LARGO_GE = '$nEmpresa' AND gestion.ID_G = proyecto.ID_G";
+    $stmt= $con->consulta($consulta);
+    $fechaFinGestion =  mysql_fetch_array($stmt);
+    $fechaFinGestion = str_replace("-", "/", $fechaFinGestion[0]);
+
+    $queryStat = "SELECT ge.`NOMBRE_CORTO_GE` FROM `grupo_empresa` AS ge WHERE ge.`NOMBRE_LARGO_GE` LIKE '$nEmpresa'";
+    $stmt      = $con->consulta($queryStat);
+    $row       = mysql_fetch_array($stmt);
+    $nombreCGE = $row[0];
+
+    $fraseClave = 'Notificacion de Conformidad de '. $nombreCGE;
+    $queryStat = "SELECT ID_R FROM `registro` WHERE NOMBRE_R ='$fraseClave' AND  TIPO_T = 'publicaciones'";
+    $stmt      = $con->consulta($queryStat);
+    $notConf       = mysql_num_rows($stmt);
+
+    $fraseClave = 'Orden de Cambio de '. $nombreCGE;
+    $queryStat  = "SELECT ID_R FROM `registro` WHERE NOMBRE_R ='$fraseClave' AND  TIPO_T = 'publicaciones'";
+    $stmt       = $con->consulta($queryStat);
+    $ordCam     = mysql_num_rows($stmt);
+
+    if(strnatcasecmp($nEmpresa, "Seleccione una grupo empresa") == 0) {
+        echo "<script> alert('Debe seleccionar una grupo empresa'); window.history.back();</script>";    
+    }
+
+    if($notConf != 0 || $ordCam != 0) {
+        echo "<script> alert('Ya se genero una notificacion de conformidad o una orden de cambio para la grupo empresa seleccionada'); window.location='../Vista/notificacion_conformidad.php';</script>";    
+    }
+
+    $_SESSION['nombreEmpresa'] = $nEmpresa;
 ?> 
   <!DOCTYPE html>
 <html>
@@ -60,7 +93,6 @@
     <script type="text/javascript" src="../Librerias/calendario2/jquery.datetimepicker.js"></script>
     <script type="text/javascript" src="../Librerias/js/validar_notificacion.js"></script>
 
-
     <style>
         .menuScroll {
             overflow-y: scroll;
@@ -73,41 +105,41 @@
     <!-- SB Admin CSS - Include with every page -->
     <link href="../Librerias/css/sb-admin.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
-     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.css" rel="stylesheet">
-     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+    <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+    <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.css" rel="stylesheet">
+    <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
    
+    <script type="text/javascript">
+        $(document).on('ready',function(){
+            $('#fecha').datetimepicker({
 
+                yearOffset:0,
+                lang:'es',
+                timepicker:false,
+                format:'Y-m-d',
+                formatDate:'Y/m/d',
+                minDate:'-1970/01/01', // fecha actual es el minimo de seleccion en fechas
+                maxDate:  <?php echo "'$fechaFinGestion'";?>//'2015/06/30' 
+                //maxDate:'+1970/04/01' // and tommorow is maximum date calendar
+            });
 
-<script>
-       /* $(function() {
-            console.log('execute');
-        $( "#from" ).datepicker({
-          minDate: new Date(),
+            $('#hora').datetimepicker({
+                datepicker:false,
+                format:'H:i',
+                step:5
 
-        changeMonth: true,
-        dateFormat: "yy-mm-dd",        
-        numberOfMonths: 1,
-        onClose: function( selectedDate ) {
-        $( "#to" ).datepicker( "option","minDate" , selectedDate );
-        }
+            });
+            $('#fecha2').datetimepicker({
+                    yearOffset:0,
+                    lang:'es',
+                    timepicker:false,
+                    format:'Y-m-d',
+                    formatDate:'Y/m/d',
+                    minDate: new Date() // fecha actual es el minimo de seleccion en fechas
+                    // and tommorow is maximum date calendar
+            });
         });
-        $( "#to" ).datepicker({
-            minDate: new Date(),
-        dateFormat: "yy-mm-dd",
-        changeMonth: true,
-        numberOfMonths: 1,
-        minDate: new Date(),
-        onClose: function( selectedDate ) {
-        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
-
-
-        }
-        });
-        });*/
     </script>
-
-
 
 </head>
 
@@ -329,31 +361,105 @@
                     </div>
                 </div><!-- /.row -->
                
-                <!--Descripcion de la publicacion-->                 
-               
-                <div class="form-group" >
-                    <label class="col-sm-2 control-label">Grupo Empresa</label>
-                    <div class="col-xs-4"> 
-                        <select name="lista" class="form-control">
-                        <option>Seleccione una grupo empresa</option>
-                        <?php
-                            $idAsesor= $_SESSION['usuario']  ;
-                            $estado = "Habilitado";
-                            $seleccion = "SELECT ge.`NOMBRE_LARGO_GE` FROM `inscripcion` AS i,`asesor` AS a,`grupo_empresa` AS `ge` WHERE i.`NOMBRE_UA` = a.`NOMBRE_U` AND i.`NOMBRE_UGE` = ge.`NOMBRE_U` AND a.`NOMBRE_U` LIKE '$idAsesor' AND i.`ESTADO_INSCRIPCION` LIKE '$estado'";
-                            $consulta = $con->consulta($seleccion);
-                            
-                            while($grupoE =  mysql_fetch_array($consulta)){
-                                echo "<option>".$grupoE[0]."</option>";
-                            }
-                            echo "<input type='hidden' name='idAsesor' value='$idAsesor'>";           
-                        ?>
-                        </select>
+                <!--Campo de descripcion-->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Puntuacion</label>
+                    <div class="col-sm-8">
+                        <table class="table form-group ">                                                          
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Descripción</th>
+                                    <th>Puntaje Referencial</th>
+                                    <th>Puntaje Obtenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Cumplimiento de especificaciones del proponente</td>
+                                    <td>15 puntos</td>
+                                    <td> 
+                                        <input type="text" class="form-control" style ="width:45px;height:45px;" name="text[1]" id="textfield1" onkeypress="return validarNumeros(event)">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Claridad en la organizaci&oacute;n de la empresa proponente</td>
+                                    <td>10 puntos</td>
+                                    <td>
+                                        <input type="text" class="form-control" style ="width:45px;height:45px;" name="text[2]" id="textfield2" onkeypress="return validarNumeros(event)">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Cumplimiento de especificaciones t&eacute;cnicas</td>
+                                    <td>30 puntos</td>
+                                    <td>
+                                        <input type="text" class="form-control" style ="width:45px;height:45px;" name="text[3]" id="textfield3" onkeypress="return validarNumeros(event)">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Claridad en el proceso de desarrollo</td>
+                                    <td>10 puntos</td>
+                                    <td>
+                                        <input type="text" class="form-control" style ="width:45px;height:45px;" name="text[4]" id="textfield4" onkeypress="return validarNumeros(event)">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Plazo de Ejecuci&oacute;n</td>
+                                    <td>10 puntos</td>
+                                    <td>
+                                        <input type="text" class="form-control" style ="width:45px;height:45px;" name="text[5]" id="textfield5" onkeypress="return validarNumeros(event)">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Precio total</td>
+                                    <td>15 puntos</td>
+                                    <td>
+                                        <input type="text" class="form-control" style ="width:45px;height:45px;" name="text[6]" id="textfield6" onkeypress="return validarNumeros(event)">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Uso de herramientas en el proceso de desarrollo</td>
+                                    <td>10 puntos</td>
+                                    <td>
+                                        <input type="text" class="form-control" style ="width:45px;height:45px;" name="text[7]" id="textfield7" onkeypress="return validarNumeros(event)">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> 
                     </div>
-                </div><!--end/grupoempresas-->
-                
+                </div><!--end/campoDescripcion-->
+                     
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">Fecha de la reuni&oacute;n:</label>
+                    <div class="col-sm-1">
+                        <input class="form-control" style="width:500px;heigth:30px;" placeholder = "AAAA-MM-DD" name="fecha" id="fecha" readonly  >
+                    </div>
+                </div><!--end/fecha-->
+
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">Hora de la reuni&oacute;n:</label>
+                    <div class="col-sm-1" >
+                        <input class="form-control" style="width:500px;heigth:30px;"  name="hora" id="hora"  placeholder="HH:MM" readonly="readonly">
+                    </div>
+                </div><!--end/fecha-->
+                    
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">Lugar de la reuni&oacute;n:</label>
+                    <div class="col-sm-2" >
+                        <input class="form-control" style="width:500px;heigth:30px;"  name="lugar">
+                    </div>
+                </div><!--end/lugar-->
+
                 <div class   ="form-group">
                     <div class   ="col-sm-8">
-                        <input class ="btn btn-primary" type="submit" value= "Generar" id= "enviar" name="enviar" onclick ="this.form.action='FormularioNotificacionConformidad.php?id=0'"></input> &nbsp;&nbsp;                      
+                        <input class ="btn btn-primary" type="submit" value= "Generar" id= "enviar" name="enviar" onclick ="this.form.action='../Controlador/GeneradorNotificacionConformidad.php?id=0'"></input> &nbsp;&nbsp;                      
                     </div>
                 </div><!--end/submit-->
             </form>
