@@ -7,20 +7,39 @@ include '../Modelo/validadorAcceso.php';
 
         $nEmpresa=$_POST['lista'];
 
+    $objValidador = new ControladorAccesoVistasPorUsuario(' ');
+    $urlActual = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
+    $objValidador->puedeAcceder($urlActual, $uActivo);
+        
     $consulta = "SELECT gestion.FECHA_FIN_G FROM grupo_empresa, gestion, proyecto, inscripcion_proyecto WHERE proyecto.CODIGO_P = inscripcion_proyecto.CODIGO_P AND inscripcion_proyecto.NOMBRE_U = grupo_empresa.NOMBRE_U AND grupo_empresa.NOMBRE_LARGO_GE = '$nEmpresa' AND gestion.ID_G = proyecto.ID_G";
     $stmt= $con->consulta($consulta);
     $fechaFinGestion =  mysql_fetch_array($stmt);
     $fechaFinGestion = str_replace("-", "/", $fechaFinGestion[0]);
 
+    $queryStat = "SELECT ge.`NOMBRE_CORTO_GE` FROM `grupo_empresa` AS ge WHERE ge.`NOMBRE_LARGO_GE` LIKE '$nEmpresa'";
+    $stmt      = $con->consulta($queryStat);
+    $row       = mysql_fetch_array($stmt);
+    $nombreCGE = $row[0];
+
+    $fraseClave = 'Notificacion de Conformidad de '. $nombreCGE;
+    $queryStat = "SELECT ID_R FROM `registro` WHERE NOMBRE_R ='$fraseClave' AND  TIPO_T = 'publicaciones'";
+    $stmt      = $con->consulta($queryStat);
+    $notConf       = mysql_num_rows($stmt);
+
+    $fraseClave = 'Orden de Cambio de '. $nombreCGE;
+    $queryStat  = "SELECT ID_R FROM `registro` WHERE NOMBRE_R ='$fraseClave' AND  TIPO_T = 'publicaciones'";
+    $stmt       = $con->consulta($queryStat);
+    $ordCam     = mysql_num_rows($stmt);
+
+    if(strnatcasecmp($nEmpresa, "Seleccione una grupo empresa") == 0) {
+        echo "<script> alert('Debe seleccionar una grupo empresa'); window.history.back();</script>";    
+    }
+
+    if($notConf != 0 || $ordCam != 0) {
+        echo "<script> alert('Ya se genero una notificacion de conformidad o una orden de cambio para la grupo empresa seleccionada'); window.location='../Vista/notificacion_conformidad.php';</script>";    
+    }
 
     $_SESSION['nombreEmpresa'] = $nEmpresa;
-         
-/*
-    $objValidador = new ControladorAccesoVistasPorUsuario(' ');
-    $urlActual = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
-    $objValidador->puedeAcceder($urlActual, $uActivo);
-*/
-
 ?> 
   <!DOCTYPE html>
 <html>
