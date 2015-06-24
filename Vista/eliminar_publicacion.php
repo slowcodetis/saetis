@@ -30,6 +30,8 @@
             $filaRegistro = mysql_fetch_array($resultadoConsula);
             for($i = 0; $i < mysql_num_rows($resultadoConsula); $i++) {
                 
+                    echo "<script> </script>";
+
                 $idRegistro = $filaRegistro[$i];
                 $delDes = $conect->consulta(" DELETE FROM `descripcion` WHERE ID_R='$idRegistro'");
                 $delDoc = $conect->consulta(" DELETE FROM `documento` WHERE ID_R='$idRegistro'");

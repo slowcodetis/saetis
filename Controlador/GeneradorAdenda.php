@@ -179,7 +179,7 @@
                     }     
                 }//--- FIN if($ordenCambio == 1 && $docRequeridos == $docSubidos)
                 else {
-                    echo"<script type=\"text/javascript\">alert('La grupo empresa seleccionada aun no ha subido todos los documentos requeridos');  window.history.back();</script>"; 
+                    echo"<script type=\"text/javascript\">alert('La grupo empresa seleccionada aun no ha subido todos los documentos requeridos o no recibio una orden de cambio');  window.history.back();</script>"; 
                 }
             }//--- FIN else
         }
