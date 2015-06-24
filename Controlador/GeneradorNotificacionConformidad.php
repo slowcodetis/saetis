@@ -17,7 +17,7 @@ $nomA = $nombreAp->NOMBRES_A;
 $apeA = $nombreAp->APELLIDOS_A;
 $nAsesor = $nomA." ".$apeA ;
 
-    if (isset($_POST['lista'])) {
+    //if (isset($_POST['lista'])) {
         if (isset($_POST['fecha'])) {
             $fecha = filterXSS($_POST['fecha']);
             if($validador->validarTiempoFecha($fecha)){
@@ -30,7 +30,10 @@ $nAsesor = $nomA." ".$apeA ;
                         }
                                         
                         if($existeF) {
-                            $nEmpresa=filterXSS($_POST['lista']); 
+                            //$nEmpresa=filterXSS($_POST['lista']);
+                            $nEmpresa=$_SESSION['nombreEmpresa']; 
+
+                            echo "<script> alert('$nEmpresa'); </script>";
                                    
                             if(strnatcasecmp($nEmpresa, "Seleccione una grupo empresa")!=0) {
                                 $fecha = filterXSS($_POST['fecha']);
@@ -90,7 +93,6 @@ $nAsesor = $nomA." ".$apeA ;
                                             $califi [$indice] = $value;
                                             $indice++;
                                         }
-
                                         /******************************************/
                                         $queryProy = "SELECT proyecto.CODIGO_P FROM proyecto, inscripcion_proyecto WHERE proyecto.CODIGO_P = inscripcion_proyecto.CODIGO_P AND NOMBRE_U = '$nombreUGE'";
                                         $selProy = $conexion->query($queryProy);
@@ -107,6 +109,11 @@ $nAsesor = $nomA." ".$apeA ;
                                         {
                                             if(isset($_GET['id']))
                                             {
+                                                //Modifca permisos de escritura en la carpeta "Repositorio"
+                                                chmod("../Repositorio/", 0777);
+                                                mkdir("../Repositorio/".$nombreUGE."/");
+                                                mkdir("../Repositorio/".$nombreUGE."/NC", 0777);
+
                                                 $dia = date(j);
                                                 $mes = date(n);
                                                 $anio = date(Y);
@@ -157,9 +164,12 @@ $nAsesor = $nomA." ".$apeA ;
                                                 $pdf->writeHTML(utf8_decode($texto2));
                                                 //$pdf->writeHTML('This is my disclaimer. <b>THESE WORDS NEED TO BE BOLD.</b> These words do not need to be bold.');
 
-                                                            mkdir("../Repositorio/".$nombreUGE."/NC");
+                                                //            mkdir("../Repositorio/".$nombreUGE."/NC");
                                                 $pdf->Output('../Repositorio/'.$nombreUGE.'/NC/NotificacionConformidad.pdf','F');
                                                 
+                                                //Devolvemos las ordenes de cambio
+                                                chmod("../Repositorio/", 0775);
+
                                                 $id = "OrdenCambio";
                                                 $pdf = $id.".pdf";
                                                 
@@ -215,12 +225,7 @@ $nAsesor = $nomA." ".$apeA ;
                                                     }
 
                                                     $directorioIndex = "../".$nombreUGE."/NC/index.html";
-                        
-                                                    /*if(!file_exists($directorioIndex))
-                                                    {
-                                                        $directorioIndex = "../".$nombreUGE."/NC/index.html";
-                                                        fopen($directorioIndex, "x");
-                                                    }*/
+
                                             }   
                                         }
                                         else {
@@ -249,5 +254,5 @@ $nAsesor = $nomA." ".$apeA ;
                 echo"<script type=\"text/javascript\">alert('La fecha ingresada es previa a la actual, seleccione otra.'); window.history.back();</script>";      
             }
         }
-    }
+    //}
 ?>
