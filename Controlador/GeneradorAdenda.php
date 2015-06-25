@@ -83,103 +83,109 @@
                 $result->execute();
                 $docRequeridos= $result->fetchColumn();
                 
-                if($ordenCambio == 1 && $docRequeridos == $docSubidos) {
+                if($ordenCambio == 1){
 
-                    $queryStat = "SELECT u.`CORREO_ELECTRONICO_U` FROM `usuario` AS u WHERE u.`NOMBRE_U` LIKE '$nombreUA'";
-                    $stmt      = $conexion->query($queryStat);
-                    $row       = $stmt->fetchObject();
-                    $correo    = $row->CORREO_ELECTRONICO_U;
-                    $queryStat = "SELECT a.`NOMBRES_A`, a.`APELLIDOS_A` FROM `asesor` AS a WHERE a.`NOMBRE_U` LIKE '$nombreUA'";
-                    $stmt      = $conexion->query($queryStat);
-                    $row       = $stmt ->fetchObject();
-                    $nomAs = $row->NOMBRES_A;
-                    $apeAs = $row->APELLIDOS_A;
-                    $nCompleto = $nomAs."  ".$apeAs;    
-                    
-                    $fraseClave = 'Adenda de '. $nombreCGE;
-                    $sql = "SELECT count(ID_R) FROM `registro` WHERE NOMBRE_R = '$fraseClave' AND  TIPO_T = 'publicaciones'";
-                    $result = $conexion->prepare($sql); 
-                    $result->execute(); 
-                    $adendaEmitida = $result->fetchColumn();
+                    if($ordenCambio == 1 && $docRequeridos == $docSubidos) {
 
-                    if($adendaEmitida == 0) {
+                        $queryStat = "SELECT u.`CORREO_ELECTRONICO_U` FROM `usuario` AS u WHERE u.`NOMBRE_U` LIKE '$nombreUA'";
+                        $stmt      = $conexion->query($queryStat);
+                        $row       = $stmt->fetchObject();
+                        $correo    = $row->CORREO_ELECTRONICO_U;
+                        $queryStat = "SELECT a.`NOMBRES_A`, a.`APELLIDOS_A` FROM `asesor` AS a WHERE a.`NOMBRE_U` LIKE '$nombreUA'";
+                        $stmt      = $conexion->query($queryStat);
+                        $row       = $stmt ->fetchObject();
+                        $nomAs = $row->NOMBRES_A;
+                        $apeAs = $row->APELLIDOS_A;
+                        $nCompleto = $nomAs."  ".$apeAs;    
+                        
+                        $fraseClave = 'Adenda de '. $nombreCGE;
+                        $sql = "SELECT count(ID_R) FROM `registro` WHERE NOMBRE_R = '$fraseClave' AND  TIPO_T = 'publicaciones'";
+                        $result = $conexion->prepare($sql); 
+                        $result->execute(); 
+                        $adendaEmitida = $result->fetchColumn();
 
-                        if(isset($_GET['id'])) {
-                        	$dia = date(j);
-							$mes = date(n);
-							$anio = date(Y);
+                        if($adendaEmitida == 0) {
 
-							$mesEspaniol = array('1' => 'enero','2' => 'febrero','3' => 'marzo','4' => 'abril','5' => 'mayo','6' => 'junio','7' => 'julio','8' => 'agosto','9' => 'septiembre','10' => 'octubre','11' => 'noviembre','12' => 'diciembre');
-							$mes = $mesEspaniol[$mes];
-							$fecha2 = $dia . ' de '. $mes . ' de '. $anio;
-							$pdf = new PDF_MC_Table('P', 'mm', 'Letter');
-							$pdf->AddPage('P');
-							$pdf->SetFont('helvetica','',10);
-							$pdf->SetMargins(35, 40 , 55);
-							$pdf->SetAutoPageBreak(true,45); 
+                            if(isset($_GET['id'])) {
+                            	$dia = date(j);
+    							$mes = date(n);
+    							$anio = date(Y);
 
-                                $texto = 'TIS y la empresa '.$nEmpresa.', ';
+    							$mesEspaniol = array('1' => 'enero','2' => 'febrero','3' => 'marzo','4' => 'abril','5' => 'mayo','6' => 'junio','7' => 'julio','8' => 'agosto','9' => 'septiembre','10' => 'octubre','11' => 'noviembre','12' => 'diciembre');
+    							$mes = $mesEspaniol[$mes];
+    							$fecha2 = $dia . ' de '. $mes . ' de '. $anio;
+    							$pdf = new PDF_MC_Table('P', 'mm', 'Letter');
+    							$pdf->AddPage('P');
+    							$pdf->SetFont('helvetica','',10);
+    							$pdf->SetMargins(35, 40 , 55);
+    							$pdf->SetAutoPageBreak(true,45); 
 
-							$pdf->SetFont('Helvetica','',18);
-							$pdf->Cell(0,10,'',0,1,'C');
-							$pdf->Ln();
-							$pdf->Ln();
-							$pdf->Ln();
-							$pdf->Cell(0,15,'Adenda',0,1,'C');
-							$pdf->SetFont('Helvetica','',12);
-							$pdf->Cell(0,8,'Ma. Leticia Blanco Coca',0,1,'C');
-							$pdf->Cell(0,8, $fecha2,0,1,'C');
-							$pdf->Ln();
-							$pdf->SetWidths(array(90,22,20,40));
-							$pdf->SetFont('Helvetica','',10);
-							$pdf->Ln();
-							for ($i=1; $i <= count($observ); $i++) { 
-								$pdf->MultiCell(0, 5, '    '.$i.'. '.$texto.utf8_decode($observ[$i-1]));
-							}
-							$pdf->Ln();
+                                    $texto = 'TIS y la empresa '.$nEmpresa.', ';
 
-								mkdir("../Repositorio/".$nombreUGE."/Adenda");
-							$pdf->Output('../Repositorio/'.$nombreUGE.'/Adenda/Adenda.pdf','F');
-						     
-                            $rutaD="../Repositorio/asesor/".$nombreUGE."/Adenda/";
-                            $file = "Adenda".'_'.$nEmpresa.'.pdf';
-                            if (!file_exists($rutaD)) {
-                                $oldmask = umask(0); 
-                                mkdir($rutaD, 0777,TRUE);
-                                umask($oldmask);
-                                if(!file_exists("../".$nombreUGE."/index.html")) {
-                                    fopen("../".$nombreUGE."/index.html", "x");
+    							$pdf->SetFont('Helvetica','',18);
+    							$pdf->Cell(0,10,'',0,1,'C');
+    							$pdf->Ln();
+    							$pdf->Ln();
+    							$pdf->Ln();
+    							$pdf->Cell(0,15,'Adenda',0,1,'C');
+    							$pdf->SetFont('Helvetica','',12);
+    							$pdf->Cell(0,8,'Ma. Leticia Blanco Coca',0,1,'C');
+    							$pdf->Cell(0,8, $fecha2,0,1,'C');
+    							$pdf->Ln();
+    							$pdf->SetWidths(array(90,22,20,40));
+    							$pdf->SetFont('Helvetica','',10);
+    							$pdf->Ln();
+    							for ($i=1; $i <= count($observ); $i++) { 
+    								$pdf->MultiCell(0, 5, '    '.$i.'. '.$texto.utf8_decode($observ[$i-1]));
+    							}
+    							$pdf->Ln();
+
+    								mkdir("../Repositorio/".$nombreUGE."/Adenda");
+    							$pdf->Output('../Repositorio/'.$nombreUGE.'/Adenda/Adenda.pdf','F');
+    						     
+                                $rutaD="../Repositorio/asesor/".$nombreUGE."/Adenda/";
+                                $file = "Adenda".'_'.$nEmpresa.'.pdf';
+                                if (!file_exists($rutaD)) {
+                                    $oldmask = umask(0); 
+                                    mkdir($rutaD, 0777,TRUE);
+                                    umask($oldmask);
+                                    if(!file_exists("../".$nombreUGE."/index.html")) {
+                                        fopen("../".$nombreUGE."/index.html", "x");
+                                    }
                                 }
-                            }
 
-                            $id = "Adenda";
-                            $pdf = $id.".pdf"; 
-                            
-                            $nruta = "../Repositorio/".$nombreUGE."/Adenda/"."Adenda.pdf";
-                            $fecha = date('Y-m-d');
-                            $hora  = date("G:H:i");
-                            $visible = "TRUE";
-                            $descargar = "TRUE";
-                            $nombreDoc = "Adenda de ".$nombreCGE;
-                            
-                            $comentar = $conexion->query("INSERT INTO registro (NOMBRE_U,TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R) VALUES ('$nombreUA','publicaciones','Habilitado','$nombreDoc','$fecha','$hora')")or die("Error");
-                            $consulta = $conexion->query("SELECT MAX(ID_R) AS 'ID_R' FROM registro");
-                            $row = $consulta->fetchObject();
-                            $id = $row -> ID_R;
-                            $guardarD = $conexion->query("INSERT INTO documento (ID_R,TAMANIO_D,RUTA_D,VISUALIZABLE_D,DESCARGABLE_D) VALUES('$id','1024','$nruta','$visible','$descargar')");
-                            $desD = $conexion->query("INSERT INTO descripcion (ID_R,DESCRIPCION_D) VALUES('$id','Adenda')");
-                            $destinat = $conexion->query("INSERT INTO receptor (ID_R,RECEPTOR_R) VALUES('$id','$nEmpresa')");
-                            $guardar = $conexion->query("INSERT INTO periodo (ID_R,fecha_p,hora_p) VALUES ('$id','$fecha','$hora')") or die("Error");
-                            
-                            echo"<script type=\"text/javascript\">alert('Se genero correctamente la Adenda'); window.location='../Vista/publicaciones.php';</script>";
-                        }//---- FIN if(isset($_GET['id']))
-                    }//--- FIN if($adendaEmitida == 0)
+                                $id = "Adenda";
+                                $pdf = $id.".pdf"; 
+                                
+                                $nruta = "../Repositorio/".$nombreUGE."/Adenda/"."Adenda.pdf";
+                                $fecha = date('Y-m-d');
+                                $hora  = date("G:H:i");
+                                $visible = "TRUE";
+                                $descargar = "TRUE";
+                                $nombreDoc = "Adenda de ".$nombreCGE;
+                                
+                                $comentar = $conexion->query("INSERT INTO registro (NOMBRE_U,TIPO_T,ESTADO_E,NOMBRE_R,FECHA_R,HORA_R) VALUES ('$nombreUA','publicaciones','Habilitado','$nombreDoc','$fecha','$hora')")or die("Error");
+                                $consulta = $conexion->query("SELECT MAX(ID_R) AS 'ID_R' FROM registro");
+                                $row = $consulta->fetchObject();
+                                $id = $row -> ID_R;
+                                $guardarD = $conexion->query("INSERT INTO documento (ID_R,TAMANIO_D,RUTA_D,VISUALIZABLE_D,DESCARGABLE_D) VALUES('$id','1024','$nruta','$visible','$descargar')");
+                                $desD = $conexion->query("INSERT INTO descripcion (ID_R,DESCRIPCION_D) VALUES('$id','Adenda')");
+                                $destinat = $conexion->query("INSERT INTO receptor (ID_R,RECEPTOR_R) VALUES('$id','$nEmpresa')");
+                                $guardar = $conexion->query("INSERT INTO periodo (ID_R,fecha_p,hora_p) VALUES ('$id','$fecha','$hora')") or die("Error");
+                                
+                                echo"<script type=\"text/javascript\">alert('Se genero correctamente la Adenda'); window.location='../Vista/publicaciones.php';</script>";
+                            }//---- FIN if(isset($_GET['id']))
+                        }//--- FIN if($adendaEmitida == 0)
+                        else {
+                            echo"<script>alert('Ya se genero una adenda para la grupo empresa seleccionada'); window.location='../Vista/publicaciones.php';</script>";  
+                        }     
+                    }//--- FIN if($ordenCambio == 1 && $docRequeridos == $docSubidos)
                     else {
-                        echo"<script>alert('Ya se genero una adenda para la grupo empresa seleccionada'); window.location='../Vista/publicaciones.php';</script>";  
-                    }     
-                }//--- FIN if($ordenCambio == 1 && $docRequeridos == $docSubidos)
+                        echo"<script type=\"text/javascript\">alert('La grupo empresa seleccionada aun no ha subido todos los documentos requeridos');  window.history.back();</script>"; 
+                    }
+                }
                 else {
-                    echo"<script type=\"text/javascript\">alert('La grupo empresa seleccionada aun no ha subido todos los documentos requeridos');  window.history.back();</script>"; 
+                    echo"<script type=\"text/javascript\">alert('La grupo empresa seleccionada no recibio una orden de cambio');  window.history.back();</script>"; 
                 }
             }//--- FIN else
         }

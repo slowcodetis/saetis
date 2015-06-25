@@ -11,11 +11,13 @@
 
     //conexion------------- 
     //Peticion
+
     $selRegis =$conect->consulta(" SELECT ID_R  FROM `registro` WHERE NOMBRE_R ='$idPubli'");
     $tamRegis=mysql_num_rows($selRegis);
     if($tamRegis>0) {
         $filaRegi = mysql_fetch_array($selRegis);
         $idRegis=$filaRegi[0];
+
         
         $delDes=$conect->consulta(" DELETE FROM `descripcion` WHERE ID_R='$idRegis'");
         $delDoc=$conect->consulta(" DELETE FROM `documento` WHERE ID_R='$idRegis'");
@@ -26,11 +28,11 @@
         $queryDocumentosSolicitados = "SELECT REGISTRO_ID FROM documento_requerido_oc WHERE REGISTRO_ID_OC = $idRegis"; 
         $resultadoConsula = $conect->consulta($queryDocumentosSolicitados);
         $tamDocumentos=mysql_num_rows($resultadoConsula);
+            
         if($tamDocumentos>0) {
-            $filaRegistro = mysql_fetch_array($resultadoConsula);
-            for($i = 0; $i < mysql_num_rows($resultadoConsula); $i++) {
+            while ($fila = mysql_fetch_array($resultadoConsula, MYSQL_NUM)) {
+                $idRegistro = $fila[0];
                 
-                $idRegistro = $filaRegistro[$i];
                 $delDes = $conect->consulta(" DELETE FROM `descripcion` WHERE ID_R='$idRegistro'");
                 $delDoc = $conect->consulta(" DELETE FROM `documento` WHERE ID_R='$idRegistro'");
                 $delPerio = $conect->consulta("DELETE FROM periodo WHERE ID_R = '$idRegistro' ");

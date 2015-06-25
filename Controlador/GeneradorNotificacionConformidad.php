@@ -33,7 +33,7 @@ $nAsesor = $nomA." ".$apeA ;
                             //$nEmpresa=filterXSS($_POST['lista']);
                             $nEmpresa=$_SESSION['nombreEmpresa']; 
 
-                            echo "<script> alert('$nEmpresa'); </script>";
+                            //echo "<script> alert('$nEmpresa'); </script>";
                                    
                             if(strnatcasecmp($nEmpresa, "Seleccione una grupo empresa")!=0) {
                                 $fecha = filterXSS($_POST['fecha']);
