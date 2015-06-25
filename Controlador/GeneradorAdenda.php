@@ -107,6 +107,12 @@
                         if($adendaEmitida == 0) {
 
                             if(isset($_GET['id'])) {
+
+                                //Modifca permisos de escritura en la carpeta "Repositorio"
+                                chmod("../Repositorio/", 0777);
+                                mkdir("../Repositorio/".$nombreUGE."/");
+                                mkdir("../Repositorio/".$nombreUGE."/Adenda", 0777);
+
                             	$dia = date(j);
     							$mes = date(n);
     							$anio = date(Y);
@@ -142,7 +148,9 @@
 
     								mkdir("../Repositorio/".$nombreUGE."/Adenda");
     							$pdf->Output('../Repositorio/'.$nombreUGE.'/Adenda/Adenda.pdf','F');
-    						     
+    						      
+                                    chmod("../Repositorio/", 0775);
+
                                 $rutaD="../Repositorio/asesor/".$nombreUGE."/Adenda/";
                                 $file = "Adenda".'_'.$nEmpresa.'.pdf';
                                 if (!file_exists($rutaD)) {
