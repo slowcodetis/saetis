@@ -88,17 +88,88 @@
            $tamano= $_SESSION["tamano"] ;
            
            $nota=0;
-           
-              if($tamano==1){ $usuario1= $_POST['nota0'];  $nota=($usuario1/100)*($Puntaje);}
-              if($tamano==2){ $usuario1= $_POST['nota0'];$usuario2= $_POST['nota1']; $nota=((($usuario1+$usuario2)/2)/100)*($Puntaje);}
-              if($tamano==3){ $usuario1= $_POST['nota0'];$usuario2= $_POST['nota1'];$usuario3= $_POST['nota2']; $nota=((($usuario1+$usuario2+$usuario3)/3)/100)*($Puntaje);}
-              if($tamano==4){ $usuario1= $_POST['nota0'];$usuario2= $_POST['nota1'];$usuario3= $_POST['nota2'];$usuario4= $_POST['nota3'];$nota=((($usuario1+$usuario2+$usuario3+$usuario4)/4)/100)*($Puntaje);}
-              if($tamano==5){ $usuario1= $_POST['nota0'];$usuario2= $_POST['nota1'];$usuario3= $_POST['nota2'];$usuario4= $_POST['nota3'];$usuario5= $_POST['nota4'];$nota=((($usuario1+$usuario2+$usuario3+$usuario4+$usuario5)/5)/100)*($Puntaje);}           
-              if($tamano==6){ $usuario1= $_POST['nota0'];$usuario2= $_POST['nota1'];$usuario3= $_POST['nota2'];$usuario4= $_POST['nota3'];$usuario5= $_POST['nota4'];$usuario6= $_POST['nota5'];$nota=((($usuario1+$usuario2+$usuario3+$usuario4+$usuario5+$usuario6)/6)/100)*($Puntaje);}            
-              if($tamano==7){ $usuario1= $_POST['nota0'];$usuario2= $_POST['nota1'];$usuario3= $_POST['nota2'];$usuario4= $_POST['nota3'];$usuario5= $_POST['nota4'];$usuario6= $_POST['nota5'];$usuario7= $_POST['nota6'];$nota=((($usuario1+$usuario2+$usuario3+$usuario4+$usuario5+$usuario6+$usuario7)/7)/100)*($Puntaje);} 
-              if($tamano==8){ $usuario1= $_POST['nota0'];$usuario2= $_POST['nota1'];$usuario3= $_POST['nota2'];$usuario4= $_POST['nota3'];$usuario5= $_POST['nota4'];$usuario6= $_POST['nota5'];$usuario7= $_POST['nota6'];$usuario8= $_POST['nota7'];$nota=((($usuario1+$usuario2+$usuario3+$usuario4+$usuario5+$usuario6+$usuario7+$usuario8)/8)/100)*($Puntaje);}
-              if($tamano==9){ $usuario1= $_POST['nota0'];$usuario2= $_POST['nota1'];$usuario3= $_POST['nota2'];$usuario4= $_POST['nota3'];$usuario5= $_POST['nota4'];$usuario6= $_POST['nota5'];$usuario7= $_POST['nota6'];$usuario8= $_POST['nota7'];$usuario9= $_POST['nota8'];$nota=((($usuario1+$usuario2+$usuario3+$usuario4+$usuario5+$usuario6+$usuario7+$usuario8+$usuario9)/9)/100)*($Puntaje);}        
-              if($tamano==10){ $usuario1= $_POST['nota0'];$usuario2= $_POST['nota1'];$usuario3= $_POST['nota2'];$usuario4= $_POST['nota3'];$usuario5= $_POST['nota4'];$usuario6= $_POST['nota5'];$usuario7= $_POST['nota6'];$usuario8= $_POST['nota7'];$usuario9= $_POST['nota8'];$usuario10= $_POST['nota9'];$nota=((($usuario1+$usuario2+$usuario3+$usuario4+$usuario5+$usuario6+$usuario7+$usuario8+$usuario9+$usuario10)/10)/100)*($Puntaje);}    
+           $notaPorcentaje = 0.6;         
+           if($tamano==1){ 
+               $usuario1= $_POST['nota0'];  
+               $nota=(($usuario1/100)*($Puntaje))*$notaPorcentaje;
+           }
+           if($tamano==2){ 
+               $usuario1= $_POST['nota0'];
+               $usuario2= $_POST['nota1']; 
+               $nota=(((($usuario1+$usuario2)/2)/100)*($Puntaje))*$notaPorcentaje;
+           }
+           if($tamano==3){ 
+               $usuario1= $_POST['nota0'];
+               $usuario2= $_POST['nota1'];
+               $usuario3= $_POST['nota2']; 
+               $nota=(((($usuario1+$usuario2+$usuario3)/3)/100)*($Puntaje))*$notaPorcentaje;
+           }
+           if($tamano==4){ 
+               $usuario1= $_POST['nota0'];
+               $usuario2= $_POST['nota1'];
+               $usuario3= $_POST['nota2'];
+               $usuario4= $_POST['nota3'];
+               $nota=(((($usuario1+$usuario2+$usuario3+$usuario4)/4)/100)*($Puntaje))*$notaPorcentaje;}
+           if($tamano==5){ 
+               $usuario1= $_POST['nota0'];
+               $usuario2= $_POST['nota1'];
+               $usuario3= $_POST['nota2'];
+               $usuario4= $_POST['nota3'];
+               $usuario5= $_POST['nota4'];
+               $nota=(((($usuario1+$usuario2+$usuario3+$usuario4+$usuario5)/5)/100)*($Puntaje))*$notaPorcentaje;
+           } 
+           if($tamano==6){ 
+               $usuario1= $_POST['nota0'];
+               $usuario2= $_POST['nota1'];
+               $usuario3= $_POST['nota2'];
+               $usuario4= $_POST['nota3'];
+               $usuario5= $_POST['nota4'];
+               $usuario6= $_POST['nota5'];
+               $nota=(((($usuario1+$usuario2+$usuario3+$usuario4+$usuario5+$usuario6)/6)/100)*($Puntaje))*$notaPorcentaje;
+           }
+           if($tamano==7){ 
+               $usuario1= $_POST['nota0'];
+               $usuario2= $_POST['nota1'];
+               $usuario3= $_POST['nota2'];
+               $usuario4= $_POST['nota3'];
+               $usuario5= $_POST['nota4'];
+               $usuario6= $_POST['nota5'];
+               $usuario7= $_POST['nota6'];
+               $nota=(((($usuario1+$usuario2+$usuario3+$usuario4+$usuario5+$usuario6+$usuario7)/7)/100)*($Puntaje))*$notaPorcentaje;
+           }
+           if($tamano==8){ 
+               $usuario1= $_POST['nota0'];
+               $usuario2= $_POST['nota1'];
+               $usuario3= $_POST['nota2'];
+               $usuario4= $_POST['nota3'];
+               $usuario5= $_POST['nota4'];
+               $usuario6= $_POST['nota5'];
+               $usuario7= $_POST['nota6'];
+               $usuario8= $_POST['nota7'];
+               $nota=(((($usuario1+$usuario2+$usuario3+$usuario4+$usuario5+$usuario6+$usuario7+$usuario8)/8)/100)*($Puntaje))*$notaPorcentaje;}
+           if($tamano==9){ 
+               $usuario1= $_POST['nota0'];
+               $usuario2= $_POST['nota1'];
+               $usuario3= $_POST['nota2'];
+               $usuario4= $_POST['nota3'];
+               $usuario5= $_POST['nota4'];
+               $usuario6= $_POST['nota5'];
+               $usuario7= $_POST['nota6'];
+               $usuario8= $_POST['nota7'];
+               $usuario9= $_POST['nota8'];
+               $nota=(((($usuario1+$usuario2+$usuario3+$usuario4+$usuario5+$usuario6+$usuario7+$usuario8+$usuario9)/9)/100)*($Puntaje))*$notaPorcentaje;}        
+           if($tamano==10){ 
+               $usuario1= $_POST['nota0'];
+               $usuario2= $_POST['nota1'];
+               $usuario3= $_POST['nota2'];
+               $usuario4= $_POST['nota3'];
+               $usuario5= $_POST['nota4'];
+               $usuario6= $_POST['nota5'];
+               $usuario7= $_POST['nota6'];
+               $usuario8= $_POST['nota7'];
+               $usuario9= $_POST['nota8'];
+               $usuario10= $_POST['nota9'];
+               $nota=(((($usuario1+$usuario2+$usuario3+$usuario4+$usuario5+$usuario6+$usuario7+$usuario8+$usuario9+$usuario10)/10)/100)*($Puntaje))*$notaPorcentaje;}    
             $_SESSION["nota"]=$nota;
             echo '<table class="table table-hover">
             <thead>
