@@ -55,7 +55,12 @@
     <!-- JQuery -->
     <script type="text/javascript" src="../Librerias/lib/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+    
+    <!--link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script-->
+    
     <script src="../Librerias/js/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
     <!-- icheck -->
     <link href="../Librerias/icheck/skins/square/green.css" rel="stylesheet">
     <script src="../Librerias/lib/icheck.min.js"></script>
@@ -87,9 +92,7 @@
     <script type="text/javascript" src="../Librerias/lib/validator/porcentajeMax.js"></script>
     <script type="text/javascript" src="../Librerias/lib/validator/porcentajeMin.js"></script>
     <!-- JS -->
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
     <script type="text/javascript" src="../Librerias/lib/funcion.js"></script>
     <script type="text/javascript" src="../Librerias/lib/funcionSeguimiento.js"></script>
     <script type="text/javascript" src="../Librerias/js/calendario_notacion_conformidad.js"></script>
