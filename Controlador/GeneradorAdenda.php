@@ -126,7 +126,8 @@
     							$pdf->SetMargins(35, 40 , 55);
     							$pdf->SetAutoPageBreak(true,45); 
 
-                                    $texto = 'TIS y la empresa '.$nEmpresa.', ';
+                                    $texto = 'TIS ha revisado la propuesta corregida y aun se tienen discrepancias, por lo que, en consenso con la empresa '. $nEmpresa .', se acuerda lo siguiente:';
+                                    $texto1 = 'TIS y la empresa '.$nEmpresa.', ';
 
     							$pdf->SetFont('Helvetica','',18);
     							$pdf->Cell(0,10,'',0,1,'C');
@@ -141,8 +142,9 @@
     							$pdf->SetWidths(array(90,22,20,40));
     							$pdf->SetFont('Helvetica','',10);
     							$pdf->Ln();
+                                $pdf->MultiCell(0,5,utf8_decode($texto));
     							for ($i=1; $i <= count($observ); $i++) { 
-    								$pdf->MultiCell(0, 5, '    '.$i.'. '.$texto.utf8_decode($observ[$i-1]));
+    								$pdf->MultiCell(0, 5, '    '.$i.'. '.$texto1.utf8_decode($observ[$i-1]));
     							}
     							$pdf->Ln();
 
