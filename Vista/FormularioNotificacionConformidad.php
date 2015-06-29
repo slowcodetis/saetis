@@ -54,6 +54,7 @@
 
     <!-- JQuery -->
     <script type="text/javascript" src="../Librerias/lib/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <script src="../Librerias/js/jquery-1.10.2.js"></script>
     <!-- icheck -->
     <link href="../Librerias/icheck/skins/square/green.css" rel="stylesheet">
@@ -81,15 +82,18 @@
     <script type="text/javascript" src="../Librerias/lib/validator/stringLength.js"></script>
     <script type="text/javascript" src="../Librerias/lib/validator/notEmpty.js"></script>
     <script type="text/javascript" src="../Librerias/lib/validator/callback.js"></script>
-    <script type="text/javascript" src="../Librerias/lib/validator/date.js"></script>
+    <!--script type="text/javascript" src="../Librerias/lib/validator/date.js"></script-->
     <script type="text/javascript" src="../Librerias/lib/validator/numeric.js"></script>
     <script type="text/javascript" src="../Librerias/lib/validator/porcentajeMax.js"></script>
     <script type="text/javascript" src="../Librerias/lib/validator/porcentajeMin.js"></script>
     <!-- JS -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
     <script type="text/javascript" src="../Librerias/lib/funcion.js"></script>
     <script type="text/javascript" src="../Librerias/lib/funcionSeguimiento.js"></script>
     <script type="text/javascript" src="../Librerias/js/calendario_notacion_conformidad.js"></script>
-    <link rel="stylesheet" type="text/css" href="../Librerias/calendario2/jquery.datetimepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="../Librerias/calendario2/jquery.datetimepicker.css">
     <script type="text/javascript" src="../Librerias/calendario2/jquery.datetimepicker.js"></script>
     <script type="text/javascript" src="../Librerias/js/validar_notificacion.js"></script>
 
@@ -107,40 +111,53 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
     <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.css" rel="stylesheet">
-    <link href="../Librerias/lib/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+    
    
     <script type="text/javascript">
-        $(document).on('ready',function(){
-            $('#fecha').datetimepicker({
 
-                yearOffset:0,
-                lang:'es',
-                timepicker:false,
-                format:'Y-m-d',
-                formatDate:'Y/m/d',
-                minDate:'-1970/01/01', // fecha actual es el minimo de seleccion en fechas
-                maxDate:  <?php echo "'$fechaFinGestion'";?>//'2015/06/30' 
-                //maxDate:'+1970/04/01' // and tommorow is maximum date calendar
+        var data = <?php echo json_encode("$fechaFinGestion"); ?>;
+
+        $(document).on('ready', function(){
+            $.datepicker.regional['es'] = {
+            closeText: 'Cerrar',
+            prevText: ' nextText: Sig>',
+            currentText: 'Hoy',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+            'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+            'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié;', 'Juv', 'Vie', 'Sáb'],
+            dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+            weekHeader: 'Sm',
+            dateFormat: 'yy-mm-dd',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['es']);
+            $('#fecha1').datepicker({
+
+                changeMonth: true,
+                dateFormat: "yy-mm-dd",        
+                numberOfMonths: 1,
+                minDate: new Date(),
+                maxDate: new Date(data),//'2015-09-16'),
+                onClose: function( selectedDate ) {
+                }
             });
+        });
 
+        $(document).on('ready',function(){
             $('#hora').datetimepicker({
                 datepicker:false,
                 format:'H:i',
                 step:5
-
-            });
-            $('#fecha2').datetimepicker({
-                    yearOffset:0,
-                    lang:'es',
-                    timepicker:false,
-                    format:'Y-m-d',
-                    formatDate:'Y/m/d',
-                    minDate: new Date() // fecha actual es el minimo de seleccion en fechas
-                    // and tommorow is maximum date calendar
             });
         });
     </script>
-
+    
 </head>
 
 <body>
@@ -439,14 +456,14 @@
                 <div class="form-group">
                     <label class="col-xs-2 control-label">Fecha de la reuni&oacute;n:</label>
                     <div class="col-sm-1">
-                        <input class="form-control" style="width:500px;heigth:30px;" placeholder = "AAAA-MM-DD" name="fecha" id="fecha" readonly  >
+                        <input class="form-control" style="width:500px;heigth:30px;" name="fecha" id="fecha1" placeholder = "AAAA-MM-DD" readonly="readonly">
                     </div>
                 </div><!--end/fecha-->
 
                 <div class="form-group">
                     <label class="col-xs-2 control-label">Hora de la reuni&oacute;n:</label>
                     <div class="col-sm-1" >
-                        <input class="form-control" style="width:500px;heigth:30px;"  name="hora" id="hora"  placeholder="HH:MM" readonly="readonly">
+                        <input class="form-control" style="width:500px;heigth:30px;" name="hora" id="hora"  placeholder="HH:MM" readonly="readonly">
                     </div>
                 </div><!--end/fecha-->
                     
