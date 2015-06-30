@@ -10,7 +10,6 @@ public $nameDB = 'saetis';
     public $passwordDB = 'root';
     public $hostDB = 'localhost';
     public $nameDB = 'saetis';
- //*/
 
     function getUs(){
         return $this->usernameDB;
