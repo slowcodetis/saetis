@@ -293,7 +293,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <label for=""><h4>Ingrese un nombre para su formulario:</h4></label>
-                                    <input type="text" title="Solo use minusculas y numeros: Ejm...formulario1" name="nombreFormulario" id="" pattern="[a-z]{3,20}[0-9]{1,2}" class="form-control" required >
+                                    <input type="text" title="Solo use minusculas y numeros: Ejm...formulario1" name="nombreFormulario" id="" pattern="[a-z]{3,20}[0-9]{1,20}" class="form-control" required >
                                 </div>
                             </div>
                         </div>
