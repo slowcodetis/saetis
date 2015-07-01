@@ -1,9 +1,9 @@
 <?php
 class datosmysql{
-public $usernameDB = 'adminTpQmknN';
-public $passwordDB = '77g4ePielXPg';
-public $hostDB = '127.5.49.2';
-public $nameDB = 'saetis';
+public $usernameDB = 'adminJEnKCGS';
+public $passwordDB = 'Bw_r44GdcjMn';
+public $hostDB = '127.6.250.130';
+public $nameDB = 'tis';
 /*
 public $usernameDB = 'root';
 public $passwordDB = 'root';
