@@ -41,6 +41,8 @@ if(isset($_GET['op']))
 		$Del_Nota = $conect->consulta("DELETE FROM nota WHERE NOMBRE_U = '$GrupoE' ");
 		$Del_NotaF = $conect->consulta("DELETE FROM nota_final WHERE NOMBRE_U = '$GrupoE' ");
 
+		$Del_OC = $conect->consulta("DELETE FROM documento_requerido_oc WHERE USUARIO_ID = '$GrupoE' ");
+
         $Sel_RegG = $conect->consulta("SELECT ID_R FROM registro WHERE NOMBRE_U='$GrupoE'");
         
         while ($Row_Reg = mysql_fetch_row($Sel_RegG))
@@ -53,6 +55,7 @@ if(isset($_GET['op']))
             $Del_Pago = $conect->consulta("DELETE FROM pago WHERE ID_R='$Row_Reg[0]'");
             $Del_Rep = $conect->consulta("DELETE FROM reporte WHERE ID_R='$Row_Reg[0]'");
             $Del_Eval = $conect->consulta("DELETE FROM evaluacion WHERE ID_R='$Row_Reg[0]'");
+            $Del_OC = $conect->consulta("DELETE FROM documento_requerido_oc WHERE REGISTRO_ID_OC = '$Row_Reg[0]' ");
         }
       
 		$Del_RegG = $conect->consulta("DELETE FROM registro WHERE NOMBRE_U = '$GrupoE' ");
@@ -150,5 +153,4 @@ else
 
 		rmdir($carpeta);
 	}
-
 ?>
