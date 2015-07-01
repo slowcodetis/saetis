@@ -9,12 +9,8 @@ public $nameDB = 'saetis';
     public $passwordDB = 'root';
     public $hostDB = 'localhost';
     public $nameDB = 'saetis';
-<<<<<<< HEAD
  */
-=======
-
->>>>>>> 5e239d19390696ed2483b18b55b4ad0e96c75124
-    function getUs(){
+function getUs(){
         return $this->usernameDB;
     }
     function getPas(){
