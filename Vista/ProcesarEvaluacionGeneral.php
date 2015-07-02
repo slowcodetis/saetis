@@ -318,7 +318,7 @@
                             echo '<input type="text" value="'.$Nota[0].'" class="form-control" disabled>';
                             echo '</div>';
 
-                            $NotaFin = $Nota2da*0.60 + $Nota[0]*0.40;
+                            $NotaFin = $Nota2da + $Nota[0];
 
                             echo '<div class="form-group has-success">';
                             echo '<h4>Nota Final:</h4>';
