@@ -253,7 +253,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Reportes</h4>
+                <h4 class="modal-title">Seguimiento Semanal</h4>
             </div>
             <div class="modal-body">
                 

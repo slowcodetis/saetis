@@ -3,7 +3,7 @@ class conexionBD extends PDO {
 
 	private $dsn = 'mysql:host=localhost;dbname=saetis';
 	private $usuario = 'root';
-	private $contrasena = 'lisa';
+	private $contrasena = 'root';
 
 	public function __construct() {
 		try {

@@ -26,11 +26,11 @@
 	    
 
 	    $btnRepor = '<button id="btnReportes" class="btn btn-xs btn-danger btnRegistroReportesSemanal">
-	                     		  Reportes <i class="glyphicon glyphicon-edit"></i>
+	                     		  Realizar Seguimiento <i class="glyphicon glyphicon-edit"></i>
 	                           </button>';  
 	    
 	    $btnSeg='<button id="btnSeguimientos" class="btn btn-xs btn-danger btnSeguimientoSemanal">
-	                    		 Ver Seguimientos 
+	                    		 Ver Seguimientos
 	                           </button>';
 
 	    $conexion->conectar();
