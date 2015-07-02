@@ -3,7 +3,7 @@ class datosmysql{
 public $usernameDB = 'adminJEnKCGS';
 public $passwordDB = 'Bw_r44GdcjMn';
 public $hostDB = '127.6.250.130';
-public $nameDB = 'tis';
+public $nameDB = 'saetis';
 /*
 public $usernameDB = 'root';
 public $passwordDB = 'root';
