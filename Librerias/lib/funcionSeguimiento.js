@@ -184,7 +184,7 @@ function registrarReportesSemanal() {
                                        '<td class="col-md-2">'+
                                            '<div class="form-group">'+
                                                '<div class="col-md-12">'+
-                                                   '<textarea class="form-control" rows="4" name="'+rol+'Actividades"></textarea>'+
+                                                   '<textarea class="form-control" rows="4" name="'+rol+'Actividades">Ninguna</textarea>'+
                                                '</div>'+
                                            '</div>'+
                                        '</td>'+
@@ -203,21 +203,21 @@ function registrarReportesSemanal() {
                                        '<td class="col-md-2">'+
                                            '<div class="form-group">'+
                                                '<div class="col-md-12">'+
-                                                   '<textarea class="form-control" rows="4" name="'+rol+'Resultados"></textarea>'+
+                                                   '<textarea class="form-control" rows="4" name="'+rol+'Resultados">Ninguno</textarea>'+
                                                '</div>'+
                                            '</div>'+
                                        '</td>'+
                                        '<td class="col-md-2">'+
                                            '<div class="form-group">'+
                                                '<div class="col-md-12">'+
-                                                   '<textarea class="form-control" rows="4" name="'+rol+'Conclusiones"></textarea>'+
+                                                   '<textarea class="form-control" rows="4" name="'+rol+'Conclusiones">Ninguna</textarea>'+
                                                '</div>'+
                                            '</div>'+
                                        '</td>'+
                                        '<td class="col-md-2">'+
                                            '<div class="form-group">'+
                                                '<div class="col-md-12">'+
-                                                   '<textarea class="form-control" rows="4" name="'+rol+'Observaciones"></textarea>'+
+                                                   '<textarea class="form-control" rows="4" name="'+rol+'Observaciones">Ninguna</textarea>'+
                                                '</div>'+
                                            '</div>'+
                                        '</td>'+
