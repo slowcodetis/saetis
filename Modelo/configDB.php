@@ -6,7 +6,7 @@ public $hostDB = '127.6.250.130';
 public $nameDB = 'saetis';
 /*
 public $usernameDB = 'root';
-public $passwordDB = 'root';
+public $passwordDB = '1q2w3e4r.';
 public $hostDB = 'localhost';
 public $nameDB = 'saetis';
  */
