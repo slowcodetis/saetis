@@ -111,7 +111,7 @@
                $usuario1= $_POST['nota0'];
                $usuario2= $_POST['nota1'];
                $usuario3= $_POST['nota2'];
-               $nota = ($usuario1+$usuario2+$usuario3)/3);
+               $nota = (($usuario1+$usuario2+$usuario3)/3);
                if($nota > $puntaje){ 
                    $nota=(((($usuario1+$usuario2+$usuario3)/3)/100)*($Puntaje))*$notaPorcentaje;
                }else{
